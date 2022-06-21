@@ -1,0 +1,45 @@
+aphia_id,scientific_name,weight,rank
+394976,Discomedusae,21.0,Subclass
+135220,Scyphozoa,20.0,Class
+135225,Semaeostomeae,18.0,Order
+135240,Pelagiidae,16.0,Family
+135279,Carybdea marsupialis,14,Species
+135305,Pelagia noctiluca,14,Species
+106401,Mnemiopsis leidyi,14,Species
+135304,Chrysaora hysoscella,14,Species
+135297,Cotylorhiza tuberculata,14,Species
+106398,Leucothea multicornis,14,Species
+135299,Rhizostoma pulmo,14,Species
+1267,Cnidaria,12.0,Phylum
+1258,Lobata,12.0,Order
+135224,Rhizostomeae,12.0,Order
+135263,Aurelia,11.0,Genus
+135247,Carybdea,11.0,Genus
+135262,Pelagia,11.0,Genus
+106355,Mnemiopsis,11.0,Genus
+135261,Chrysaora,11.0,Genus
+135255,Cotylorhiza,11.0,Genus
+106352,Leucothea,11.0,Genus
+135257,Rhizostoma,11.0,Genus
+2,Animalia,9.0,Kingdom
+1393118,Aureliinae,8.2,Subfamily
+135241,Ulmaridae,8.0,Family
+137217,Salpidae,8.0,Family
+135228,Carybdeidae,8.0,Family
+1249,Tentaculata,8.0,Class
+106325,Bolinopsidae,8.0,Family
+135236,Cepheidae,8.0,Family
+264862,Leucotheidae,8.0,Family
+1394177,Rhizostomatoidea,8.0,Superfamily
+135238,Rhizostomatidae,8.0,Family
+1393803,Actinomyaria,6.3,Infraorder
+411574,Kolpophorae,6.2,Suborder
+1394179,Dactyliophorae,6.2,Suborder
+137214,Salpida,6.0,Order
+394974,Carybdeida,6.0,Order
+22626,Thaliacea,4.0,Class
+135219,Cubozoa,4.0,Class
+1248,Ctenophora,4.0,Phylum
+146420,Tunicata,2.2,Subphylum
+1821,Chordata,2.0,Phylum
+1,Biota,0.0,Superdomain

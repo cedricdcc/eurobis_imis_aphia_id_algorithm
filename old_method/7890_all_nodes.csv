@@ -1,0 +1,562 @@
+aphia_id,scientific_name,weight,rank
+1,Biota,0.0,Superdomain
+3,Plantae,9.0,Kingdom
+368663,Viridiplantae,10.799999999999999,Subkingdom
+801,Chlorophyta,18.0,Phylum (Division)
+1304953,Chlorophytina,11.0,Subphylum (Subdivision)
+802,Chlorophyceae,12.0,Class
+732333,Chlamydomonadales,6.0,Order
+178973,Chlamydomonadaceae,8.0,Family
+494069,Oltmannsiella,11.0,Genus
+7,Chromista,280.0,Kingdom
+582418,Hacrobia,48.0,Subkingdom
+369190,Haptophyta,76.0,Phylum
+115057,Prymnesiophyceae,148.0,Class
+577970,Phaeocystales,6.0,Order
+115072,Phaeocystaceae,8.0,Family
+115088,Phaeocystis,11.0,Genus
+582419,Harosa,288.0,Subkingdom
+368898,Heterokonta,175.5,Infrakingdom
+345465,Ochrophyta,270.0,Phylum
+576884,Khakista,257.40000000000003,Subphylum
+148899,Bacillariophyceae,468.0,Class
+148971,Coscinodiscophycidae,323.40000000000003,Subclass
+591190,Coscinodiscanae,48.0,Superorder
+162250,Asterolamprales,12.0,Order
+162251,Asterolampraceae,16.0,Family
+248069,Asterolampra,11.0,Genus
+493820,Syracosphaerales,84.0,Order
+146199,Syracosphaeraceae,64.0,Family
+235860,Michaelsarsia,22.0,Genus
+235961,Michaelsarsia elegans,14,Species
+536209,Alveolata,135.20000000000002,Infrakingdom
+450030,Myzozoa,208.0,Phylum
+562620,Dinozoa,228.8,Subphylum
+146203,Dinoflagellata,239.2,Infraphylum
+19542,Dinophyceae,408.0,Class
+109390,Dinophysiales,84.0,Order
+231781,Oxyphysaceae,32.0,Family
+109466,Phalacroma,44.0,Genus
+156505,Phalacroma rotundatum,14,Species
+109392,Gymnodiniales,60.0,Order
+109410,Gymnodiniaceae,56.0,Family
+231787,Akashiwo,11.0,Genus
+232546,Akashiwo sanguinea,14,Species
+588641,Phaeista,39.6,Subphylum
+591209,Monista,20.7,Infraphylum
+588643,Hypogyristia,32.0,Superclass
+146232,Dictyochophyceae,32.0,Class
+157256,Dictyochales,36.0,Order
+157257,Dictyochaceae,48.0,Family
+157258,Dictyocha,33.0,Genus
+157463,Dictyocha fibula,14,Species
+493821,Coccolithales,60.0,Order
+291412,Calcidiscaceae,8.0,Family
+235804,Calcidiscus,11.0,Genus
+235923,Calcidiscus leptoporus,14,Species
+109479,Torodinium,11.0,Genus
+109889,Torodinium robustum,14,Species
+109393,Noctilucales,24.0,Order
+109418,Noctilucaceae,8.0,Family
+109500,Noctiluca,11.0,Genus
+109921,Noctiluca scintillans,14,Species
+109394,Peridiniales,120.0,Order
+493895,Lessardiaceae,8.0,Family
+231809,Lessardia,11.0,Genus
+232703,Lessardia elongata,14,Species
+231772,Dinophysaceae,80.0,Family
+109462,Dinophysis,88.0,Genus
+109603,Dinophysis acuminata,14,Species
+591192,Biddulphianae,84.0,Superorder
+148965,Biddulphiales,12.0,Order
+148966,Biddulphiaceae,16.0,Family
+148967,Biddulphia,11.0,Genus
+109391,Gonyaulacales,204.0,Order
+109421,Ceratiaceae,144.0,Family
+494057,Tripos,198.0,Genus
+841260,Tripos macroceros,14,Species
+591196,Rhizosolenianae,102.0,Superorder
+149067,Rhizosoleniales,102.0,Order
+149068,Rhizosoleniaceae,136.0,Family
+149069,Rhizosolenia,33.0,Genus
+149629,Rhizosolenia styliformis,14,Species
+591205,Limnista,20.7,Infraphylum
+588642,Fucistia,12.0,Superclass
+17793,Xanthophyceae,12.0,Class
+345556,Xanthophyceae incertae sedis,6.0,Order
+707624,Raphidosphaera,11.0,Genus
+708245,Raphidosphaera tenerrima,14,Species
+591197,Chaetocerotanae,144.0,Superorder
+593505,Chaetocerotanae incertae sedis,132.0,Order
+148984,Chaetocerotaceae,176.0,Family
+149118,Bacteriastrum,33.0,Genus
+764850,Bacteriastrum jadranum,14,Species
+236058,Michaelsarsia adriatica,14,Species
+148902,Bacillariophycidae,96.60000000000001,Subclass
+591186,Bacillariophycanae,138.0,Superorder
+149015,Naviculales,36.0,Order
+149207,Pinnulariaceae,8.0,Family
+149208,Pinnularia,11.0,Genus
+149048,Triceratiales,18.0,Order
+149353,Plagiogrammaceae,16.0,Family
+149314,Plagiogramma,11.0,Genus
+588644,Raphidoistia,4.0,Superclass
+160581,Raphidophyceae,4.0,Class
+1293739,Commatiida,6.0,Order
+1293740,Commatiidae,8.0,Family
+567048,Commation,11.0,Genus
+567049,Commation cryoporinum,14,Species
+591189,Thalassiosiranae,48.0,Superorder
+148903,Thalassiosirales,48.0,Order
+149072,Skeletonemaceae,24.0,Family
+149073,Skeletonema,22.0,Genus
+376361,Skeletonema menzelii,14,Species
+842517,Tripos trichoceros,14,Species
+109431,Ostreopsidaceae,24.0,Family
+109526,Centrodinium,11.0,Genus
+148978,Fragilariophycidae,67.2,Subclass
+591199,Fragilariophycanae,96.0,Superorder
+148951,Fragilariales,36.0,Order
+148952,Fragilariaceae,48.0,Family
+149028,Fragilaria,11.0,Genus
+149234,Hemiaulales,54.0,Order
+149235,Hemiaulaceae,72.0,Family
+163248,Hemiaulus,33.0,Genus
+163249,Hemiaulus hauckii,14,Species
+115064,Calyptrosphaeraceae,64.0,Family
+235846,Syracolithus,11.0,Genus
+235833,Calciosoleniaceae,24.0,Family
+235851,Calciosolenia,33.0,Genus
+235926,Calciosolenia murrayi,14,Species
+149130,Eucampia,44.0,Genus
+149131,Eucampia zodiacus,28,Species
+591193,Lithodesmiophycanae,18.0,Superorder
+149020,Lithodesmiales,18.0,Order
+149021,Lithodesmiaceae,24.0,Family
+149022,Ditylum,22.0,Genus
+558965,Sphaeropleales,6.0,Order
+160541,Scenedesmaceae,8.0,Family
+599760,Scenedesmoidea,8.2,Subfamily
+160602,Scenedesmus,11.0,Genus
+596169,Scenedesmus quadricauda,14,Species
+109475,Gymnodinium,11.0,Genus
+149133,Lauderiaceae,16.0,Family
+149134,Lauderia,22.0,Genus
+109436,Pyrophacaceae,16.0,Family
+109555,Pyrophacus,22.0,Genus
+109422,Ceratocoryaceae,8.0,Family
+109507,Ceratocorys,11.0,Genus
+1381154,Tripos teres,14,Species
+149040,Melosirales,18.0,Order
+149058,Hyalodiscaceae,8.0,Family
+149059,Podosira,11.0,Genus
+149060,Podosira stelligera,14,Species
+5,Protozoa,7.0,Kingdom
+22718,Protozoa incertae sedis,3.5999999999999996,Subkingdom
+599640,Ebriophyceae,12.0,Class
+146207,Ebriales,12.0,Order
+146208,Ebriaceae,8.0,Family
+118014,Ebria,11.0,Genus
+118051,Ebria tripartita,14,Species
+149090,Thalassionematales,24.0,Order
+149091,Thalassionemataceae,32.0,Family
+292726,Lioloma,22.0,Genus
+418646,Lioloma pacificum,14,Species
+555889,Calciosolenia brasiliensis,14,Species
+109432,Oxytoxaceae,64.0,Family
+109528,Oxytoxum,77.0,Genus
+110082,Oxytoxum caudatum,14,Species
+178597,Coccolithaceae,8.0,Family
+178598,Coccolithus,11.0,Genus
+109464,Ornithocercus,11.0,Genus
+109693,Ornithocercus magnificus,14,Species
+837460,Tripos extensus,14,Species
+149092,Thalassionema,11.0,Genus
+109396,Prorocentrales,54.0,Order
+109442,Prorocentraceae,72.0,Family
+109566,Prorocentrum,77.0,Genus
+110297,Prorocentrum dactylus,14,Species
+841193,Tripos candelabrum,14,Species
+115058,Mischococcales,12.0,Order
+115063,Pleurochloridaceae,16.0,Family
+115075,Meringosphaera,22.0,Genus
+149236,Cerataulina,22.0,Genus
+149619,Cerataulina pelagica,14,Species
+148985,Chaetoceros,209.0,Genus
+149221,Chaetoceros curvisetus,14,Species
+149005,Surirellales,12.0,Order
+149006,Surirellaceae,8.0,Family
+149616,Campylodiscus,11.0,Genus
+149111,Guinardia,44.0,Genus
+967041,Guinardia striata,14,Species
+840627,Tripos furca,14,Species
+109398,Pyrocystales,18.0,Order
+109444,Pyrocystaceae,24.0,Family
+109571,Pyrocystis,22.0,Genus
+109435,Protoperidiniaceae,48.0,Family
+109542,Oblea,11.0,Genus
+149309,Dactyliosolen,55.0,Genus
+163262,Dactyliosolen mediterraneus,14,Species
+109425,Cladopyxidaceae,8.0,Family
+109510,Micracanthodinium,11.0,Genus
+109992,Micracanthodinium claytonii,14,Species
+115062,Prymnesiophyceae incertae sedis,12.0,Order
+603344,Rhabdolithes,22.0,Genus
+149001,Bacillariales,54.0,Order
+149002,Bacillariaceae,72.0,Family
+149045,Nitzschia,33.0,Genus
+149150,Nitzschia longissima,14,Species
+149659,Entomoneidaceae,8.0,Family
+156598,Entomoneis,11.0,Genus
+156621,Chaetoceros subtilis,14,Species
+115060,Isochrysidales,12.0,Order
+146200,Noelaerhabdaceae,16.0,Family
+115086,Emiliania,22.0,Genus
+115104,Emiliania huxleyi,14,Species
+591195,Cymatosirophycanae,6.0,Superorder
+149009,Cymatosirales,6.0,Order
+149010,Cymatosiraceae,8.0,Family
+149356,Campylosira,11.0,Genus
+149041,Melosiraceae,16.0,Family
+149042,Melosira,22.0,Genus
+149044,Melosira nummuloides,14,Species
+160554,Distephanus,11.0,Genus
+163233,Dimeregramma,11.0,Genus
+149036,Leptocylindrales,12.0,Order
+149037,Leptocylindraceae,16.0,Family
+149038,Leptocylindrus,22.0,Genus
+478558,Ebriopsidaceae,8.0,Family
+478559,Hermesinum,11.0,Genus
+573880,Hermesinum adriaticum,14,Species
+235839,Daktylethra,11.0,Genus
+109433,Peridiniaceae,16.0,Family
+493993,Calciodinelloideae,8.2,Subfamily
+109545,Scrippsiella,11.0,Genus
+109463,Histioneis,11.0,Genus
+148987,Achnanthales,18.0,Order
+149190,Achnanthaceae,16.0,Family
+149191,Achnanthes,22.0,Genus
+109569,Dissodinium,11.0,Genus
+626382,Rhabdolithes claviger,14,Species
+115061,Prymnesiales,30.0,Order
+115073,Prymnesiaceae,24.0,Family
+160563,Prymnesium,11.0,Genus
+109428,Gonyaulacaceae,64.0,Family
+109519,Gonyaulax,66.0,Genus
+110015,Gonyaulax digitale,14,Species
+164053,Pyrocystis lunula,14,Species
+109408,Goniodomataceae,8.0,Family
+109560,Triadinium,11.0,Genus
+196828,Triadinium polyedricum,14,Species
+148994,Stephanodiscaceae,8.0,Family
+148905,Cyclotella,11.0,Genus
+231806,Podolampadaceae,24.0,Family
+109550,Podolampas,33.0,Genus
+110202,Podolampas spinifera,14,Species
+248089,Podocystis,11.0,Genus
+109386,Blastodiniales,6.0,Order
+562640,Blastodinidae,8.0,Family
+562641,Blastodinium,11.0,Genus
+110099,Oxytoxum longiceps,14,Species
+837451,Tripos divaricatus,14,Species
+17329,Prasinophyceae,8.0,Class
+172812,Halosphaerales,6.0,Order
+172813,Pterospermataceae,8.0,Family
+160595,Pterosperma,11.0,Genus
+624358,Phalacroma oxytoxoides,14,Species
+149031,Naviculaceae,16.0,Family
+149210,Haslea,11.0,Genus
+248063,Haslea wawrikae,14,Species
+149310,Dactyliosolen fragilissimus,14,Species
+149230,Leptocylindrus mediterraneus,14,Species
+149030,Naviculineae,6.2,Suborder
+149515,Plagiotropidaceae,8.0,Family
+149516,Plagiotropis,11.0,Genus
+109662,Dinophysis tripos,14,Species
+148904,Thalassiosiraceae,16.0,Family
+148912,Thalassiosira,22.0,Genus
+841248,Tripos hexacanthus,14,Species
+841746,Tripos pentagonus,14,Species
+149017,Diploneidaceae,8.0,Family
+149018,Diploneis,11.0,Genus
+231814,Thoracosphaerales,6.0,Order
+109438,Thoracosphaeraceae,8.0,Family
+109559,Goniodoma,11.0,Genus
+110295,Prorocentrum compressum,14,Species
+149313,Fragilariopsis,11.0,Genus
+146230,Chrysophyceae,24.0,Class
+248107,Chromulinales,30.0,Order
+157239,Dinobryaceae,32.0,Family
+157240,Dinobryon,33.0,Genus
+573858,Dinobryon coalescens,14,Species
+109404,Dinophyceae incertae sedis,6.0,Order
+231796,Amphidomataceae,8.0,Family
+391508,Azadinium,11.0,Genus
+837075,Azadinium caudatum,14,Species
+232376,Prorocentrum cordatum,14,Species
+886257,Chlorodendrophyceae,8.0,Class
+17666,Chlorodendrales,12.0,Order
+17667,Chlorodendraceae,8.0,Family
+134526,Tetraselmis,11.0,Genus
+148915,Coscinodiscales,12.0,Order
+148943,Hemidiscaceae,8.0,Family
+450714,Pseudoguinardia,11.0,Genus
+573543,Pseudoguinardia recta,14,Species
+236100,Poricalyptra,11.0,Genus
+149620,Licmophorales,6.0,Order
+149341,Licmophoraceae,8.0,Family
+149342,Licmophora,11.0,Genus
+110115,Oxytoxum scolopax,14,Species
+886274,Pyramimonadophyceae,8.0,Class
+17330,Pyramimonadales,6.0,Order
+368883,Pyramimonadaceae,8.0,Family
+134529,Pyramimonas,11.0,Genus
+376667,Skeletonema marinoi,14,Species
+110041,Gonyaulax spinifera,14,Species
+115059,Coccosphaerales,6.0,Order
+115066,Halopappaceae,8.0,Family
+235859,Halopappus,11.0,Genus
+369960,Octactis,22.0,Genus
+375970,Octactis octonaria,14,Species
+149387,Achnanthes brevipes,14,Species
+231768,Brachidiniaceae,8.0,Family
+231788,Karenia,11.0,Genus
+109527,Corythodinium,11.0,Genus
+163161,Chaetoceros tortissimus,14,Species
+148988,Cocconeidaceae,8.0,Family
+148989,Cocconeis,11.0,Genus
+149049,Triceratiaceae,8.0,Family
+148963,Odontella,11.0,Genus
+109470,Alexandrium,22.0,Genus
+109713,Alexandrium pseudogonyaulax,14,Species
+841261,Tripos massiliensis,14,Species
+109553,Protoperidinium,44.0,Genus
+110208,Protoperidinium bipes,14,Species
+232598,Pyrophacus horologium,14,Species
+156617,Chaetoceros lorenzianus,14,Species
+149389,Cymbellales,6.0,Order
+149537,Cymbellaceae,8.0,Family
+149538,Cymbella,11.0,Genus
+232492,Phalacroma rapa,14,Species
+156623,Chaetoceros tenuissimus,14,Species
+160553,Dinobryon faculiferum,14,Species
+149292,Chaetoceros anastomosans,14,Species
+369191,Haptophyta incertae sedis,4.0,Class
+602985,Acanthosolenia,11.0,Genus
+248079,Climacospheniales,6.0,Order
+248080,Climacospheniaceae,8.0,Family
+248081,Climacosphenia,11.0,Genus
+149167,Proboscia,33.0,Genus
+345513,Proboscia indica,14,Species
+157050,Mastogloiales,6.0,Order
+157051,Mastogloiaceae,8.0,Family
+157052,Mastogloia,11.0,Genus
+109564,Mesoporos,22.0,Genus
+248058,Eucampia cornuta,14,Species
+17638,Cryptophyta,4.0,Phylum
+17639,Cryptophyceae,4.0,Class
+110039,Gonyaulax scrippsae,14,Species
+149186,Synedra,11.0,Genus
+109476,Gyrodinium,33.0,Genus
+109856,Gyrodinium fusiforme,14,Species
+593338,Dinoflagellata incertae sedis,8.0,Class
+109458,Pseliodinium,22.0,Genus
+149132,Guinardia flaccida,14,Species
+149003,Cylindrotheca,22.0,Genus
+599689,Chrysochromulinaceae,16.0,Family
+115090,Chrysochromulina,22.0,Genus
+115126,Chrysochromulina parkeae,14,Species
+149052,Paraliales,6.0,Order
+149053,Paraliaceae,8.0,Family
+149054,Paralia,11.0,Genus
+149055,Paralia sulcata,14,Species
+179786,Dactyliosolen blavyanus,14,Species
+157081,Thalassiothrix,11.0,Genus
+231795,Protodiniferaceae,16.0,Family
+109487,Pronoctiluca,22.0,Genus
+232625,Podolampas palmipes,14,Species
+236094,Zygodiscales,6.0,Order
+235836,Helicosphaeraceae,8.0,Family
+235863,Helicosphaera,11.0,Genus
+615435,Helicosphaera carteri,14,Species
+115081,Ophiaster,11.0,Genus
+6,Bacteria,1.0,Kingdom
+146536,Gracilicutes,1.2,Subkingdom
+146537,Cyanobacteria,2.0,Phylum
+146542,Cyanophyceae,4.0,Class
+232516,Mesoporos perforatus,14,Species
+162254,Asteromphalus,11.0,Genus
+231799,Lingulodinium,11.0,Genus
+233592,Lingulodinium polyedra,14,Species
+163250,Hemiaulus sinensis,14,Species
+465390,Chaetoceros dadayi,14,Species
+235842,Homozygosphaera,11.0,Genus
+157431,Chaetoceros diversus,14,Species
+110303,Prorocentrum micans,14,Species
+149241,Chaetoceros affinis,14,Species
+149135,Lauderia annulata,14,Species
+110097,Oxytoxum laticeps,14,Species
+109474,Cochlodinium,11.0,Genus
+149122,Chaetoceros didymus,14,Species
+375788,Dictyocha crux,14,Species
+248072,Toxariales,6.0,Order
+248073,Toxariaceae,8.0,Family
+248074,Toxarium,11.0,Genus
+341500,Guinardia tubiformis,14,Species
+841263,Tripos minutus,14,Species
+149116,Rhizosolenia imbricata,14,Species
+235848,Zygosphaera,11.0,Genus
+837453,Tripos horridus,14,Species
+157059,Tabularia,11.0,Genus
+368707,Pseudoscourfieldiales,6.0,Order
+22613,Pycnococcaceae,8.0,Family
+134534,Pseudoscourfieldia,11.0,Genus
+134566,Pseudoscourfieldia marina,14,Species
+115084,Syracosphaera,22.0,Genus
+837459,Tripos lineatus,14,Species
+172460,Protoperidinium diabolum,14,Species
+109612,Dinophysis caudata,14,Species
+235829,Corisphaera,11.0,Genus
+149151,Pseudo-nitzschia,22.0,Genus
+163137,Chaetoceros throndsenii,14,Species
+149013,Diatoma,11.0,Genus
+110316,Prorocentrum triestinum,14,Species
+148942,Thalassiosira rotula,14,Species
+149148,Bacillaria,11.0,Genus
+1474876,Pseliodinium fusus,14,Species
+149174,Striatellales,12.0,Order
+149175,Striatellaceae,16.0,Family
+149176,Striatella,11.0,Genus
+149177,Striatella unipunctata,14,Species
+582159,Eozoa,2.4,Subkingdom
+582161,Euglenozoa,2.6,Infrakingdom
+536202,Euglenozoa,4.0,Phylum
+562565,Kinetoplastea,4.0,Class
+562566,Metakinetoplastina,4.2,Subclass
+582215,Eubodonida,6.0,Order
+536197,Bodonaceae,8.0,Family
+146161,Rhynchomonas,11.0,Genus
+146163,Rhynchomonas nasuta,14,Species
+248129,Meringosphaera mediterranea,14,Species
+1308688,Amphidiniales,12.0,Order
+1308689,Amphidiniaceae,16.0,Family
+109473,Amphidinium,22.0,Genus
+109718,Amphidinium acutissimum,14,Species
+109638,Dinophysis odiosa,14,Species
+109567,Protoceratium,11.0,Genus
+110321,Protoceratium reticulatum,14,Species
+231760,Actiniscales,12.0,Order
+109409,Actiniscaceae,16.0,Family
+109472,Actiniscus,11.0,Genus
+109717,Actiniscus pentasterias,14,Species
+603289,Haptolina,11.0,Genus
+699623,Haptolina hirta,14,Species
+656612,Bacteriastrum parallelum,14,Species
+149142,Navicula,11.0,Genus
+110035,Gonyaulax polygramma,14,Species
+837227,Tripos longirostrus,14,Species
+231762,Dicroerisma,11.0,Genus
+232110,Dicroerisma psilonereiella,14,Species
+149138,Asterionellopsis,11.0,Genus
+149139,Asterionellopsis glacialis,14,Species
+115068,Rhabdosphaeraceae,24.0,Family
+235966,Rhabdosphaera,11.0,Genus
+149198,Thalassiophysales,6.0,Order
+149199,Catenulaceae,8.0,Family
+149200,Amphora,11.0,Genus
+110305,Prorocentrum nanum,14,Species
+582420,Rhizaria,1.3,Infrakingdom
+562852,Cercozoa,2.0,Phylum
+1282,Filosa,2.2,Subphylum
+590698,Ventrifilosa,4.0,Superclass
+591238,Imbricatea,4.0,Class
+22624,Euglyphida,6.0,Order
+599588,Paulinellideae,8.0,Family
+136779,Paulinella,11.0,Genus
+136903,Paulinella ovalis,14,Species
+109515,Diplopsalis,11.0,Genus
+178185,Chaetoceros peruvianus,14,Species
+163257,Isthmia,11.0,Genus
+233868,Oxytoxum variabile,14,Species
+553584,Eucampia zodiacus f. cylindrocornis,0.0,Forma
+582177,Euglenoidea,4.0,Class
+149168,Proboscia alata,14,Species
+109415,Warnowiaceae,16.0,Family
+109508,Ceratoperidinium,22.0,Genus
+233161,Ceratoperidinium margalefii,14,Species
+1310442,Octactis speculum,14,Species
+235934,Coronosphaera,22.0,Genus
+246608,Pseudo-nitzschia multistriata,14,Species
+149213,Nitzschia sigma,14,Species
+9,Sarcomastigophora,2.0,Phylum
+13,Mastigophora,2.2,Subphylum
+24,Zoomastigophora,4.0,Class
+25,Choanoflagellida,6.0,Order
+149321,Lithodesmium,11.0,Genus
+149322,Lithodesmium undulatum,14,Species
+235828,Calyptrosphaera,11.0,Genus
+162518,Corymbellus,11.0,Genus
+591194,Corethranae,6.0,Superorder
+149107,Corethrales,6.0,Order
+149108,Corethraceae,8.0,Family
+149109,Corethron,11.0,Genus
+149110,Corethron criophilum,14,Species
+345490,Neocalyptrella,11.0,Genus
+345491,Neocalyptrella robusta,14,Species
+115083,Acanthoica,22.0,Genus
+235802,Acanthoica quattrospina,14,Species
+233180,Pronoctiluca acuta,14,Species
+149004,Cylindrotheca closterium,14,Species
+598944,Cryptophyta incertae sedis,4.0,Class
+599623,Katablepharidaceae,8.0,Family
+17651,Leucocryptos,11.0,Genus
+119077,Leucocryptos marina,14,Species
+21004,Halosphaeraceae,8.0,Family
+160594,Pachysphaera,11.0,Genus
+146252,Kofoidiniaceae,8.0,Family
+109499,Kofoidinium,11.0,Genus
+109920,Kofoidinium velleloides,14,Species
+160546,Chromulinaceae,8.0,Family
+249725,Ochromonas,11.0,Genus
+178201,Chaetoceros rostratus,14,Species
+232261,Dinophysis sacculus,14,Species
+235979,Syracosphaera pulchra,14,Species
+591210,Alophycidae,4.2,Subclass
+591212,Actinochrysia,6.0,Superorder
+160597,Pedinellales,6.0,Order
+160598,Pedinellaceae,8.0,Family
+248096,Apedinella,11.0,Genus
+495363,Tripos muelleri,14,Species
+418509,Chaetoceros messanense,14,Species
+841259,Tripos longipes,14,Species
+110257,Protoperidinium steinii,14,Species
+248064,Dactyliosolen phuketensis,14,Species
+109541,Kryptoperidinium,11.0,Genus
+110154,Kryptoperidinium foliaceum,14,Species
+162739,Ollicola,11.0,Genus
+162740,Ollicola vangoorii,14,Species
+149129,Chaetoceros compressus,14,Species
+840626,Tripos fusus,14,Species
+110045,Gonyaulax verior,14,Species
+149123,Chaetoceros socialis,14,Species
+109859,Gyrodinium lachryma,14,Species
+163342,Pseudosolenia,11.0,Genus
+163344,Pseudosolenia calcar-avis,14,Species
+235841,Helladosphaera,11.0,Genus
+149023,Ditylum brightwellii,14,Species
+157070,Rhabdonematales,6.0,Order
+157071,Rhabdonemataceae,8.0,Family
+157072,Rhabdonema,11.0,Genus
+109624,Dinophysis fortii,14,Species
+110122,Oxytoxum viride,14,Species
+109627,Dinophysis hastata,14,Species
+149120,Chaetoceros danicus,14,Species
+235858,Calciopappus,11.0,Genus
+235924,Calciopappus caudatus,14,Species
+149335,Grammatophora,11.0,Genus
+235944,Coronosphaera mediterranea,14,Species
+149126,Chaetoceros decipiens,14,Species
+148916,Coscinodiscaceae,8.0,Family
+148917,Coscinodiscus,11.0,Genus
+149285,Detonula,11.0,Genus
+149647,Detonula pumila,14,Species

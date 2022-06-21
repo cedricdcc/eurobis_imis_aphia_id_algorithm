@@ -1,0 +1,1645 @@
+aphia_id,scientific_name,weight,rank
+1,Biota,0.0,Superdomain
+2,Animalia,643.0,Kingdom
+1065,Arthropoda,316.0,Phylum
+1066,Crustacea,336.6,Subphylum
+845959,Multicrustacea,604.0,Superclass
+1071,Malacostraca,568.0,Class
+1086,Eumalacostraca,592.2,Subclass
+1090,Peracarida,570.0,Superorder
+1137,Cumacea,72.0,Order
+110380,Diastylidae,32.0,Family
+110398,Diastylis,44.0,Genus
+110483,Diastylis lucifera,14,Species
+882,Annelida,464.0,Phylum
+883,Polychaeta,884.0,Class
+754174,Errantia,407.40000000000003,Subclass
+892,Phyllodocida,498.0,Order
+928,Nereidiformia,161.20000000000002,Suborder
+946,Hesionidae,56.0,Family
+322552,Psamathinae,32.8,Subfamily
+152248,Psamathe,22.0,Genus
+152249,Psamathe fusca,14,Species
+155086,Polychaeta incertae sedis,25.200000000000003,Subclass
+975,Oweniidae,16.0,Family
+146949,Galathowenia,11.0,Genus
+146950,Galathowenia oculata,14,Species
+51,Mollusca,226.0,Phylum
+105,Bivalvia,272.0,Class
+1424948,Autobranchia,256.2,Subclass
+206,Pteriomorphia,64.5,Infraclass
+210,Mytilida,48.0,Order
+491766,Mytiloidea,64.0,Superfamily
+211,Mytilidae,64.0,Family
+510725,Musculinae,8.2,Subfamily
+138225,Musculus,11.0,Genus
+506128,Musculus subpictus,14,Species
+101,Gastropoda,156.0,Class
+14712,Heterobranchia,84.0,Subclass
+1057247,Euthyneura,86.0,Infraclass
+1057249,Ringipleura,54.6,Subterclass
+411966,Nudipleura,78.0,Superorder
+1762,Nudibranchia,78.0,Order
+1052385,Doridina,43.4,Suborder
+246038,Doridoidei,44.1,Infraorder
+246152,Onchidoridoidea,48.0,Superfamily
+174,Goniodorididae,16.0,Family
+138040,Goniodoris,22.0,Genus
+140032,Goniodoris castanea,14,Species
+926,Phyllodociformia,99.2,Suborder
+931,Phyllodocidae,128.0,Family
+152229,Eteoninae,90.19999999999999,Subfamily
+129445,Eulalia,33.0,Genus
+130623,Eulalia aurea,14,Species
+1821,Chordata,38.0,Phylum
+146419,Vertebrata,15.400000000000002,Subphylum
+1828,Gnathostomata,16.099999999999998,Infraphylum
+152352,Osteichthyes,16.8,Parvphylum
+10194,Actinopterygii,28.0,Gigaclass
+843664,Actinopteri,24.0,Class
+293496,Teleostei,25.200000000000003,Subclass
+10331,Pleuronectiformes,6.0,Order
+125579,Pleuronectidae,8.0,Family
+754175,Sedentaria,491.40000000000003,Subclass
+154974,Canalipalpata,352.59999999999997,Infraclass
+900,Terebellida,252.0,Order
+155087,Cirratuliformia,93.0,Suborder
+919,Cirratulidae,96.0,Family
+129242,Chaetozone,44.0,Genus
+152217,Chaetozone christiei,14,Species
+1135,Amphipoda,396.0,Order
+719424,Senticaudata,186.0,Suborder
+719475,Hadziida,44.1,Infraorder
+719495,Hadziidira,44.800000000000004,Parvorder
+719505,Calliopioidea,32.0,Superfamily
+430450,Cheirocratidae,24.0,Family
+101669,Cheirocratus,33.0,Genus
+1267,Cnidaria,66.0,Phylum
+1292,Anthozoa,36.0,Class
+1340,Hexacorallia,21.0,Subclass
+1360,Actiniaria,24.0,Order
+888371,Enthemonae,12.4,Suborder
+854224,Metridioidea,16.0,Superfamily
+100678,Metridiidae,8.0,Family
+100770,Metridium,11.0,Genus
+100982,Metridium senile,14,Species
+889,Spionida,162.0,Order
+909,Spioniformia,167.4,Suborder
+913,Spionidae,200.0,Family
+129615,Marenzelleria,11.0,Genus
+131135,Marenzelleria viridis,14,Species
+146142,Bryozoa,96.0,Phylum
+1795,Gymnolaemata,164.0,Class
+110723,Ctenostomatida,60.0,Order
+827141,Vesicularina,12.4,Suborder
+827142,Vesicularioidea,16.0,Superfamily
+110802,Vesiculariidae,16.0,Family
+111022,Amathia,11.0,Genus
+111659,Amathia lendigera,14,Species
+1337,Hydrozoa,96.0,Class
+19494,Hydroidolina,96.60000000000001,Subclass
+13552,Leptothecata,120.0,Order
+1609,Lafoeidae,16.0,Family
+110722,Cheilostomatida,186.0,Order
+153575,Flustrina,161.20000000000002,Suborder
+153580,Flustroidea,16.0,Superfamily
+110749,Flustridae,16.0,Family
+110911,Flustra,11.0,Genus
+111367,Flustra foliacea,14,Species
+22388,Thecostraca,20.0,Class
+1082,Cirripedia,21.0,Subclass
+1107,Thoracica,21.5,Infraclass
+1422167,Thoracicalcarea,30.0,Superorder
+106039,Balanomorpha,24.0,Order
+1422674,Elminioidea,8.0,Superfamily
+1422678,Elminiidae,8.0,Family
+534790,Austrominius,11.0,Genus
+712167,Austrominius modestus,14,Species
+152292,Terebelliformia,167.4,Suborder
+981,Ampharetidae,72.0,Family
+152252,Ampharetinae,65.6,Subfamily
+1448705,Ampharetini,0.0,Tribe
+129155,Ampharete,66.0,Genus
+129781,Ampharete lindstroemi,14,Species
+799,Nematoda,2.0,Phylum
+175,Onchidorididae,32.0,Family
+138284,Acanthodoris,11.0,Genus
+140627,Acanthodoris pilosa,14,Species
+719496,Hadzioidea,24.0,Superfamily
+475166,Maeridae,16.0,Family
+236530,Othomaera,11.0,Genus
+534781,Othomaera othonis,14,Species
+1055678,Amphilochidea,217.0,Suborder
+1055679,Amphilochida,88.2,Infraorder
+1055687,Amphilochidira,57.6,Parvorder
+1055688,Amphilochoidea,40.0,Superfamily
+101365,Amphilochidae,24.0,Family
+101454,Paramphilochoides,11.0,Genus
+101981,Paramphilochoides intermedius,14,Species
+948,Syllidae,120.0,Family
+152223,Syllinae,49.199999999999996,Subfamily
+129657,Haplosyllis,11.0,Genus
+131321,Haplosyllis spongicola,14,Species
+901,Sabellida,72.0,Order
+985,Sabellidae,64.0,Family
+1424949,Heteroconchia,197.79999999999998,Infraclass
+382296,Euheterodonta,189.0,Subterclass
+869600,Imparidentia,246.0,Superorder
+869601,Adapedonta,12.0,Order
+14624,Hiatelloidea,8.0,Superfamily
+251,Hiatellidae,8.0,Family
+138068,Hiatella,11.0,Genus
+140103,Hiatella arctica,14,Species
+183607,Scolecida,146.2,Infraclass
+924,Opheliidae,16.0,Family
+313540,Opheliinae,8.2,Subfamily
+129413,Ophelia,11.0,Genus
+130491,Ophelia borealis,14,Species
+902,Orbiniidae,16.0,Family
+152294,Orbiniinae,16.4,Subfamily
+129420,Orbinia,11.0,Genus
+130523,Orbinia sertulata,14,Species
+1274,Chelicerata,8.8,Subphylum
+1302,Pycnogonida,16.0,Class
+1358,Pantopoda,24.0,Order
+379601,Eupantopodida,24.8,Suborder
+379609,Nymphonoidea,16.0,Superfamily
+1566,Nymphonidae,8.0,Family
+134591,Nymphon,11.0,Genus
+150520,Nymphon brevirostre,14,Species
+1806,Echinodermata,50.0,Phylum
+148743,Asterozoa,28.6,Subphylum
+123080,Asteroidea,4.0,Class
+1562575,Ambuloasteroidea,4.2,Subclass
+1562576,Neoasteroidea,4.3,Infraclass
+582527,Forcipulatacea,6.0,Superorder
+123086,Forcipulatida,6.0,Order
+123121,Asteriidae,8.0,Family
+123219,Asterias,11.0,Genus
+123776,Asterias rubens,14,Species
+1055690,Lysianassida,132.29999999999998,Infraorder
+1055696,Lysianassidira,25.6,Parvorder
+176788,Lysianassoidea,32.0,Superfamily
+176791,Scopelocheiridae,8.0,Family
+852214,Scopelocheirinae,8.2,Subfamily
+101652,Scopelocheirus,11.0,Genus
+102720,Scopelocheirus hopei,14,Species
+719474,Corophiida,119.7,Infraorder
+719477,Corophiidira,44.800000000000004,Parvorder
+716535,Corophioidea,16.0,Superfamily
+101376,Corophiidae,16.0,Family
+431322,Corophiinae,16.4,Subfamily
+431323,Corophiini,0.0,Tribe
+101489,Corophium,11.0,Genus
+379608,Ascorhynchoidea,8.0,Superfamily
+1562,Ammotheidae,8.0,Family
+134568,Achelia,11.0,Genus
+134599,Achelia echinata,14,Species
+1055691,Synopiidira,76.80000000000001,Parvorder
+1055693,Synopioidea,80.0,Superfamily
+101364,Ampeliscidae,72.0,Family
+101445,Ampelisca,88.0,Genus
+101930,Ampelisca tenuicornis,14,Species
+510724,Modiolinae,32.8,Subfamily
+138223,Modiolus,22.0,Genus
+982,Terebellidae,96.0,Family
+322588,Terebellinae,73.8,Subfamily
+181512,Polycirrini,0.0,Tribe
+129710,Polycirrus,33.0,Genus
+152228,Exogoninae,32.8,Subfamily
+325961,Parexogone,11.0,Genus
+757970,Parexogone hebes,14,Species
+431379,Haplocheirini,0.0,Tribe
+101470,Leptocheirus,11.0,Genus
+102036,Leptocheirus hirsutimanus,14,Species
+929,Glyceriformia,49.6,Suborder
+952,Glyceridae,48.0,Family
+129296,Glycera,66.0,Genus
+130131,Glycera unicornis,14,Species
+927,Aphroditiformia,155.0,Suborder
+939,Polynoidae,112.0,Family
+155091,Polynoinae,73.8,Subfamily
+129485,Enipo,11.0,Genus
+130738,Enipo kinbergi,14,Species
+149668,Mysida,18.0,Order
+119822,Mysidae,16.0,Family
+148706,Mysinae,8.2,Subfamily
+931967,Paramysini,0.0,Tribe
+119898,Praunus,11.0,Genus
+129622,Pygospio,11.0,Genus
+131170,Pygospio elegans,14,Species
+129627,Streblospio,11.0,Genus
+131193,Streblospio shrubsolii,14,Species
+101395,Lysianassidae,8.0,Family
+177029,Lysianassinae,8.2,Subfamily
+101620,Lysianassa,11.0,Genus
+102611,Lysianassa plumosa,14,Species
+153582,Buguloidea,64.0,Superfamily
+110731,Bugulidae,48.0,Family
+574248,Bugulina,44.0,Genus
+834002,Bugulina flabellata,14,Species
+130128,Glycera tesselata,14,Species
+1057250,Tectipleura,25.200000000000003,Subterclass
+1057457,Pylopulmonata,12.0,Superorder
+14714,Pyramidelloidea,16.0,Superfamily
+162,Pyramidellidae,16.0,Family
+743286,Spiralinella,11.0,Genus
+836020,Spiralinella spiralis,14,Species
+719478,Caprellidira,76.80000000000001,Parvorder
+716961,Photoidea,48.0,Superfamily
+101389,Ischyroceridae,16.0,Family
+491661,Ischyrocerinae,16.4,Subfamily
+1059260,Ericthonini,0.0,Tribe
+101567,Ericthonius,22.0,Genus
+102408,Ericthonius punctatus,14,Species
+492096,Gibbomodiola,11.0,Genus
+506025,Gibbomodiola adriatica,14,Species
+100672,Hormathiidae,8.0,Family
+100751,Adamsia,11.0,Genus
+445590,Adamsia palliata,14,Species
+196385,Polycirrus norvegicus,14,Species
+1564,Callipallenidae,8.0,Family
+129443,Eteone,33.0,Genus
+130616,Eteone longa,14,Species
+152403,Lepidonotinae,16.4,Subfamily
+129476,Alentia,11.0,Genus
+130722,Alentia gelatinosa,14,Species
+129654,Exogone,22.0,Genus
+327985,Exogone naidina,14,Species
+22496,Nereididae,24.0,Family
+324346,Nereidinae,16.4,Subfamily
+129379,Nereis,11.0,Genus
+130407,Nereis zonata,14,Species
+217,Venerida,84.0,Order
+14638,Veneroidea,56.0,Superfamily
+243,Veneridae,56.0,Family
+152835,Tapetinae,16.4,Subfamily
+138645,Tapes,11.0,Genus
+152316,Tapes rhomboides,14,Species
+1089,Eucarida,276.0,Superorder
+1130,Decapoda,276.0,Order
+943,Sigalionidae,72.0,Family
+129595,Sthenelais,33.0,Genus
+131074,Sthenelais boa,14,Species
+110378,Bodotriidae,24.0,Family
+110386,Vaunthompsoniinae,8.2,Subfamily
+110394,Vaunthompsonia,11.0,Genus
+110467,Vaunthompsonia cristata,14,Species
+869602,Cardiida,90.0,Order
+14636,Tellinoidea,80.0,Superfamily
+1781,Semelidae,32.0,Family
+138474,Abra,44.0,Genus
+141433,Abra alba,14,Species
+106670,Pleocyemata,279.0,Suborder
+477323,Gebiidea,18.9,Infraorder
+106803,Upogebiidae,24.0,Family
+107079,Upogebia,33.0,Genus
+107742,Upogebia stellata,14,Species
+129680,Syllis,55.0,Genus
+196003,Syllis pontxioi,14,Species
+129625,Spio,55.0,Genus
+131180,Spio armata,14,Species
+130613,Eteone flava,14,Species
+1055694,Haustoriidira,32.0,Parvorder
+1055695,Haustorioidea,40.0,Superfamily
+101412,Urothoidae,16.0,Family
+101789,Urothoe,22.0,Genus
+103228,Urothoe elegans,14,Species
+224570,Caenogastropoda,63.0,Subclass
+382213,Littorinimorpha,54.0,Order
+722756,Truncatelloidea,8.0,Superfamily
+124,Tornidae,8.0,Family
+138559,Tornus,11.0,Genus
+141690,Tornus subcarinatus,14,Species
+903,Paraonidae,48.0,Family
+129432,Levinsenia,11.0,Genus
+130578,Levinsenia gracilis,14,Species
+1041959,Sertularioidea,64.0,Superfamily
+1614,Sertulariidae,48.0,Family
+117228,Diphasia,11.0,Genus
+181511,Thelepodinae,16.4,Subfamily
+129714,Thelepus,22.0,Genus
+131543,Thelepus cincinnatus,14,Species
+111024,Vesicularia,11.0,Genus
+111669,Vesicularia spinosa,14,Species
+101891,Ampelisca brevicornis,14,Species
+7,Chromista,2.0,Kingdom
+582419,Harosa,2.4,Subkingdom
+536209,Alveolata,1.3,Infrakingdom
+11,Ciliophora,2.0,Phylum
+164019,Postciliodesmatophora,2.2,Subphylum
+425519,Heterotrichea,4.0,Class
+1403,Heterotrichida,6.0,Order
+1692,Folliculinidae,8.0,Family
+111851,Lagotia,11.0,Genus
+111878,Lagotia viridis,14,Species
+1041929,Sertularellidae,16.0,Family
+117233,Sertularella,22.0,Genus
+117909,Sertularella tenella,14,Species
+55,Polyplacophora,16.0,Class
+57,Neoloricata,16.8,Subclass
+58,Lepidopleurida,18.0,Order
+385383,Lepidopleurina,18.6,Suborder
+59,Leptochitonidae,16.0,Family
+138117,Leptochiton,22.0,Genus
+140199,Leptochiton asellus,14,Species
+1371726,Membraniporina,18.6,Suborder
+153579,Membraniporoidea,24.0,Superfamily
+110746,Electridae,24.0,Family
+110904,Electra,22.0,Genus
+111354,Electra monostachys,14,Species
+129373,Eunereis,11.0,Genus
+130375,Eunereis longissima,14,Species
+322550,Ophiodrominae,16.4,Subfamily
+322554,Ophiodromini,0.0,Tribe
+173457,Oxydromus,11.0,Genus
+710680,Oxydromus flexuosus,14,Species
+914,Magelonidae,32.0,Family
+129341,Magelona,44.0,Genus
+130266,Magelona alleni,14,Species
+13551,Anthoathecata,18.0,Order
+16352,Filifera,12.4,Suborder
+1600,Eudendriidae,8.0,Family
+117093,Eudendrium,11.0,Genus
+106673,Brachyura,100.8,Infraorder
+106679,Eubrachyura,0.0,Section
+106680,Heterotremata,0.0,Subsection
+439064,Pilumnoidea,8.0,Superfamily
+106766,Pilumnidae,8.0,Family
+439072,Pilumninae,8.2,Subfamily
+106941,Pilumnus,11.0,Genus
+107418,Pilumnus hirtellus,14,Species
+925,Scalibregmatidae,40.0,Family
+129555,Scalibregma,22.0,Genus
+130979,Scalibregma celticum,14,Species
+14628,Arcticoidea,8.0,Superfamily
+241,Arcticidae,8.0,Family
+137675,Arctica,11.0,Genus
+138802,Arctica islandica,14,Species
+146,Neogastropoda,30.0,Order
+15138,Muricoidea,8.0,Superfamily
+148,Muricidae,8.0,Family
+225324,Ocenebrinae,8.2,Subfamily
+138200,Ocenebra,11.0,Genus
+140405,Ocenebra erinaceus,14,Species
+123084,Ophiuroidea,48.0,Class
+1416548,Myophiuroida,46.2,Subclass
+1062634,Metophiurida,47.3,Infraclass
+1062636,Euryophiurida,24.0,Superorder
+123117,Ophiurida,24.0,Order
+242195,Ophiurina,24.8,Suborder
+123200,Ophiuridae,32.0,Family
+242216,Ophiurinae,32.8,Subfamily
+123574,Ophiura,33.0,Genus
+245,Myida,18.0,Order
+14622,Myoidea,24.0,Superfamily
+247,Myidae,16.0,Family
+138211,Mya,11.0,Genus
+140431,Mya truncata,14,Species
+146420,Tunicata,26.400000000000002,Subphylum
+1839,Ascidiacea,48.0,Class
+103436,Stolidobranchia,48.0,Order
+103450,Styelidae,24.0,Family
+103538,Polycarpa,11.0,Genus
+103909,Polycarpa pomaria,14,Species
+107739,Upogebia deltaura,14,Species
+14634,Mactroidea,40.0,Superfamily
+230,Mactridae,40.0,Family
+152831,Mactrinae,41.0,Subfamily
+138159,Spisula,44.0,Genus
+140302,Spisula subtruncata,14,Species
+1133,Tanaidacea,24.0,Order
+136152,Tanaidomorpha,24.8,Suborder
+148687,Paratanaoidea,24.0,Superfamily
+599405,Akanthophoreidae,8.0,Family
+136205,Akanthophoreus,11.0,Genus
+136340,Akanthophoreus gracilis,14,Species
+895,Eunicida,78.0,Order
+965,Onuphidae,24.0,Family
+298365,Onuphinae,8.2,Subfamily
+129397,Aponuphis,11.0,Genus
+130452,Aponuphis bilineata,14,Species
+979,Sabellariidae,8.0,Family
+129520,Sabellaria,11.0,Genus
+130867,Sabellaria spinulosa,14,Species
+153570,Scrupariina,12.4,Suborder
+153571,Scruparioidea,16.0,Superfamily
+110773,Scrupariidae,8.0,Family
+110976,Scruparia,11.0,Genus
+111540,Scruparia chelata,14,Species
+14165,Clitellata,16.0,Class
+2036,Oligochaeta,16.8,Subclass
+1511829,Tubificida,18.0,Order
+2119,Tubificina,18.6,Suborder
+2039,Naididae,24.0,Family
+137344,Tubificinae,24.599999999999998,Subfamily
+137393,Tubificoides,33.0,Genus
+137571,Tubificoides benedii,14,Species
+148558,Photidae,32.0,Family
+101563,Photis,11.0,Genus
+102383,Photis longicaudata,14,Species
+1606,Campanulariidae,40.0,Family
+117033,Laomedea,11.0,Genus
+117382,Laomedea flexuosa,14,Species
+106,Protobranchia,25.200000000000003,Subclass
+382247,Nuculida,30.0,Order
+14656,Nuculoidea,40.0,Superfamily
+204,Nuculidae,40.0,Family
+138262,Nucula,33.0,Genus
+140588,Nucula hanleyi,14,Species
+129611,Dipolydora,22.0,Genus
+131116,Dipolydora caulleryi,14,Species
+196121,Caprelloidea,48.0,Superfamily
+101361,Caprellidae,32.0,Family
+1131,Isopoda,60.0,Order
+292941,Cymothoida,55.800000000000004,Suborder
+292946,Cymothooidea,40.0,Superfamily
+118278,Gnathiidae,32.0,Family
+923,Maldanidae,88.0,Family
+152232,Euclymeninae,49.199999999999996,Subfamily
+129347,Euclymene,33.0,Genus
+1055682,Oedicerotidira,32.0,Parvorder
+1055683,Oedicerotoidea,40.0,Superfamily
+101400,Oedicerotidae,40.0,Family
+101705,Westwoodilla,11.0,Genus
+102932,Westwoodilla caecula,14,Species
+1517500,Gobiiformes,6.0,Order
+125537,Gobiidae,8.0,Family
+152231,Autolytinae,24.599999999999998,Subfamily
+238133,Autolytini,0.0,Tribe
+129659,Myrianida,22.0,Genus
+110903,Conopeum,11.0,Genus
+111351,Conopeum reticulum,14,Species
+138158,Mactra,11.0,Genus
+140299,Mactra stultorum,14,Species
+156485,Vetigastropoda,12.600000000000001,Subclass
+1052447,Lepetellida,6.0,Order
+156486,Fissurelloidea,8.0,Superfamily
+111,Fissurellidae,8.0,Family
+224510,Emarginulinae,8.2,Subfamily
+138012,Emarginula,11.0,Genus
+139965,Emarginula rosea,14,Species
+103435,Phlebobranchia,12.0,Order
+103443,Ascidiidae,8.0,Family
+152299,Lepralielloidea,32.0,Superfamily
+152301,Escharellidae,24.0,Family
+110965,Escharella,33.0,Genus
+111495,Escharella variolosa,14,Species
+921,Capitellidae,64.0,Family
+146760,Capitomastus,11.0,Genus
+146761,Capitomastus minimus,14,Species
+489106,Lucinida,12.0,Order
+14627,Lucinoidea,8.0,Superfamily
+218,Lucinidae,8.0,Family
+829418,Codakiinae,8.2,Subfamily
+138149,Lucinoma,11.0,Genus
+140283,Lucinoma borealis,14,Species
+148744,Echinozoa,26.400000000000002,Subphylum
+123082,Echinoidea,24.0,Class
+149854,Euechinoidea,25.200000000000003,Subclass
+510499,Irregularia,17.2,Infraclass
+149864,Atelostomata,12.600000000000001,Subterclass
+123106,Spatangoida,18.0,Order
+510538,Brissidina,12.4,Suborder
+852322,Spatangoidea,16.0,Superfamily
+123175,Loveniidae,16.0,Family
+510892,Echinocardiinae,16.4,Subfamily
+123426,Echinocardium,22.0,Genus
+154,Cephalaspidea,24.0,Order
+943487,Cylichnoidea,8.0,Superfamily
+159,Cylichnidae,8.0,Family
+137867,Cylichna,11.0,Genus
+139476,Cylichna cylindracea,14,Species
+387324,Pectinida,42.0,Order
+151320,Pectinoidea,32.0,Superfamily
+213,Pectinidae,24.0,Family
+510739,Pedinae,8.2,Subfamily
+393722,Mimachlamydini,0.0,Tribe
+236718,Mimachlamys,11.0,Genus
+236719,Mimachlamys varia,14,Species
+176976,Iphimedioidea,32.0,Superfamily
+101387,Iphimediidae,32.0,Family
+101554,Iphimedia,44.0,Genus
+102347,Iphimedia obesa,14,Species
+152836,Dosiniinae,16.4,Subfamily
+138636,Dosinia,22.0,Genus
+141912,Dosinia lupinus,14,Species
+154920,Nicomachinae,24.599999999999998,Subfamily
+129357,Nicomache,22.0,Genus
+154917,Sabellinae,41.0,Subfamily
+129548,Pseudopotamilla,11.0,Genus
+130963,Pseudopotamilla reniformis,14,Species
+1794,Stenolaemata,28.0,Class
+110724,Cyclostomatida,42.0,Order
+238296,Rectangulata,6.2,Suborder
+110809,Lichenoporidae,8.0,Family
+111044,Disporella,11.0,Genus
+111730,Disporella hispida,14,Species
+14633,Cardioidea,40.0,Superfamily
+229,Cardiidae,40.0,Family
+381865,Lymnocardiinae,41.0,Subfamily
+1496553,Cerastodermatini,0.0,Tribe
+137735,Cerastoderma,11.0,Genus
+138998,Cerastoderma edule,14,Species
+101558,Gammaropsis,22.0,Genus
+102367,Gammaropsis nitida,14,Species
+129605,Aonides,22.0,Genus
+131106,Aonides oxycephala,14,Species
+106699,Leucosioidea,24.0,Superfamily
+106758,Leucosiidae,24.0,Family
+148433,Ebaliinae,24.599999999999998,Subfamily
+106889,Ebalia,33.0,Genus
+107302,Ebalia tumefacta,14,Species
+235,Tellinidae,32.0,Family
+849129,Moerellinae,16.4,Subfamily
+147020,Moerella,11.0,Genus
+147021,Moerella donacina,14,Species
+131183,Spio filicornis,14,Species
+118437,Gnathia,33.0,Genus
+118995,Gnathia oxyuraea,14,Species
+153661,Schizoporelloidea,8.0,Superfamily
+110763,Microporellidae,8.0,Family
+110942,Microporella,11.0,Genus
+111421,Microporella ciliata,14,Species
+468017,Enchytraeida,6.0,Order
+2038,Enchytraeidae,8.0,Family
+137349,Grania,11.0,Genus
+1268,Sipuncula,42.0,Order
+971,Dorvilleidae,24.0,Family
+129272,Protodorvillea,11.0,Genus
+130041,Protodorvillea kefersteini,14,Species
+1087,Hoplocarida,4.2,Subclass
+14355,Stomatopoda,6.0,Order
+148540,Unipeltata,6.2,Suborder
+148541,Squilloidea,8.0,Superfamily
+136093,Squillidae,8.0,Family
+136112,Rissoides,11.0,Genus
+136135,Rissoides desmaresti,14,Species
+14770,Stromboidea,8.0,Superfamily
+22988,Aporrhaidae,8.0,Family
+137656,Aporrhais,11.0,Genus
+138760,Aporrhais pespelecani,14,Species
+510517,Carinacea,8.6,Infraclass
+149855,Echinacea,8.4,Subterclass
+510518,Camarodonta,12.0,Order
+510534,Echinidea,12.6,Infraorder
+510797,Parechinidae,8.0,Family
+123389,Psammechinus,11.0,Genus
+124319,Psammechinus miliaris,14,Species
+106695,Cancroidea,16.0,Superfamily
+106748,Atelecyclidae,8.0,Family
+106875,Atelecyclus,11.0,Genus
+107273,Atelecyclus rotundatus,14,Species
+131077,Sthenelais limicola,14,Species
+930,Phyllodocida incertae sedis,49.6,Suborder
+956,Nephtyidae,56.0,Family
+129370,Nephtys,77.0,Genus
+130353,Nephtys assimilis,14,Species
+106674,Caridea,81.89999999999999,Infraorder
+106709,Alpheoidea,40.0,Superfamily
+106776,Alpheidae,16.0,Family
+106978,Alpheus,11.0,Genus
+107479,Alpheus macrocheles,14,Species
+382299,Ungulinoidea,8.0,Superfamily
+220,Ungulinidae,8.0,Family
+138621,Diplodonta,11.0,Genus
+141883,Diplodonta rotundata,14,Species
+129240,Aphelochaeta,22.0,Genus
+129938,Aphelochaeta marioni,14,Species
+154939,Rhodininae,8.2,Subfamily
+129363,Rhodine,11.0,Genus
+130330,Rhodine gracilior,14,Species
+1448698,Lanicini,0.0,Tribe
+129697,Lanice,11.0,Genus
+131495,Lanice conchilega,14,Species
+236746,Dulichiidae,16.0,Family
+101734,Dulichia,11.0,Genus
+106749,Cancridae,8.0,Family
+106876,Cancer,11.0,Genus
+107276,Cancer pagurus,14,Species
+129224,Peresiella,11.0,Genus
+129906,Peresiella clymenoides,14,Species
+980,Pectinariidae,16.0,Family
+152447,Amphictene,11.0,Genus
+152448,Amphictene auricoma,14,Species
+101702,Pontocrates,22.0,Genus
+102916,Pontocrates altamarinus,14,Species
+157583,Syllis cornuta,14,Species
+129319,Podarkeopsis,11.0,Genus
+130195,Podarkeopsis capensis,14,Species
+153024,Anomioidea,24.0,Superfamily
+214,Anomiidae,24.0,Family
+983,Trichobranchidae,16.0,Family
+129718,Trichobranchus,11.0,Genus
+131575,Trichobranchus roseus,14,Species
+117234,Sertularia,33.0,Genus
+106700,Majoidea,56.0,Superfamily
+106760,Majidae,16.0,Family
+148435,Majinae,16.4,Subfamily
+106909,Maja,11.0,Genus
+107347,Maja brachydactyla,14,Species
+558,Porifera,6.0,Phylum
+827133,Stoloniferina,12.4,Suborder
+827137,Triticelloidea,8.0,Superfamily
+110801,Triticellidae,8.0,Family
+111020,Triticella,11.0,Genus
+196322,Philinoidea,8.0,Superfamily
+161,Philinidae,8.0,Family
+1380004,Philininae,8.2,Subfamily
+138339,Philine,11.0,Genus
+957,Sphaerodoridae,8.0,Family
+129602,Sphaerodorum,11.0,Genus
+131100,Sphaerodorum gracilis,14,Species
+106716,Pandaloidea,24.0,Superfamily
+106789,Pandalidae,24.0,Family
+158350,Atlantopandalus,11.0,Genus
+158351,Atlantopandalus propinqvus,14,Species
+130359,Nephtys hombergii,14,Species
+101933,Ampelisca typica,14,Species
+1052448,Trochida,12.0,Order
+156489,Trochoidea,16.0,Superfamily
+382180,Calliostomatidae,8.0,Family
+411630,Calliostomatinae,8.2,Subfamily
+138584,Calliostoma,11.0,Genus
+141767,Calliostoma zizyphinum,14,Species
+103448,Molgulidae,32.0,Family
+103509,Molgula,44.0,Genus
+103788,Molgula manhattensis,14,Species
+101560,Megamphopus,11.0,Genus
+102377,Megamphopus cornutus,14,Species
+888370,Anenthemonae,6.2,Suborder
+888373,Edwardsioidea,8.0,Superfamily
+100665,Edwardsiidae,8.0,Family
+100730,Edwardsia,11.0,Genus
+100880,Edwardsia claparedii,14,Species
+123083,Holothuroidea,24.0,Class
+1393249,Actinopoda,12.600000000000001,Subclass
+123111,Dendrochirotida,12.0,Order
+123188,Phyllophoridae,8.0,Family
+146116,Thyone,11.0,Genus
+124670,Thyone fusus,14,Species
+976,Flabelligeridae,24.0,Family
+129291,Flabelligera,11.0,Genus
+130103,Flabelligera affinis,14,Species
+102798,Cheirocratus sundevallii,14,Species
+236816,Gammarida,25.2,Infraorder
+720166,Gammaridira,25.6,Parvorder
+720708,Gammaroidea,32.0,Superfamily
+533675,Bathyporeiidae,32.0,Family
+101742,Bathyporeia,44.0,Genus
+103058,Bathyporeia elegans,14,Species
+123561,Ophiocten,11.0,Genus
+124850,Ophiocten affinis,14,Species
+102351,Iphimedia spatula,14,Species
+129594,Sigalion,22.0,Genus
+131073,Sigalion squamosus,14,Species
+13795,Epicaridea,18.9,Infraorder
+155727,Bopyroidea,24.0,Superfamily
+589332,Ionidae,8.0,Family
+118178,Ione,11.0,Genus
+118218,Ione thoracica,14,Species
+3,Plantae,1.0,Kingdom
+368662,Biliphyta,1.2,Subkingdom
+852,Rhodophyta,2.0,Phylum (Division)
+493826,Eurhodophytina,2.2,Subphylum (Subdivision)
+368670,Florideophyceae,4.0,Class
+368687,Corallinophycidae,4.2,Subclass
+15308,Corallinales,6.0,Order
+143691,Corallinaceae,8.0,Family
+140462,Modiolus adriaticus,14,Species
+107043,Pandalina,11.0,Genus
+107647,Pandalina brevirostris,14,Species
+129290,Diplocirrus,11.0,Genus
+130100,Diplocirrus glaucus,14,Species
+110382,Leuconidae,24.0,Family
+110412,Eudorella,11.0,Genus
+110535,Eudorella truncatula,14,Species
+146744,Calliopiidae,8.0,Family
+101509,Apherusa,11.0,Genus
+102168,Apherusa jurinei,14,Species
+10317,Gobiesociformes,6.0,Order
+125477,Gobiesocidae,8.0,Family
+379610,Phoxichilidoidea,8.0,Superfamily
+14469,Phoxichilidiidae,8.0,Family
+134592,Anoplodactylus,11.0,Genus
+134723,Anoplodactylus petiolatus,14,Species
+1607,Campanulinidae,8.0,Family
+117039,Calycella,11.0,Genus
+117402,Calycella syringa,14,Species
+103791,Molgula occulta,14,Species
+153667,Celleporoidea,16.0,Superfamily
+110736,Celleporidae,16.0,Family
+110873,Cellepora,11.0,Genus
+111268,Cellepora pumicosa,14,Species
+941,Pholoinae,24.599999999999998,Subfamily
+129439,Pholoe,33.0,Genus
+130601,Pholoe inornata,14,Species
+152365,Lagis,11.0,Genus
+152367,Lagis koreni,14,Species
+106671,Anomura,63.0,Infraorder
+106685,Galatheoidea,32.0,Superfamily
+106733,Galatheidae,24.0,Family
+106834,Galathea,33.0,Genus
+107152,Galathea nexa,14,Species
+1470421,Myxicolinae,16.4,Subfamily
+1470460,Myxicolini,0.0,Tribe
+129528,Euchone,11.0,Genus
+110916,Securiflustra,11.0,Genus
+111374,Securiflustra securifrons,14,Species
+130604,Pholoe pallida,14,Species
+102795,Cheirocratus intermedius,14,Species
+106687,Paguroidea,48.0,Superfamily
+106738,Paguridae,48.0,Family
+106854,Pagurus,33.0,Genus
+107232,Pagurus bernhardus,14,Species
+106777,Hippolytidae,16.0,Family
+106987,Hippolyte,11.0,Genus
+107518,Hippolyte varians,14,Species
+129156,Amphicteis,11.0,Genus
+129785,Amphicteis midas,14,Species
+152410,Venerinae,16.4,Subfamily
+138633,Chamelea,11.0,Genus
+141908,Chamelea striatula,14,Species
+1271,Entoprocta,4.0,Phylum
+154527,Barentsiidae,8.0,Family
+111795,Barentsia,11.0,Genus
+101908,Ampelisca macrocephala,14,Species
+110481,Diastylis laevis,14,Species
+225471,Macominae,8.2,Subfamily
+715043,Limecola,11.0,Genus
+880017,Limecola balthica,14,Species
+107155,Galathea strigosa,14,Species
+238198,Myrianida langerhansi,14,Species
+1498425,Pisioninae,8.2,Subfamily
+129469,Pisione,11.0,Genus
+130707,Pisione remota,14,Species
+129549,Sabella,11.0,Genus
+130967,Sabella pavonina,14,Species
+1036233,Holothuriida,6.0,Order
+731943,Holothuriidae,8.0,Family
+123456,Holothuria,11.0,Genus
+102345,Iphimedia minuta,14,Species
+1055692,Dexaminoidea,16.0,Superfamily
+146525,Atylidae,16.0,Family
+488893,Nototropiinae,16.4,Subfamily
+101501,Nototropis,22.0,Genus
+102139,Nototropis falcatus,14,Species
+130363,Nephtys kersivalensis,14,Species
+1278,Hexapoda,2.2,Subphylum
+118086,Collembola,4.0,Class
+1080,Copepoda,16.0,Class
+155876,Neocopepoda,12.899999999999999,Infraclass
+155877,Gymnoplea,6.0,Superorder
+1100,Calanoida,6.0,Order
+14767,Rissooidea,16.0,Superfamily
+123,Rissoidae,16.0,Family
+138451,Onoba,11.0,Genus
+141320,Onoba semicostata,14,Species
+140301,Spisula solida,14,Species
+827144,Alcyonidiina,31.0,Suborder
+827145,Alcyonidioidea,40.0,Superfamily
+110783,Alcyonidiidae,40.0,Family
+110993,Alcyonidium,44.0,Genus
+111602,Alcyonidium mamillatum,14,Species
+988,Serpulidae,32.0,Family
+129582,Spirobranchus,22.0,Genus
+555935,Spirobranchus triqueter,14,Species
+1062660,Ophintegrida,42.0,Superorder
+1062666,Amphilepidida,42.0,Order
+196221,Gnathophiurina,43.4,Suborder
+1077097,Amphiuroidea,48.0,Superfamily
+123206,Amphiuridae,48.0,Family
+123613,Amphiura,33.0,Genus
+103235,Urothoe poseidonis,14,Species
+106979,Athanas,11.0,Genus
+107486,Athanas nitescens,14,Species
+123187,Cucumariidae,8.0,Family
+123481,Leptopentacta,11.0,Genus
+124635,Leptopentacta elongata,14,Species
+1326015,Galeommatida,30.0,Order
+14629,Galeommatoidea,40.0,Superfamily
+222,Lasaeidae,40.0,Family
+138120,Lepton,11.0,Genus
+140218,Lepton squamosum,14,Species
+129425,Scoloplos,11.0,Genus
+130537,Scoloplos armiger,14,Species
+137570,Tubificoides amplivasatus,14,Species
+393857,Pectininae,8.2,Subfamily
+577989,Aequipectinini,0.0,Tribe
+138313,Aequipecten,11.0,Genus
+140687,Aequipecten opercularis,14,Species
+138261,Ennucula,11.0,Genus
+140584,Ennucula tenuis,14,Species
+382214,Buccinoidea,24.0,Superfamily
+149,Buccinidae,16.0,Family
+225649,Buccininae,8.2,Subfamily
+137701,Buccinum,11.0,Genus
+138878,Buccinum undatum,14,Species
+2032,Golfingiidae,40.0,Family
+136025,Phascolion,11.0,Genus
+266489,Phascolion strombus,14,Species
+155483,Melinnidae,16.0,Family
+129168,Melinna,22.0,Genus
+129804,Melinna cristata,14,Species
+129566,Hydroides,11.0,Genus
+131009,Hydroides norvegica,14,Species
+129708,Pista,11.0,Genus
+868065,Pista maculata,14,Species
+1341,Octocorallia,8.4,Subclass
+1367,Pennatulacea,6.0,Order
+151539,Subselliflorae,6.2,Suborder
+128488,Virgulariidae,8.0,Family
+128503,Virgularia,11.0,Genus
+128539,Virgularia mirabilis,14,Species
+106712,Crangonoidea,32.0,Superfamily
+106782,Crangonidae,32.0,Family
+107010,Philocheras,11.0,Genus
+107557,Philocheras bispinosus,14,Species
+152233,Eusyllinae,16.4,Subfamily
+129660,Odontosyllis,11.0,Genus
+131327,Odontosyllis fulgurans,14,Species
+225,Montacutinae,24.599999999999998,Subfamily
+345280,Kurtiella,11.0,Genus
+345281,Kurtiella bidentata,14,Species
+101898,Ampelisca gibba,14,Species
+103447,Perophoridae,8.0,Family
+103504,Perophora,11.0,Genus
+103759,Perophora listeri,14,Species
+129488,Gattyana,11.0,Genus
+130749,Gattyana cirrhosa,14,Species
+130357,Nephtys cirrosa,14,Species
+111496,Escharella ventricosa,14,Species
+1789,Phoronida,4.0,Phylum
+148378,Phoronidae,16.0,Family
+128545,Phoronis,22.0,Genus
+387339,Velutinoidea,16.0,Superfamily
+144,Triviidae,16.0,Family
+138582,Trivia,22.0,Genus
+141741,Trivia arctica,14,Species
+411887,Bulloidea,16.0,Superfamily
+156,Retusidae,16.0,Family
+138432,Retusa,22.0,Genus
+141134,Retusa obtusa,14,Species
+827136,Walkerioidea,8.0,Superfamily
+110804,Walkeriidae,8.0,Family
+111028,Walkeria,11.0,Genus
+111676,Walkeria uva,14,Species
+130116,Glycera alba,14,Species
+101404,Pleustidae,8.0,Family
+549301,Stenopleustinae,8.2,Subfamily
+101733,Stenopleustes,11.0,Genus
+103029,Stenopleustes nodifera,14,Species
+117230,Hydrallmania,11.0,Genus
+117890,Hydrallmania falcata,14,Species
+833990,Bugulina avicularia,14,Species
+130980,Scalibregma inflatum,14,Species
+129608,Aurospio,11.0,Genus
+146532,Aurospio banyulensis,14,Species
+368557,Oregoniidae,16.0,Family
+148428,Oregoniinae,16.4,Subfamily
+106903,Hyas,22.0,Genus
+107322,Hyas araneus,14,Species
+129553,Polyphysia,11.0,Genus
+130977,Polyphysia crassa,14,Species
+254,Anomalodesmata,24.0,Superorder
+382318,Thracioidea,24.0,Superfamily
+256,Thraciidae,24.0,Family
+138549,Thracia,33.0,Genus
+141651,Thracia villosiuscula,14,Species
+138456,Rissoa,11.0,Genus
+141365,Rissoa parva,14,Species
+110385,Bodotriinae,16.4,Subfamily
+110387,Bodotria,22.0,Genus
+110445,Bodotria scorpioides,14,Species
+111355,Electra pilosa,14,Species
+129620,Prionospio,33.0,Genus
+131160,Prionospio multibranchiata,14,Species
+102364,Gammaropsis maculata,14,Species
+155424,Phyllodocinae,32.8,Subfamily
+129453,Paranaitis,11.0,Genus
+130662,Paranaitis kosteriensis,14,Species
+110734,Candidae,16.0,Family
+110866,Scrupocellaria,22.0,Genus
+111249,Scrupocellaria scrupea,14,Species
+129551,Asclerocheilus,11.0,Genus
+130974,Asclerocheilus intermedius,14,Species
+130270,Magelona minuta,14,Species
+129955,Chaetozone setosa,14,Species
+382255,Archiheterodonta,4.2,Subterclass
+382256,Carditida,6.0,Order
+23014,Crassatelloidea,8.0,Superfamily
+228,Astartidae,8.0,Family
+137683,Astarte,11.0,Genus
+138823,Astarte montagui,14,Species
+176955,Tryphosidae,16.0,Family
+101610,Hippomedon,11.0,Genus
+102570,Hippomedon denticulatus,14,Species
+117034,Obelia,11.0,Genus
+117386,Obelia dichotoma,14,Species
+129542,Perkinsiana,11.0,Genus
+130948,Perkinsiana rubra,14,Species
+443,Trochidae,8.0,Family
+382171,Cantharidinae,8.2,Subfamily
+138590,Gibbula,11.0,Genus
+141799,Gibbula tumida,14,Species
+582420,Rhizaria,1.3,Infrakingdom
+1410,Foraminifera,2.0,Phylum
+744106,Monothalamea,4.0,Class
+394016,Astrorhizida,6.0,Order
+736979,Astrorhizina,6.2,Suborder
+465767,Astrorhizoidea,8.0,Superfamily
+111958,Astrorhizidae,8.0,Family
+112299,Astrorhiza,11.0,Genus
+153664,Smittinoidea,24.0,Superfamily
+110729,Bitectiporidae,24.0,Family
+110829,Schizomavella,22.0,Genus
+111091,Schizomavella auriculata,14,Species
+155879,Podoplea,12.0,Superorder
+1101,Cyclopoida,6.0,Order
+1381346,Oithonida,6.2,Suborder
+106421,Notodelphyidae,8.0,Family
+106477,Notopterophorus,11.0,Genus
+236494,Apolochus,11.0,Genus
+236495,Apolochus neapolitanus,14,Species
+130636,Eulalia tripunctata,14,Species
+160488,Tubuliporina,24.8,Suborder
+467955,Plagioeciidae,16.0,Family
+111040,Plagioecia,22.0,Genus
+111721,Plagioecia sarniensis,14,Species
+1818,Hemichordata,2.0,Phylum
+1820,Enteropneusta,4.0,Class
+106682,Thoracotremata,0.0,Subsection
+106708,Pinnotheroidea,8.0,Superfamily
+106775,Pinnotheridae,8.0,Family
+439165,Pinnotherinae,8.2,Subfamily
+106976,Pinnotheres,11.0,Genus
+107473,Pinnotheres pisum,14,Species
+236,Donacidae,8.0,Family
+137906,Donax,11.0,Genus
+139604,Donax vittatus,14,Species
+131157,Prionospio fallax,14,Species
+827149,Victorellina,6.2,Suborder
+827150,Victorelloidea,8.0,Superfamily
+110795,Nolellidae,8.0,Family
+111011,Nolella,11.0,Genus
+129491,Harmothoe,55.0,Genus
+130762,Harmothoe extenuata,14,Species
+141436,Abra prismatica,14,Species
+151365,Caudofoveata,4.0,Class
+2088,Chaetodermatida,6.0,Order
+2089,Chaetodermatidae,8.0,Family
+137773,Chaetoderma,11.0,Genus
+139106,Chaetoderma nitidulum,14,Species
+136023,Thysanocardia,11.0,Genus
+136063,Thysanocardia procera,14,Species
+107007,Crangon,33.0,Genus
+237617,Lepidastheniinae,8.2,Subfamily
+129495,Lepidasthenia,11.0,Genus
+130794,Lepidasthenia argus,14,Species
+117913,Sertularia cupressina,14,Species
+716532,Aoroidea,40.0,Superfamily
+101368,Aoridae,32.0,Family
+101471,Microdeutopus,11.0,Genus
+101397,Melitidae,8.0,Family
+101665,Abludomelita,11.0,Genus
+102788,Abludomelita obtusata,14,Species
+129214,Heteromastus,11.0,Genus
+129884,Heteromastus filiformis,14,Species
+129703,Nicolea,11.0,Genus
+131507,Nicolea venustula,14,Species
+106901,Eurynome,11.0,Genus
+107319,Eurynome spinosa,14,Species
+129778,Ampharete finmarchica,14,Species
+107239,Pagurus prideaux,14,Species
+129433,Paradoneis,22.0,Genus
+130585,Paradoneis lyra,14,Species
+123160,Echinidae,8.0,Family
+1608,Haleciidae,8.0,Family
+117103,Halecium,11.0,Genus
+2081,Chaetognatha,2.0,Phylum
+5949,Sagittoidea,4.0,Class
+5950,Aphragmophora,6.0,Order
+5953,Sagittidae,8.0,Family
+105410,Sagitta,11.0,Genus
+110748,Eucrateidae,8.0,Family
+110908,Eucratea,11.0,Genus
+111361,Eucratea loricata,14,Species
+136021,Golfingia,22.0,Genus
+136041,Golfingia elongata,14,Species
+1361,Ceriantharia,8.4,Subclass
+151646,Spirularia,12.0,Order
+100684,Cerianthidae,16.0,Family
+382003,Chitonida,6.0,Order
+90,Acanthochitonina,6.2,Suborder
+385402,Cryptoplacoidea,8.0,Superfamily
+91,Acanthochitonidae,8.0,Family
+1353774,Acanthochitoninae,8.2,Subfamily
+137613,Acanthochitona,11.0,Genus
+138675,Acanthochitona crinita,14,Species
+431115,Phtisicinae,8.2,Subfamily
+101436,Phtisica,11.0,Genus
+101864,Phtisica marina,14,Species
+14776,Naticoidea,16.0,Superfamily
+145,Naticidae,16.0,Family
+224937,Polinicinae,8.2,Subfamily
+138239,Euspira,11.0,Genus
+151894,Euspira nitida,14,Species
+110440,Bodotria arenosa,14,Species
+1497476,Parvicardiini,0.0,Tribe
+137739,Parvicardium,33.0,Genus
+181343,Parvicardium pinnulatum,14,Species
+110837,Bicellariella,11.0,Genus
+111147,Bicellariella ciliata,14,Species
+140201,Leptochiton cancellatus,14,Species
+967,Lumbrineridae,24.0,Family
+129337,Lumbrineris,11.0,Genus
+130248,Lumbrineris latreilli,14,Species
+152391,Nemertea,6.0,Phylum
+122307,Palaeonemertea,4.0,Class
+1451609,Tubulaniformes,6.0,Order
+122321,Tubulanidae,8.0,Family
+122388,Tubulanus,11.0,Genus
+122637,Tubulanus polymorphus,14,Species
+118990,Gnathia dentata,14,Species
+129613,Laonice,11.0,Genus
+131127,Laonice bahusiensis,14,Species
+129243,Cirratulus,22.0,Genus
+129959,Cirratulus cirratus,14,Species
+103531,Dendrodoa,11.0,Genus
+103882,Dendrodoa grossularia,14,Species
+140590,Nucula nucleus,14,Species
+110414,Leucon,22.0,Genus
+129455,Phyllodoce,33.0,Genus
+334510,Phyllodoce maculata,14,Species
+883967,Thoridae,8.0,Family
+106986,Eualus,11.0,Genus
+107506,Eualus occultus,14,Species
+130271,Magelona mirabilis,14,Species
+719741,Aplanulata,6.2,Suborder
+1603,Tubulariidae,8.0,Family
+117258,Tubularia,11.0,Genus
+1365,Alcyonacea,6.0,Order
+411555,Alcyoniina,6.2,Suborder
+125269,Alcyoniidae,8.0,Family
+125284,Alcyonium,11.0,Genus
+125333,Alcyonium digitatum,14,Species
+101676,Maerella,11.0,Genus
+102831,Maerella tenuimana,14,Species
+333456,Exogone verugera,14,Species
+709415,Crisularia,11.0,Genus
+834039,Crisularia plumosa,14,Species
+103449,Pyuridae,8.0,Family
+103524,Pyura,11.0,Genus
+103853,Pyura tessellata,14,Species
+106734,Porcellanidae,8.0,Family
+106837,Pisidia,11.0,Genus
+107188,Pisidia longicornis,14,Species
+138222,Modiolula,11.0,Genus
+140461,Modiolula phaseolina,14,Species
+382204,[unassigned] Caenogastropoda,6.0,Order
+14769,Cerithioidea,8.0,Superfamily
+127,Turritellidae,8.0,Family
+411659,Turritellinae,8.2,Subfamily
+138615,Turritella,11.0,Genus
+141872,Turritella communis,14,Species
+111719,Plagioecia patina,14,Species
+129623,Scolelepis,33.0,Genus
+131178,Scolelepis tridentata,14,Species
+153649,Hippothooidea,8.0,Superfamily
+110740,Chorizoporidae,8.0,Family
+110887,Chorizopora,11.0,Genus
+111304,Chorizopora brongniartii,14,Species
+131072,Sigalion mathildae,14,Species
+607338,Zoantharia,6.0,Order
+367225,Macrocnemina,6.2,Suborder
+100688,Epizoanthidae,8.0,Family
+100790,Epizoanthus,11.0,Genus
+101025,Epizoanthus couchii,14,Species
+117029,Campanularia,11.0,Genus
+117364,Campanularia hincksii,14,Species
+106041,Balanoidea,24.0,Superfamily
+106057,Balanidae,24.0,Family
+953,Goniadidae,16.0,Family
+129299,Glycinde,11.0,Genus
+130136,Glycinde nordmanni,14,Species
+827889,Cladobranchia,31.0,Suborder
+412646,Fionoidea,16.0,Superfamily
+151281,Cuthonidae,8.0,Family
+138543,Cuthona,11.0,Genus
+129953,Chaetozone gibber,14,Species
+118273,Cirolanidae,8.0,Family
+118401,Eurydice,11.0,Genus
+118855,Eurydice truncata,14,Species
+101403,Phoxocephalidae,24.0,Family
+176844,Harpiniinae,24.599999999999998,Subfamily
+101716,Harpinia,33.0,Genus
+102963,Harpinia crenulata,14,Species
+1448702,Procleini,0.0,Tribe
+129693,Eupolymnia,22.0,Genus
+131490,Eupolymnia nesidensis,14,Species
+129220,Notomastus,22.0,Genus
+129360,Praxillella,11.0,Genus
+130322,Praxillella affinis,14,Species
+137582,Tubificoides pseudogaster,14,Species
+107323,Hyas coarctatus,14,Species
+141644,Thracia convexa,14,Species
+156983,Propeamussiidae,8.0,Family
+147153,Similipecten,11.0,Genus
+147154,Similipecten similis,14,Species
+131185,Spio martinensis,14,Species
+22610,Oenonidae,8.0,Family
+129200,Drilonereis,11.0,Genus
+129856,Drilonereis filum,14,Species
+148427,Inachidae,24.0,Family
+148436,Inachinae,24.599999999999998,Subfamily
+106905,Inachus,11.0,Genus
+141435,Abra nitida,14,Species
+246,Petricolinae,8.2,Subfamily
+138331,Mysia,11.0,Genus
+140728,Mysia undata,14,Species
+117914,Sertularia distans,14,Species
+129496,Lepidonotus,11.0,Genus
+130801,Lepidonotus squamatus,14,Species
+391641,Hilbigneris,11.0,Genus
+607402,Hilbigneris gracilis,14,Species
+129776,Ampharete baltica,14,Species
+102972,Harpinia pectinata,14,Species
+129274,Schistomeringos,11.0,Genus
+154127,Schistomeringos rudolphi,14,Species
+966,Eunicidae,24.0,Family
+129280,Lysidice,11.0,Genus
+742232,Lysidice unicornis,14,Species
+106849,Anapagurus,22.0,Genus
+107217,Anapagurus hyndmanni,14,Species
+125073,Amphiura chiajei,14,Species
+1320351,Pilidiophora,4.0,Class
+122305,Heteronemertea,6.0,Order
+122314,Lineidae,8.0,Family
+122348,Cerebratulus,11.0,Genus
+131153,Prionospio cirrifera,14,Species
+130123,Glycera lapidum,14,Species
+102918,Pontocrates arenarius,14,Species
+129805,Melinna elisabethae,14,Species
+182,Dendronotoidea,16.0,Superfamily
+186,Dendronotidae,8.0,Family
+137885,Dendronotus,11.0,Genus
+139523,Dendronotus frondosus,14,Species
+110472,Diastylis bradyi,14,Species
+110825,Hippoporina,11.0,Genus
+111079,Hippoporina pertusa,14,Species
+834020,Bugulina turbinata,14,Species
+111600,Alcyonidium gelatinosum,14,Species
+110880,Turbicellepora,11.0,Genus
+111285,Turbicellepora avicularis,14,Species
+918,Chaetopteridae,8.0,Family
+129229,Chaetopterus,11.0,Genus
+129914,Chaetopterus variopedatus,14,Species
+129241,Caulleriella,22.0,Genus
+129943,Caulleriella alata,14,Species
+102346,Iphimedia nexa,14,Species
+1644,Aspidosiphonidae,8.0,Family
+136019,Aspidosiphon,11.0,Genus
+410711,Aspidosiphon (Aspidosiphon),11.2,Subgenus
+136037,Aspidosiphon (Aspidosiphon) muelleri,14,Species
+130126,Glycera oxycephala,14,Species
+101931,Ampelisca toulemonti,14,Species
+130624,Eulalia bilineata,14,Species
+129626,Spiophanes,22.0,Genus
+131188,Spiophanes kroyeri,14,Species
+147025,Mysta,11.0,Genus
+147026,Mysta picta,14,Species
+128549,Phoronis muelleri,14,Species
+477324,Axiidea,18.9,Infraorder
+106800,Callianassidae,16.0,Family
+107072,Callianassa,22.0,Genus
+938,Aphroditidae,16.0,Family
+129194,Aphrodita,11.0,Genus
+129840,Aphrodita aculeata,14,Species
+203,Nuculanida,6.0,Order
+14657,Nuculanoidea,8.0,Superfamily
+205,Nuculanidae,8.0,Family
+510730,Nuculaninae,8.2,Subfamily
+138259,Nuculana,11.0,Genus
+140577,Nuculana minuta,14,Species
+187,Dotidae,8.0,Family
+137916,Doto,11.0,Genus
+129898,Notomastus latericeus,14,Species
+138119,Hemilepton,11.0,Genus
+246148,Hemilepton nitidum,14,Species
+238293,Articulina,12.4,Suborder
+110806,Crisiidae,16.0,Family
+111032,Crisia,22.0,Genus
+111690,Crisia aculeata,14,Species
+156376,Retusa umbilicata,14,Species
+138212,Sphenia,11.0,Genus
+140432,Sphenia binghami,14,Species
+129621,Pseudopolydora,22.0,Genus
+131169,Pseudopolydora pulchra,14,Species
+138414,Ondina,11.0,Genus
+141033,Ondina divisa,14,Species
+111793,Pedicellinidae,8.0,Family
+111796,Pedicellina,11.0,Genus
+100782,Cerianthus,11.0,Genus
+283798,Cerianthus lloydii,14,Species
+916,Poecilochaetidae,8.0,Family
+129471,Poecilochaetus,11.0,Genus
+130711,Poecilochaetus serpens,14,Species
+129293,Pherusa,11.0,Genus
+130113,Pherusa plumosa,14,Species
+1195,Bopyridae,16.0,Family
+589334,Pseudioninae,16.4,Subfamily
+118182,Pleurocrypta,11.0,Genus
+593521,Pleurocrypta porcellanaelongicornis,14,Species
+130316,Nicomache trispinata,14,Species
+111484,Escharella immersa,14,Species
+332932,Ampharete octocirrata,14,Species
+224589,Mytilinae,16.4,Subfamily
+138228,Mytilus,22.0,Genus
+129533,Jasmineira,22.0,Genus
+130920,Jasmineira caudata,14,Species
+11014,Perciformes,12.0,Order
+234519,Liparidae,8.0,Family
+126160,Liparis,11.0,Genus
+127219,Liparis liparis,14,Species
+103528,Botrylloides,11.0,Genus
+250081,Botrylloides leachii,14,Species
+1104,Siphonostomatoida,6.0,Order
+135515,Cancerillidae,8.0,Family
+135572,Cancerilla,11.0,Genus
+135789,Cancerilla tubulata,14,Species
+225468,Tellininae,8.2,Subfamily
+146906,Fabulina,11.0,Genus
+146907,Fabulina fabula,14,Species
+834010,Bugulina fulva,14,Species
+129619,Polydora,11.0,Genus
+131143,Polydora cornuta,14,Species
+1517496,Callionymiformes,6.0,Order
+125522,Callionymidae,8.0,Family
+125930,Callionymus,11.0,Genus
+126792,Callionymus lyra,14,Species
+107551,Crangon allmanni,14,Species
+118176,Gyge,11.0,Genus
+118216,Gyge branchialis,14,Species
+1393260,Paractinopoda,8.4,Subclass
+123108,Apodida,12.0,Order
+123182,Synaptidae,16.0,Family
+123449,Leptosynapta,22.0,Genus
+124465,Leptosynapta inhaerens,14,Species
+798765,Tanaidoidea,8.0,Superfamily
+798770,Tanaididae,8.0,Family
+731048,Plumularioidea,16.0,Superfamily
+1613,Plumulariidae,16.0,Family
+117196,Plumularia,11.0,Genus
+117824,Plumularia setacea,14,Species
+139012,Parvicardium scabrum,14,Species
+131458,Syllis variegata,14,Species
+129218,Mediomastus,11.0,Genus
+129892,Mediomastus fragilis,14,Species
+1612,Phialellidae,8.0,Family
+117192,Phialella,11.0,Genus
+117804,Phialella quadrata,14,Species
+559,Calcarea,4.0,Class
+131584,Calcaronea,4.2,Subclass
+131591,Leucosolenida,6.0,Order
+131616,Leucosoleniidae,8.0,Family
+131715,Leucosolenia,11.0,Genus
+418,Hanleyidae,8.0,Family
+138058,Hanleya,11.0,Genus
+140082,Hanleya hanleyi,14,Species
+106702,Portunoidea,16.0,Superfamily
+557512,Polybiidae,16.0,Family
+106925,Liocarcinus,22.0,Genus
+107387,Liocarcinus depurator,14,Species
+124462,Leptosynapta bergensis,14,Species
+153581,Calloporoidea,32.0,Superfamily
+110733,Calloporidae,32.0,Family
+110851,Callopora,22.0,Genus
+106897,Achaeus,11.0,Genus
+107313,Achaeus cranchii,14,Species
+107044,Pandalus,11.0,Genus
+107651,Pandalus montagui,14,Species
+129158,Anobothrus,11.0,Genus
+129789,Anobothrus gracilis,14,Species
+893,Amphinomida,6.0,Order
+960,Amphinomidae,8.0,Family
+863342,Amphinominae,8.2,Subfamily
+129191,Paramphinome,11.0,Genus
+129837,Paramphinome jeffreysii,14,Species
+129701,Lysilla,11.0,Genus
+131500,Lysilla loveni,14,Species
+129427,Owenia,11.0,Genus
+130544,Owenia fusiformis,14,Species
+101928,Ampelisca spinipes,14,Species
+720035,Tanaopsidae,8.0,Family
+136233,Tanaopsis,11.0,Genus
+136458,Tanaopsis graciloides,14,Species
+1052378,Proctonotoidea,8.0,Superfamily
+153450,Janolidae,8.0,Family
+138379,Janolus,11.0,Genus
+131117,Dipolydora coeca,14,Species
+382316,Pandoroidea,8.0,Superfamily
+10527,Lyonsiidae,8.0,Family
+138154,Lyonsia,11.0,Genus
+140291,Lyonsia norwegica,14,Species
+146937,Tellimya,11.0,Genus
+146952,Tellimya ferruginosa,14,Species
+129281,Marphysa,11.0,Genus
+130075,Marphysa sanguinea,14,Species
+205077,Macropodia,11.0,Genus
+1057248,Acteonimorpha,4.2,Subterclass
+382223,Acteonoidea,8.0,Superfamily
+155,Acteonidae,8.0,Family
+137618,Acteon,11.0,Genus
+138691,Acteon tornatilis,14,Species
+138182,Devonia,11.0,Genus
+140365,Devonia perrieri,14,Species
+129677,Sphaerosyllis,11.0,Genus
+131394,Sphaerosyllis taylori,14,Species
+129525,Chone,11.0,Genus
+130888,Chone duneri,14,Species
+103792,Molgula oculata,14,Species
+741746,Asbjornsenia,11.0,Genus
+879714,Asbjornsenia pygmaea,14,Species
+147006,Malmgrenia,22.0,Genus
+152276,Malmgrenia arenicolae,14,Species
+1070,Maxillopoda,4.0,Class
+424332,Golfingia vulgaris,14,Species
+298366,Hyalinoeciinae,8.2,Subfamily
+129402,Nothria,11.0,Genus
+130467,Nothria conchylega,14,Species
+430770,Caprellinae,16.4,Subfamily
+101433,Pariambus,11.0,Genus
+101857,Pariambus typicus,14,Species
+236129,Acrocnida,11.0,Genus
+236130,Acrocnida brachiata,14,Species
+767051,Arctonoinae,8.2,Subfamily
+129475,Adyte,11.0,Genus
+103060,Bathyporeia guilliamsoniana,14,Species
+102960,Harpinia antennaria,14,Species
+101409,Stenothoidae,8.0,Family
+555053,Stenothoinae,8.2,Subfamily
+101770,Stenothoe,11.0,Genus
+103166,Stenothoe marina,14,Species
+107729,Callianassa subterranea,14,Species
+101660,Tryphosa,11.0,Genus
+102748,Tryphosa nana,14,Species
+130763,Harmothoe fragilis,14,Species
+101369,Argissidae,8.0,Family
+101476,Argissa,11.0,Genus
+102064,Argissa hamatipes,14,Species
+104,Scaphopoda,4.0,Class
+200,Dentaliida,6.0,Order
+202,Dentaliidae,8.0,Family
+150531,Antalis,11.0,Genus
+150534,Antalis entalis,14,Species
+123612,Amphipholis,11.0,Genus
+125064,Amphipholis squamata,14,Species
+101447,Haploops,11.0,Genus
+101958,Haploops tubicola,14,Species
+129717,Terebellides,11.0,Genus
+131573,Terebellides stroemii,14,Species
+129457,Pseudomystides,11.0,Genus
+130683,Pseudomystides limbata,14,Species
+574337,Leiochonini,0.0,Tribe
+129346,Clymenura,11.0,Genus
+129431,Cirrophorus,11.0,Genus
+130577,Cirrophorus furcatus,14,Species
+103066,Bathyporeia pelagica,14,Species
+468025,Alcyonidioides,11.0,Genus
+468026,Alcyonidioides mytili,14,Species
+336485,Chaetozone zetlandica,14,Species
+129653,Eusyllis,11.0,Genus
+131290,Eusyllis blomstrandi,14,Species
+130294,Euclymene oerstedii,14,Species
+129211,Capitella,22.0,Genus
+129876,Capitella capitata,14,Species
+131107,Aonides paucibranchiata,14,Species
+153651,Adeonoidea,8.0,Superfamily
+110725,Adeonidae,8.0,Family
+110818,Reptadeonella,11.0,Genus
+111061,Reptadeonella violacea,14,Species
+157828,Leucon nasica,14,Species
+131187,Spiophanes bombyx,14,Species
+1297882,Paucibranchia,11.0,Genus
+1297885,Paucibranchia bellii,14,Species
+117195,Nemertesia,11.0,Genus
+106073,Balaninae,16.4,Subfamily
+106122,Balanus,22.0,Genus
+106215,Balanus crenatus,14,Species
+110811,Oncousoeciidae,8.0,Family
+111047,Oncousoecia,11.0,Genus
+111745,Oncousoecia dilatans,14,Species
+845525,Knoutsodonta,11.0,Genus
+845529,Knoutsodonta oblonga,14,Species
+117136,Lafoea,11.0,Genus
+117702,Lafoea dumosa,14,Species
+129249,Tharyx,11.0,Genus
+152269,Tharyx killariensis,14,Species
+130268,Magelona filiformis,14,Species
+111250,Scrupocellaria scruposa,14,Species
+101466,Autonoe,11.0,Genus
+319812,Ophelininae,8.2,Subfamily
+129414,Ophelina,11.0,Genus
+130500,Ophelina acuminata,14,Species
+1594,Bougainvilliidae,8.0,Family
+117015,Bougainvillia,11.0,Genus
+129314,Nereimyra,11.0,Genus
+130185,Nereimyra punctata,14,Species
+209899,Euclymene lombricoides,14,Species
+111196,Callopora dumerilii,14,Species
+136022,Nephasoma,11.0,Genus
+424440,Nephasoma minutum,14,Species
+130921,Jasmineira elegans,14,Species
+412569,Polyceroidea,8.0,Superfamily
+177,Polyceridae,8.0,Family
+412577,Triophinae,8.2,Subfamily
+138566,Crimora,11.0,Genus
+141707,Crimora papillata,14,Species
+107552,Crangon crangon,14,Species
+124392,Echinocardium cordatum,14,Species
+101701,Perioculodes,11.0,Genus
+102915,Perioculodes longimanus,14,Species
+106718,Processoidea,8.0,Superfamily
+106791,Processidae,8.0,Family
+107054,Processa,11.0,Genus
+124913,Ophiura albida,14,Species
+193,Eubranchidae,8.0,Family
+137954,Eubranchus,11.0,Genus
+164811,Demospongiae,4.0,Class
+607950,Heteroscleromorpha,4.2,Subclass
+845506,Clionaida,6.0,Order
+170417,Clionaidae,8.0,Family
+132026,Cliona,11.0,Genus
+912,Apistobranchidae,8.0,Family
+129198,Apistobranchus,11.0,Genus
+129851,Apistobranchus tullbergi,14,Species
+151,Nassariidae,8.0,Family
+225335,Nassariinae,8.2,Subfamily
+246140,Tritia,11.0,Genus
+876825,Tritia incrassata,14,Species
+129957,Cirratulus caudatus,14,Species
+101736,Dyopedos,11.0,Genus
+103044,Dyopedos porrectus,14,Species
+292944,Anthuroidea,8.0,Superfamily
+118244,Anthuridae,8.0,Family
+118288,Anthura,11.0,Genus
+118467,Anthura gracilis,14,Species
+129430,Aricidea,22.0,Genus
+14635,Solenoidea,8.0,Superfamily
+23091,Pharidae,8.0,Family
+138335,Phaxas,11.0,Genus
+140737,Phaxas pellucidus,14,Species
+110852,Cauloramphus,11.0,Genus
+111202,Cauloramphus spiniferum,14,Species
+103434,Aplousobranchia,6.0,Order
+103439,Didemnidae,8.0,Family
+411874,Pagurus cuanensis,14,Species
+448931,Tanaissuidae,8.0,Family
+136239,Tanaissus,11.0,Genus
+136486,Tanaissus lilljeborgi,14,Species
+129446,Eumida,22.0,Genus
+130644,Eumida sanguinea,14,Species
+131534,Polycirrus plumosus,14,Species
+130641,Eumida bahusiensis,14,Species
+129270,Parougia,11.0,Genus
+130037,Parougia eliasoni,14,Species
+130352,Nephtys pente,14,Species
+111597,Alcyonidium diaphanum,14,Species
+129300,Goniada,11.0,Genus
+130140,Goniada maculata,14,Species
+130564,Aricidea minuta,14,Species
+129359,Petaloproctus,11.0,Genus
+146983,Hypereteone,11.0,Genus
+152250,Hypereteone foliosa,14,Species
+110384,Pseudocumatidae,8.0,Family
+110427,Pseudocuma,11.0,Genus
+110438,Pseudocuma (Pseudocuma),11.2,Subgenus
+110627,Pseudocuma (Pseudocuma) longicorne,14,Species
+130355,Nephtys caeca,14,Species
+130770,Harmothoe impar,14,Species
+129557,Sclerocheilus,11.0,Genus
+130982,Sclerocheilus minutus,14,Species
+131171,Scolelepis bonnieri,14,Species
+107218,Anapagurus laevis,14,Species
+140033,Goniodoris nodosa,14,Species
+138288,Onchidoris,22.0,Genus
+140640,Onchidoris muricata,14,Species
+107301,Ebalia tuberosa,14,Species
+238132,Procerini,0.0,Tribe
+129671,Proceraea,11.0,Genus
+110730,Bryocryptellidae,8.0,Family
+110835,Porella,11.0,Genus
+111125,Porella concinna,14,Species
+248352,Unciolidae,8.0,Family
+465705,Unciolinae,8.2,Subfamily
+101474,Unciola,11.0,Genus
+102057,Unciola crenatipalma,14,Species
+125516,Ammodytidae,8.0,Family
+125910,Gymnammodytes,11.0,Genus
+126754,Gymnammodytes semisquamatus,14,Species
+129777,Ampharete falcata,14,Species
+248,Corbulidae,8.0,Family
+510704,Corbulinae,8.2,Subfamily
+137841,Corbula,11.0,Genus
+139410,Corbula gibba,14,Species
+106040,Verrucomorpha,6.0,Order
+106066,Verrucidae,8.0,Family
+106140,Verruca,11.0,Genus
+106257,Verruca stroemia,14,Species
+793,Platyhelminthes,2.0,Phylum
+138646,Timoclea,11.0,Genus
+141929,Timoclea ovata,14,Species
+130130,Glycera tridactyla,14,Species
+560033,Spirobranchus lamarcki,14,Species
+571832,Harmothoe glabra,14,Species
+845957,Oligostraca,4.0,Superclass
+1078,Ostracoda,4.0,Class
+155943,Myodocopa,4.2,Subclass
+2104,Myodocopida,6.0,Order
+152314,Spio decorata,14,Species
+15140,Conoidea,8.0,Superfamily
+153853,Mangeliidae,8.0,Family
+847924,Sorgenfreispira,11.0,Genus
+847930,Sorgenfreispira brachystoma,14,Species
+131544,Thelepus setosus,14,Species
+129944,Caulleriella bioculata,14,Species
+1497475,Acanthocardiini,0.0,Tribe
+137732,Acanthocardia,11.0,Genus
+138992,Acanthocardia echinata,14,Species
+510501,Neognathostomata,4.2,Subterclass
+1572017,Luminacea,6.0,Superorder
+1572018,Echinolampadacea,6.0,Order
+1572019,Scutelloida,6.2,Suborder
+510558,Laganiformes,6.3,Infraorder
+123159,Fibulariidae,8.0,Family
+123384,Echinocyamus,11.0,Genus
+124273,Echinocyamus pusillus,14,Species
+110849,Amphiblestrum,11.0,Genus
+111186,Amphiblestrum auritum,14,Species
+334506,Phyllodoce groenlandica,14,Species
+140589,Nucula nitidosa,14,Species
+131415,Syllis armillaris,14,Species
+124929,Ophiura ophiura,14,Species
+101464,Aora,11.0,Genus
+102012,Aora gracilis,14,Species
+130599,Pholoe baltica,14,Species
+101704,Synchelidium,11.0,Genus
+102928,Synchelidium maculatum,14,Species
+107150,Galathea intermedia,14,Species
+246149,Polititapes,11.0,Genus
+745846,Polititapes rhomboides,14,Species
+237,Psammobiidae,8.0,Family
+138388,Gari,11.0,Genus
+140300,Spisula elliptica,14,Species
+129331,Abyssoninoe,11.0,Genus
+146469,Abyssoninoe hibernica,14,Species
+111604,Alcyonidium parasiticum,14,Species
+117237,Thuiaria,11.0,Genus
+117940,Thuiaria thuja,14,Species
+130673,Phyllodoce longipes,14,Species
+15009,Pilargidae,8.0,Family
+324420,Pilarginae,8.2,Subfamily
+129463,Glyphohesione,11.0,Genus
+130696,Glyphohesione klatti,14,Species
+101452,Gitana,11.0,Genus
+101977,Gitana sarsi,14,Species
+131489,Eupolymnia nebulosa,14,Species
+131174,Scolelepis korsuni,14,Species
+125080,Amphiura filiformis,14,Species
+140480,Mytilus edulis,14,Species
+106798,Axiidae,8.0,Family
+107067,Axius,11.0,Genus
+107722,Axius stirhynchus,14,Species
+137653,Pododesmus,11.0,Genus
+138751,Pododesmus patelliformis,14,Species
+110814,Tubuliporidae,8.0,Family
+111054,Tubulipora,11.0,Genus
+137650,Anomia,11.0,Genus
+138748,Anomia ephippium,14,Species
+179538,Nototropis vedlomensis,14,Species
+387334,Calyptraeoidea,8.0,Superfamily
+141,Calyptraeidae,8.0,Family
+137722,Crepidula,11.0,Genus
+138963,Crepidula fornicata,14,Species
+129320,Syllidia,11.0,Genus
+130198,Syllidia armata,14,Species
+292947,Limnoriidea,6.2,Suborder
+292948,Limnorioidea,8.0,Superfamily
+118275,Limnoriidae,8.0,Family
+118420,Limnoria,11.0,Genus
+118917,Limnoria lignorum,14,Species
+129344,Clymenella,11.0,Genus
+130278,Clymenella cincta,14,Species
+131168,Pseudopolydora paucibranchiata,14,Species
+117030,Clytia,11.0,Genus
+117368,Clytia hemisphaerica,14,Species
+1079036,Ophiactoidea,8.0,Superfamily
+123208,Ophiotrichidae,8.0,Family
+123626,Ophiothrix,11.0,Genus
+125131,Ophiothrix fragilis,14,Species
+382298,Thyasiroidea,8.0,Superfamily
+219,Thyasiridae,8.0,Family
+138552,Thyasira,11.0,Genus
+141662,Thyasira flexuosa,14,Species
+101442,Pseudoprotella,11.0,Genus
+101871,Pseudoprotella phasma,14,Species
