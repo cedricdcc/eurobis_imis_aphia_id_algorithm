@@ -1,50 +1,49 @@
 scientificname,aphiaid,rank,parent,children,directchildren
-Chromista,7,Kingdom,1,2,1
-Plantae,3,Kingdom,1,1,1
-Chordata,1821,Phylum,2,19,2
 Nematoda,799,Phylum,2,0,0
-Porifera,558,Phylum,2,2,2
-Entoprocta,1271,Phylum,2,2,2
-Phoronida,1789,Phylum,2,2,1
-Hemichordata,1818,Phylum,2,1,1
-Chaetognatha,2081,Phylum,2,1,1
-Nemertea,152391,Phylum,2,2,2
 Platyhelminthes,793,Phylum,2,0,0
-Clitellata,14165,Class,882,4,1
 Sipuncula,1268,Order,882,6,2
-Polychaeta incertae sedis,155086,Subclass,883,6,2
-Chelicerata,1274,Subphylum,1065,4,1
-Hexapoda,1278,Subphylum,1065,1,1
+Enteropneusta,1820,Class,1818,0,0
 Maxillopoda,1070,Class,1066,0,0
-Oligostraca,845957,Superclass,1066,1,1
-Thecostraca,22388,Class,845959,5,1
-Copepoda,1080,Class,845959,3,1
-Hoplocarida,1087,Subclass,1071,1,1
-Peracarida,1090,Superorder,1086,95,5
-Pleocyemata,106670,Suborder,1130,45,5
-Scolecida,183607,Infraclass,754175,34,6
-Chaetopteridae,918,Family,754175,1,1
-Phyllodocida,892,Order,754174,83,5
-Eunicida,895,Order,754174,13,5
-Amphinomida,893,Order,754174,1,1
-Stenolaemata,1794,Class,146142,7,1
-Gastropoda,101,Class,51,38,3
-Polyplacophora,55,Class,51,4,1
-Caudofoveata,151365,Class,51,1,1
-Scaphopoda,104,Class,51,1,1
+Collembola,118086,Class,1278,0,0
+Ascidiacea,1839,Class,146420,11,3
+Errantia,754174,Subclass,883,97,3
+Polychaeta incertae sedis,155086,Subclass,883,6,2
+Sedentaria,754175,Subclass,883,117,3
+Oligochaeta,2036,Subclass,14165,4,2
+Autobranchia,1424948,Subclass,105,61,2
 Protobranchia,106,Subclass,105,6,2
-Pteriomorphia,206,Infraclass,1424948,15,2
-Archiheterodonta,382255,Subterclass,1424949,1,1
-Imparidentia,869600,Superorder,382296,41,6
-Anomalodesmata,254,Superorder,382296,4,2
-Sabellida,901,Order,154974,12,2
-Sabellariidae,979,Family,154974,1,1
-Spioniformia,909,Suborder,889,27,3
-Cirratuliformia,155087,Suborder,900,15,2
-Terebelliformia,152292,Suborder,900,27,5
+Caenogastropoda,224570,Subclass,101,15,3
+Vetigastropoda,156485,Subclass,101,3,2
+Neoloricata,57,Subclass,55,4,2
+Hexacorallia,1340,Subclass,1292,5,2
+Octocorallia,1341,Subclass,1292,2,2
+Hydroidolina,19494,Subclass,1337,23,2
 Ctenostomatida,110723,Order,1795,10,4
 Cheilostomatida,110722,Order,1795,31,3
-Anthozoa,1292,Class,1267,9,3
-Hydroidolina,19494,Subclass,1337,23,2
-Asterozoa,148743,Subphylum,1806,13,2
-Echinozoa,148744,Subphylum,1806,12,2
+Cyclostomatida,110724,Order,1794,7,3
+Malacostraca,1071,Class,845959,142,2
+Euechinoidea,149854,Subclass,123082,6,2
+Actinopoda,1393249,Subclass,123083,3,2
+Euthyneura,1057247,Infraclass,14712,20,3
+Neocopepoda,155876,Infraclass,1080,3,2
+Metophiurida,1062634,Infraclass,1416548,11,2
+Teleostei,293496,Subclass,843664,6,5
+Myodocopida,2104,Order,155943,0,0
+Thoracicalcarea,1422167,Superorder,1107,5,2
+Eupantopodida,379601,Suborder,1358,4,3
+Barentsia,111795,Genus,154527,0,0
+Pedicellina,111796,Genus,111793,0,0
+Sagitta,105410,Genus,5953,0,0
+Cerebratulus,122348,Genus,122314,0,0
+Leucosolenia,131715,Genus,131616,0,0
+Cliona,132026,Genus,170417,0,0
+Leptosynapta,123449,Genus,123182,2,2
+Astrorhiza,112299,Genus,111958,0,0
+Phoronis muelleri,128549,Species,128545,0,0
+Chaetoderma nitidulum,139106,Species,137773,0,0
+Antalis entalis,150534,Species,150531,0,0
+Tubulanus polymorphus,122637,Species,122388,0,0
+Lagotia viridis,111878,Species,111851,0,0
+Cerianthus lloydii,283798,Species,100782,0,0
+Asterias rubens,123776,Species,123219,0,0
+Corallinaceae,143691,Family,15308,0,0

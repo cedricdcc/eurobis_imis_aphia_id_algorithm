@@ -1,6 +1,7 @@
 #imports
 import json 
 import ast
+from operator import le
 import pandas as pd
 import numpy as np
 import time
@@ -22,25 +23,27 @@ print(begin_path)
 #nodes to get from the json files
 nodes = 50
 
+amplifier = 10
+
 #constants for the algorithm
 rank_score_dict = {
-    "DOMAIN": 7,
-    "KINGDOM": 6,
-    "PHYLUM": 5,
-    "CLASS": 4,
-    "ORDER": 3,
-    "FAMILY": 2,
-    "GENUS": 1,
-    "SPECIES": 0
+    "DOMAIN": 8*amplifier,
+    "KINGDOM": 7*amplifier,
+    "PHYLUM": 6*amplifier,
+    "CLASS": 5*amplifier,
+    "ORDER": 4*amplifier,
+    "FAMILY": 3*amplifier,
+    "GENUS": 2*amplifier,
+    "SPECIES": 1*amplifier
 }
 
 subrank_score_dict = {
-    "MEGA": +0.4,
-    "GIGA": +0.3,
-    "SUPER": +0.2,
-    "SUB": -0.2,
-    "INFRA": -0.3,
-    "PARV": -0.4
+    "MEGA": +0.4*amplifier,
+    "GIGA": +0.3*amplifier,
+    "SUPER": +0.2*amplifier,
+    "SUB": -0.2*amplifier,
+    "INFRA": -0.3*amplifier,
+    "PARV": -0.4*amplifier
 }
 
 ###################################################
@@ -60,57 +63,6 @@ def write_cache_data(cache, cache_file):
     with open(os.path.join(begin_path, cache_file), 'w') as f:
         json.dump(new_dict, f)
         
-def add_nodes_via_relevancy(index, final_ids, all_data, sorted_index_highest_relevance):
-    #get the first node from the sorted index and add it to the list of nodes
-    try:
-        aphia_id_highest_relevance = sorted_index_highest_relevance[index]["aphia_id"]
-        #print(aphia_id_highest_relevance)
-    except Exception as e:
-        print(e)
-        return
-    #go over the all_data and find all the nodes that have the aphia_id_highest_relevance as a parent
-    added_ids = []
-    #get a list of all the aphia_ids in the final_ids
-    all_final_ids = []
-    for aphia_id in final_ids:
-        all_final_ids.append(aphia_id)
-    
-    for node, node_value in all_data.items():
-        if node_value["parent"] == aphia_id_highest_relevance:
-            if node not in all_final_ids:
-                added_ids.append(node)
-    #print(added_ids)
-    #print(len(added_ids))
-    if len(added_ids) == 0:
-        index += 1
-        if index < len(sorted_index_highest_relevance):
-            add_nodes_via_relevancy(index, final_ids, all_data, sorted_index_highest_relevance)
-    
-    #check if the length of the added_ids is bigger than the number of nodes
-    if len(added_ids)+len(final_ids) > nodes:
-        print("nodes to long , trying another node")
-        index = index + 1
-        if index < len(sorted_index_highest_relevance):
-            add_nodes_via_relevancy(index, final_ids, all_data, sorted_index_highest_relevance)
-    else:
-        if len(added_ids) != 0:
-            for to_add_id in added_ids:
-                final_ids[to_add_id] = all_data[to_add_id]
-                #delete the aphia_id_highest_relevance from final_ids
-            final_ids.pop(str(aphia_id_highest_relevance), None)    
-            #print(final_ids)    
-    return
-        
-###################################################
-############# HELPER FUNCTIONS END#################
-###################################################
-
-
-'''
-###################################################
-############### CACHING CODE BEGIN ################
-###################################################
-
 def get_child_if_dict(child, parent_id, parent_list, aphia_id_list, scientific_name_list, rank_list):
     if isinstance(child["child"], dict):
         parent_list.append(parent_id)
@@ -164,7 +116,14 @@ def update_cache(response, cache, parent_id):
             if parent != '' and i != 0:
                 cache[str(parent)]["children"] += 1
         i+=1
+        
+###################################################
+############# HELPER FUNCTIONS END#################
+###################################################
 
+###################################################
+############# DASIDS WITH APHIAIDS ################
+###################################################
 
 #read in the data from the csv file with pandas
 df = pd.read_csv(os.path.join(begin_path, 'aphia_ids_to_imis.csv'))
@@ -182,6 +141,17 @@ for dasid in diff_dasids:
 
 #print the children dataframes
 print(children)
+dataframe_later_use = children
+
+###################################################
+############# DASIDS WITH APHIAIDS ################
+###################################################
+
+
+'''
+###################################################
+############### CACHING CODE BEGIN ################
+###################################################
 try:
     #read in the data from the csv file with pandas
     f = open(os.path.join(begin_path, 'data_object.json'), 'r')
@@ -278,11 +248,13 @@ for dasid, data in cached_data.items():
     sorted_index = sorted(all_data.keys(), key=lambda x: all_data[x]["children"], reverse=True)
     #print(sorted_index)
     #get the first node from the sorted index and add it to the list of nodes
-    final_ids[sorted_index[0]] = all_data[sorted_index[0]]
-    last_relevancy_node = ""
-    while len(final_ids) < nodes:   
+    index = 0
+    while index < 1:
+        final_ids[sorted_index[index]] = all_data[sorted_index[index]]
+        index += 1
+    last_final_id_length = 0
+    while len(final_ids) < nodes and len(final_ids) >= last_final_id_length:
         try:
-            #get the children of all the nodes in the final_ids and get the ammount of direct children they have
             relevancy_list=[]
             for node, node_value in final_ids.items():
                 #get child value and direct child value
@@ -293,20 +265,60 @@ for dasid, data in cached_data.items():
                     relevancy = children/direct_children
                 except:
                     relevancy = 0
-                relevancy_list.append({"aphia_id":node_value["aphiaid"],"relevancy":relevancy})
-            #get sorted list of all the children of the node with the highest relevancy
-            sorted_index_highest_relevance = sorted(relevancy_list, key=lambda x: x["relevancy"], reverse=True)
-            #print(sorted_index_highest_relevance)
-            current_relevancy_index = 0
-            current_relevant_node = sorted_index_highest_relevance[current_relevancy_index]["aphia_id"]
-            if current_relevant_node == last_relevancy_node:
-                break
-            add_nodes_via_relevancy(current_relevancy_index, final_ids, all_data, sorted_index_highest_relevance)
-            last_relevancy_node = current_relevant_node
-            #delete the nodes 
-        except Exception as e:
-            print(e)
-            print(final_ids)
+                
+                #determine the rank_value of the node
+                rankupper = node_value["rank"].upper()
+                main_rank_value = 0
+                prefix_rank_value = 0
+                for rank, rank_value in rank_score_dict.items():
+                    #get len of rnak
+                    len_rank = len(rank)
+                    #get last len_rank char of the rankupper
+                    spliced_rank = rankupper[-len_rank:]
+                    if spliced_rank == rank.upper():
+                        main_rank_value = rank_value
+                
+                for prefix_rank, prefix_rank_value in subrank_score_dict.items():
+                    #get len of rnak
+                    len_prefix_rank = len(prefix_rank)
+                    #get first len_rank char of the rankupper
+                    spliced_prefix_rank = rankupper[:len_prefix_rank]
+                    if spliced_prefix_rank == prefix_rank.upper():
+                        prefix_rank_value = prefix_rank_value
+                true_rank_value = main_rank_value + prefix_rank_value
+                
+                relevancy_list.append({"aphia_id":node_value["aphiaid"],"relevancy":relevancy, "rank_value":true_rank_value})
+            #sort the relevancy list by rank_value
+            sorted_list_rank = sorted(relevancy_list, key=lambda x: x["rank_value"], reverse=True)
+            #get the first node from the sorted list and add it to the list of nodes
+            unchanged = True
+            sorted_ranked_list_index = 0
+            while unchanged:
+                    max_ranked_node = sorted_list_rank[sorted_ranked_list_index]
+                    #get the children of the node
+                    all_childs = []
+                    for aphia_id, aphia_id_value in all_data.items():
+                        if str(max_ranked_node["aphia_id"]) == str(aphia_id_value["parent"]):
+                            all_childs.append(aphia_id_value)
+                    #check if the length of the children is greater + current length final ids than the number of nodes
+                    if len(all_childs) > 0:
+                        if len(all_childs) + len(final_ids) < nodes:
+                            for child in all_childs:
+                                final_ids[child["aphiaid"]] = child
+                                #delete max ranked node from final_ids
+                            print(f"{dasid} | {len(final_ids)}/{nodes} nodes found")
+                            try:
+                                final_ids.pop(str(max_ranked_node["aphia_id"]))
+                            except:
+                                final_ids.pop(max_ranked_node["aphia_id"])
+                            last_final_id_length = len(final_ids)
+                            unchanged = False
+                        else:
+                            sorted_ranked_list_index += 1
+                    else:
+                        sorted_ranked_list_index += 1
+        except IndexError:
+            break
     
     #convert the final_ids to a list of dict to then write to a csv file
     csv_list_final_ids = []
@@ -319,273 +331,80 @@ for dasid, data in cached_data.items():
         writer.writeheader()
         writer.writerows(csv_list_final_ids)
     print(f"{dasid} done")  
-###################################################
-############### ALGORITHM CODE END ################
-###################################################        
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-'''
-      
-#read in the data from the json file
-f = open(os.path.join(begin_path, 'json_data_aphia_ids.json'), 'r')
-data = json.load(f)
-
-dasids = list(data.keys())
-print(dasids)
-
-def populate_rank_dict(rank_dict, checkvalue):
-    if isinstance(checkvalue, dict):
-        for key, value in checkvalue.items():
-            if key == 'AphiaID':
-                aphia_id = str(value)
-            if key == 'rank':
-                rank = value
-            if key == 'child':
-                next_value_check = value
-        if rank == "Species":
-            #check if the aphia_id is in the rank_dict[rank] => if not, add rank_dict.append(1) else add 1 to the rank_dict[rank] index
-            if aphia_id in rank_dict[rank]:
-                index = rank_dict[rank].index(aphia_id)
-                rank_dict["value_species"][index] = rank_dict["value_species"][index] + 1
-            else:
-                rank_dict["value_species"].append(1)       
-        rank_dict[rank].append(aphia_id)
-        populate_rank_dict(rank_dict, next_value_check)
-    else:
-        #go over each key in rank_dict and get the max length of all the lists
-        max_length = 0
-        for key in rank_dict.keys():
-            length_current_rank = len(rank_dict[key])
-            if length_current_rank > max_length:
-                max_length = length_current_rank
-        
-        #go over each array in rank_dict and add the missing elements to the array with the max length
-        for key in rank_dict.keys():
-            length_current_rank = len(rank_dict[key])
-            if length_current_rank < max_length:
-                if key != 'value_species':
-                    rank_dict[key].append(nan_str)
-                else:
-                    rank_dict[key].append(1)
-        return
-        
-def get_direct_children(aphia_id, parent_aphia_id):
-    #get the direct children of the parent_aphia_id
-    direct_children = []
-    for dasid, aphia_ids in children.items():
-        if parent_aphia_id in aphia_ids:
-            direct_children.append(dasid)
-
-def check_dict_aphia_id(checkvalue, array_aphia_ids, parent_aphia_id, character, value_dict, parent_aphia_ids, scientific_names, rank_dict, ranks):
-    #check if checkvalue is of type dict
-    if isinstance(checkvalue, dict):
-        #check if there is a key named 'AphiaID'
-        for key, value in checkvalue.items():
-            if key == 'AphiaID':
-                array_aphia_ids.append(value)
-                #check if the value is already in charcter array and if not, add it and append 1 to value array | if yes find the index of the value in the array and add 1 to the value array
-                if value in character:
-                    index = character.index(value)
-                    value_dict[index] = value_dict[index] + 1
-                else:
-                    character.append(value)
-                    value_dict.append(1)
-                    ranks.append(checkvalue['rank'])
-                    parent_aphia_ids.append(parent_aphia_id)
-                    scientific_names.append(checkvalue['scientificname'])
-                    if checkvalue['rank'] not in rank_dict:
-                        rank_dict[checkvalue['rank']] = []
-            if key == 'child':
-                check_dict_aphia_id(value, array_aphia_ids, parent_aphia_id=checkvalue["AphiaID"], character= character, value_dict = value_dict, parent_aphia_ids = parent_aphia_ids, scientific_names=scientific_names, rank_dict = rank_dict, ranks=ranks)
-    return array_aphia_ids
-
-#get all aphia_ids from each dasid
-dasids_unique_aphia_ids = {}
-complete_data_dasids = {}
-
-for dasid in dasids:
-    all_aphia_ids = []
+    ### print the tree view map of the final_ids ###
+    #go over each row in the csv_list_final_ids get the scientific name and the parent and the aphiaid
+    names = []
     scientific_names = []
-    parent_aphia_ids = []
-    ranks= []
-    character = []
-    value_dict = []
-    relevancy_list = []
-    direct_children = []
-    rank_dict = {}
-    data_dasid = data[dasid]
-    for aphia_id , value_aphia_id in data_dasid.items():
-        all_aphia_ids.append(aphia_id)
-        toappend_later_aphia_ids = []
-        check_dict_aphia_id(value_aphia_id, toappend_later_aphia_ids, "", character=character, value_dict=value_dict, parent_aphia_ids=parent_aphia_ids, scientific_names=scientific_names, rank_dict=rank_dict, ranks=ranks)
-        for id_aphia in toappend_later_aphia_ids:
-            all_aphia_ids.append(id_aphia)
-    #get unique values of all_aphia_ids
-    unique_aphia_ids = list(set(all_aphia_ids))
-    print(f" dasid: {dasid} | unique aphia_ids: {len(unique_aphia_ids)}")
-    dasids_unique_aphia_ids[dasid] = unique_aphia_ids
+    scientific_names_parents = []
+    parents = []
+    color = []
+    for row in csv_list_final_ids:
+        names.append(row["aphiaid"])
+        scientific_names.append(row["scientificname"])
+        parents.append(row["parent"])
+        for node, value_node in all_data.items():
+            if str(row["parent"]) == node:
+                scientific_names_parents.append(value_node["scientificname"])
+                break
+        color.append("royalblue")
     
-    #calculate the relevancy of each aphia_id
-    for aphia_id in unique_aphia_ids:
-        try:
+    #sort the keys of all_data by all_data[key]["children"]
+    sorted_all_data = sorted(all_data.keys(), key=lambda x: all_data[x]["children"], reverse=True)
+    #print(sorted_all_data)
+    for node in sorted_all_data:
+        #check if the node is in the list of names
+        if int(node) not in names:
+            names.append(all_data[node]["aphiaid"])
+            scientific_names.append(all_data[node]["scientificname"])
+            parents.append(all_data[node]["parent"])
             
+            #check to color of the parent
+            try:
+                index_parent = names.index(all_data[node]["parent"])
+                color_parent = color[index_parent]
+                appended_color = 0
+                if all_data[node]["aphiaid"] in dataframe_later_use[int(dasid)]:
+                    appended_color = 1
+                    color.append("red")
+                else:
+                    if color_parent == "royalblue":
+                        color.append("gold")
+                        appended_color = 1
+                    if color_parent == "gold":
+                        color.append("gold")
+                        appended_color = 1
+                    if appended_color == 0:
+                        color.append("lightgrey")
+            except Exception as e:
+                print(e)
+                color.append("lightgrey")
             
-            #get the index of the aphia_id in the character array
-            index_relevancy_calc = character.index(aphia_id)
-            #get the parent of the aphia_id
-            parent_relevancy_calc = parent_aphia_ids[index_relevancy_calc]
-            #get the index of the parent in the character array
-            parent_index = character.index(parent_relevancy_calc)
-            #get the value of the index in the value_dict array
-            value_relevancy_calc = value_dict[parent_index]
-            #calculate the relevancy of the aphia_id
-            relevancy_calc = 1 / value_relevancy_calc
-            #append to the relevancy_list
-            relevancy_list.append(relevancy_calc)
-        except:
-            relevancy_list.append(0)
-        
-        
-        
+            for nodeu, value_nodeu in all_data.items():
+                if str(all_data[node]["parent"]) == "":
+                    scientific_names_parents.append("")
+                    break
+                if str(all_data[node]["parent"]) == nodeu:
+                    scientific_names_parents.append(value_nodeu["scientificname"])
+                    break
+    #print(len(names))
+    #print(len(parents))
+    #print(color)
+    #make tree fig
     
-    complete_data_dasids[dasid] = {'character': character, 'values': value_dict, 'parent_aphia_ids': parent_aphia_ids, 'scientific_names': scientific_names, 'rank': ranks, 'relevancy': relevancy_list}
-    
-    rank_dict["value_species"] = []
-    print(rank_dict)
-    for aphia_id , value_aphia_id in data_dasid.items():
-        populate_rank_dict(rank_dict, value_aphia_id)
-    #print(rank_dict)
-    
-    path_list = []
-    for key in rank_dict.keys():
-        #print(len(rank_dict[key]))
-        # get length of the array where value is not "Not given"
-        length_non_not_given = len(rank_dict[key])-(rank_dict[key].count(nan_str))
-        #print(length_non_not_given)
-        
-        print(len(rank_dict[key]))
-        if key == "value_species":
-            print(rank_dict[key])
-        
-        if key != "value_species":
-            path_list.append(key)
-    
-     fig = px.sunburst(
-        rank_dict,
-        path=path_list,
-        values='value_species',
-        color="Order"
+    fig = px.treemap(
+    names = scientific_names,
+    parents = scientific_names_parents,
+    title=f"{dasid} tree view",
+    color = color,
+    color_discrete_map={
+     '(?)': 'lightgrey', 'lightgrey': 'lightgrey', 'royalblue': 'royalblue', 'gold': 'gold', 'red': 'red'
+    }
     )
+    fig.update_traces(root_color="lightgrey")
+    fig.update_layout(margin = dict(t=25, l=10, r=10, b=10))
     fig.show()
     
-   
     
-#print(complete_data_dasids)
-
-#calculate the weight of each species for each dasid
-weights_dasids = {}
-max_rank_value = rank_values[max_rank.upper()]
-for dasid, dicts_complete_values in complete_data_dasids.items():
-    length_array = len(dicts_complete_values['character'])
-    i = 0
-    while i < length_array:
-        aphia_id = dicts_complete_values['character'][i]
-        scientific_name = dicts_complete_values['scientific_names'][i]
-        value = dicts_complete_values['values'][i]
-        rank_string_id = dicts_complete_values['rank'][i]
-        relevancy = dicts_complete_values['relevancy'][i]
-        rank_value = 0
-        for str_rank, value_rank in rank_values.items():
-            if str_rank in rank_string_id.upper():
-                rank_value = value_rank
-        prefix_rank = 0
-        for prefix_rank, value_prefix in rank_prefixes.items():
-            if prefix_rank in rank_string_id.upper():
-                prefix_value = value_prefix
-        display_value = rank_value + prefix_value
-        is_species = 0
-        if "SPECIES" in rank_string_id.upper():
-            is_species = 1
-        
-        todisplay = 1
-        if max_rank_value > display_value:
-            todisplay = 0
-        
-        weight_formula = (display_value*todisplay*value*relevancy)
-        if is_species == 0:
-            weight_formula = weight_formula*(1-covered_percentage)
-        if dasid not in weights_dasids:
-            weights_dasids[dasid] = []
-        weights_dasids[dasid].append({'aphia_id': aphia_id, 'scientific_name': scientific_name, 'weight': weight_formula, 'rank': rank_string_id, 'relevancy': relevancy})
-        i= i+1
-
-for dasid, values_weights in weights_dasids.items():
-    for weight in values_weights:
-        print(f"dasid: {dasid} | aphia_id: {weight['aphia_id']} | scientific_name: {weight['scientific_name']} | weight: {weight['weight']} | rank: {weight['rank']}")
-        
-# for each dasid in weights_dasids, get the top {nodes} aphia_ids
-for dasid, values_weights in weights_dasids.items():
-    #make array of sorted indexes based on weight
-    sorted_indexes = sorted(range(len(values_weights)), key=lambda k: values_weights[k]['weight'], reverse=True)
-    #get top {nodes}
-    i = 0
-    csv_file = []
-    while i < nodes:
-        try:
-            csv_file.append({"aphia_id": values_weights[sorted_indexes[i]]['aphia_id'], "scientific_name": values_weights[sorted_indexes[i]]['scientific_name'], "weight": values_weights[sorted_indexes[i]]['weight'], "rank": values_weights[sorted_indexes[i]]['rank']})
-            print(f"dasid: {dasid} | aphia_id: {values_weights[sorted_indexes[i]]['aphia_id']} | scientific_name: {values_weights[sorted_indexes[i]]['scientific_name']} | weight: {values_weights[sorted_indexes[i]]['weight']} | rank: {values_weights[sorted_indexes[i]]['rank']}")
-            i = i+1
-        except:
-            i = i+1
-    #write to csv
-    with open(f"{dasid}_chosen_nodes.csv", 'w', newline='') as csvfile:
-        fieldnames = ['aphia_id', 'scientific_name', 'weight', 'rank', 'relevancy']
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(csv_file)
-        
-    #write a csv file that contains all the nodes of the dasid
-    with open(f"{dasid}_all_nodes.csv", 'w', newline='') as csvfile:
-        fieldnames = ['aphia_id', 'scientific_name', 'weight', 'rank', 'relevancy']
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(values_weights)
-'''
+###################################################
+############### ALGORITHM CODE END ################
+###################################################    
