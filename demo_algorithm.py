@@ -10,7 +10,6 @@ import csv
 import requests
 import plotly
 import plotly.express as px
-
 print(plotly.__version__)
 
 # cache section so when i run code below that is doesn't take forever
@@ -23,6 +22,95 @@ print(begin_path)
 #nodes to get from the json files
 nodes = 50
 
+#constants for the algorithm
+rank_score_dict = {
+    "DOMAIN": 7,
+    "KINGDOM": 6,
+    "PHYLUM": 5,
+    "CLASS": 4,
+    "ORDER": 3,
+    "FAMILY": 2,
+    "GENUS": 1,
+    "SPECIES": 0
+}
+
+subrank_score_dict = {
+    "MEGA": +0.4,
+    "GIGA": +0.3,
+    "SUPER": +0.2,
+    "SUB": -0.2,
+    "INFRA": -0.3,
+    "PARV": -0.4
+}
+
+###################################################
+############# HELPER FUNCTIONS BEGIN###############
+###################################################
+
+def open_cache_file(cache_file):
+    f = open(os.path.join(begin_path, cache_file), 'r')
+    return json.load(f)
+
+def write_cache_data(cache, cache_file):
+    utf_8_encoded_dict_encoded= {str(k).encode("utf-8"): str(v).encode("utf-8") for k,v in cache.items()}
+    utf_8_encoded_dict = {k.decode("utf-8"): v.decode("utf-8") for k,v in utf_8_encoded_dict_encoded.items()}
+    new_dict = {}
+    for key, value in utf_8_encoded_dict.items():
+        new_dict[key] = ast.literal_eval(value.replace("'", "\""))
+    with open(os.path.join(begin_path, cache_file), 'w') as f:
+        json.dump(new_dict, f)
+        
+def add_nodes_via_relevancy(index, final_ids, all_data, sorted_index_highest_relevance):
+    #get the first node from the sorted index and add it to the list of nodes
+    try:
+        aphia_id_highest_relevance = sorted_index_highest_relevance[index]["aphia_id"]
+        #print(aphia_id_highest_relevance)
+    except Exception as e:
+        print(e)
+        return
+    #go over the all_data and find all the nodes that have the aphia_id_highest_relevance as a parent
+    added_ids = []
+    #get a list of all the aphia_ids in the final_ids
+    all_final_ids = []
+    for aphia_id in final_ids:
+        all_final_ids.append(aphia_id)
+    
+    for node, node_value in all_data.items():
+        if node_value["parent"] == aphia_id_highest_relevance:
+            if node not in all_final_ids:
+                added_ids.append(node)
+    #print(added_ids)
+    #print(len(added_ids))
+    if len(added_ids) == 0:
+        index += 1
+        if index < len(sorted_index_highest_relevance):
+            add_nodes_via_relevancy(index, final_ids, all_data, sorted_index_highest_relevance)
+    
+    #check if the length of the added_ids is bigger than the number of nodes
+    if len(added_ids)+len(final_ids) > nodes:
+        print("nodes to long , trying another node")
+        index = index + 1
+        if index < len(sorted_index_highest_relevance):
+            add_nodes_via_relevancy(index, final_ids, all_data, sorted_index_highest_relevance)
+    else:
+        if len(added_ids) != 0:
+            for to_add_id in added_ids:
+                final_ids[to_add_id] = all_data[to_add_id]
+                #delete the aphia_id_highest_relevance from final_ids
+            final_ids.pop(str(aphia_id_highest_relevance), None)    
+            #print(final_ids)    
+    return
+        
+###################################################
+############# HELPER FUNCTIONS END#################
+###################################################
+
+
+'''
+###################################################
+############### CACHING CODE BEGIN ################
+###################################################
+
 def get_child_if_dict(child, parent_id, parent_list, aphia_id_list, scientific_name_list, rank_list):
     if isinstance(child["child"], dict):
         parent_list.append(parent_id)
@@ -34,10 +122,9 @@ def get_child_if_dict(child, parent_id, parent_list, aphia_id_list, scientific_n
     else:
         parent_list.append(parent_id)
         aphia_id_list.append(child["AphiaID"])
+        rank_list.append(child["rank"])
         scientific_name_list.append(child["scientificname"])
         return
-    
-
         
 #function that will take response of api call and the current cache and will update cache according to info in response
 def update_cache(response, cache, parent_id):
@@ -93,19 +180,6 @@ diff_dasids = df['IMIS_DasID'].unique()
 for dasid in diff_dasids:
     children[dasid] = df[df['IMIS_DasID'] == dasid]['aphia_id'].tolist()
 
-def open_cache_file(cache_file):
-    f = open(os.path.join(begin_path, cache_file), 'r')
-    return json.load(f)
-
-def write_cache_data(cache, cache_file):
-    utf_8_encoded_dict_encoded= {str(k).encode("utf-8"): str(v).encode("utf-8") for k,v in cache.items()}
-    utf_8_encoded_dict = {k.decode("utf-8"): v.decode("utf-8") for k,v in utf_8_encoded_dict_encoded.items()}
-    new_dict = {}
-    for key, value in utf_8_encoded_dict.items():
-        new_dict[key] = ast.literal_eval(value.replace("'", "\""))
-    with open(os.path.join(begin_path, cache_file), 'w') as f:
-        json.dump(new_dict, f)
-'''
 #print the children dataframes
 print(children)
 try:
@@ -184,40 +258,14 @@ for dasid, aphia_ids in children.items():
                 cached_data[str(dasid)]["urls_done"].append(url_to_request)
                 write_cache_data(cached_data, cache_file='data_object.json')
                 time.sleep(1.5)
+###################################################
+################# CACHING CODE END ################
+###################################################
 '''
- 
- 
-def add_nodes_via_relevancy(index, final_ids, all_data, sorted_index_highest_relevance):
-    #get the first node from the sorted index and add it to the list of nodes
-    try:
-        aphia_id_highest_relevance = sorted_index_highest_relevance[index]["aphia_id"]
-    except Exception as e:
-        print(e)
-        print(index)
-        return
-    #go over the all_data and find all the nodes that have the aphia_id_highest_relevance as a parent
-    added_ids = []
-    #get a list of all the aphia_ids in the final_ids
-    all_final_ids = []
-    for aphia_id in final_ids:
-        all_final_ids.append(aphia_id)
-    
-    for node, node_value in all_data.items():
-        if node_value["parent"] == aphia_id_highest_relevance:
-            if node not in all_final_ids:
-                added_ids.append(node)
-    if len(added_ids) == 0:
-        index += 1
-        add_nodes_via_relevancy(index, final_ids, all_data, sorted_index_highest_relevance)
-    
-    #check if the length of the added_ids is bigger than the number of nodes
-    if len(added_ids)+len(final_ids) > nodes:
-        print("nodes to long , trying another node")
-        index = index + 1
-        add_nodes_via_relevancy(index, final_ids, all_data, sorted_index_highest_relevance)
-    else:
-        for to_add_id in added_ids:
-            final_ids[to_add_id] = all_data[to_add_id]
+
+###################################################
+############# ALGORITHM CODE BEGIN ################
+###################################################
  
 #read the cache file and print the data
 cached_data = open_cache_file(cache_file='data_object.json')
@@ -228,32 +276,52 @@ for dasid, data in cached_data.items():
     all_data = data["data"]
     #sort out the data by number of children
     sorted_index = sorted(all_data.keys(), key=lambda x: all_data[x]["children"], reverse=True)
-    print(sorted_index)
+    #print(sorted_index)
     #get the first node from the sorted index and add it to the list of nodes
     final_ids[sorted_index[0]] = all_data[sorted_index[0]]
+    last_relevancy_node = ""
     while len(final_ids) < nodes:   
-        #get the children of all the nodes in the final_ids and get the ammount of direct children they have
-        relevancy_list=[]
-        for node, node_value in final_ids.items():
-            #get child value and direct child value
-            children = node_value["children"]
-            direct_children = node_value["directchildren"]
-            
-            #determine relevancy of the node
-            try:
-                relevancy = children/direct_children
-            except:
-                relevancy = 0
-            relevancy_list.append({"aphia_id":node_value["aphiaid"],"relevancy":relevancy})
-        #get sorted list of all the children of the node with the highest relevancy
-        sorted_index_highest_relevance = sorted(relevancy_list, key=lambda x: x["relevancy"], reverse=True)
-        print(sorted_index_highest_relevance)
-        current_relevancy_index = 0
-        add_nodes_via_relevancy(current_relevancy_index, final_ids, all_data, sorted_index_highest_relevance)
-        #print(final_ids)
-        
-print(final_ids)    
-            
+        try:
+            #get the children of all the nodes in the final_ids and get the ammount of direct children they have
+            relevancy_list=[]
+            for node, node_value in final_ids.items():
+                #get child value and direct child value
+                children = node_value["children"]
+                direct_children = node_value["directchildren"]
+                #determine relevancy of the node
+                try:
+                    relevancy = children/direct_children
+                except:
+                    relevancy = 0
+                relevancy_list.append({"aphia_id":node_value["aphiaid"],"relevancy":relevancy})
+            #get sorted list of all the children of the node with the highest relevancy
+            sorted_index_highest_relevance = sorted(relevancy_list, key=lambda x: x["relevancy"], reverse=True)
+            #print(sorted_index_highest_relevance)
+            current_relevancy_index = 0
+            current_relevant_node = sorted_index_highest_relevance[current_relevancy_index]["aphia_id"]
+            if current_relevant_node == last_relevancy_node:
+                break
+            add_nodes_via_relevancy(current_relevancy_index, final_ids, all_data, sorted_index_highest_relevance)
+            last_relevancy_node = current_relevant_node
+            #delete the nodes 
+        except Exception as e:
+            print(e)
+            print(final_ids)
+    
+    #convert the final_ids to a list of dict to then write to a csv file
+    csv_list_final_ids = []
+    for final_id , final_id_info in final_ids.items():
+        csv_list_final_ids.append(final_id_info)
+    #write the csv file
+    with open(f"{dasid}_chosen_aphia_ids.csv", 'w', newline='') as csvfile:
+        fieldnames = ['scientificname', 'aphiaid', 'rank', 'parent', 'children', 'directchildren']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(csv_list_final_ids)
+    print(f"{dasid} done")  
+###################################################
+############### ALGORITHM CODE END ################
+###################################################        
     
 
 
