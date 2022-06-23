@@ -346,7 +346,10 @@ for dasid, data in cached_data.items():
             if str(row["parent"]) == node:
                 scientific_names_parents.append(value_node["scientificname"])
                 break
-        color.append("royalblue")
+        if row["aphiaid"] in dataframe_later_use[int(dasid)]:
+            color.append("pink")
+        else:
+            color.append("royalblue")
     
     #sort the keys of all_data by all_data[key]["children"]
     sorted_all_data = sorted(all_data.keys(), key=lambda x: all_data[x]["children"], reverse=True)
@@ -392,13 +395,20 @@ for dasid, data in cached_data.items():
     #make tree fig
     
     fig = px.treemap(
-    names = scientific_names,
-    parents = scientific_names_parents,
+    names = names,
+    parents = parents,
     title=f"{dasid} tree view",
     color = color,
     color_discrete_map={
-     '(?)': 'lightgrey', 'lightgrey': 'lightgrey', 'royalblue': 'royalblue', 'gold': 'gold', 'red': 'red'
-    }
+     '(?)': 'lightgrey',
+     'lightgrey': 'lightgrey',
+     'royalblue': 'royalblue',
+     'gold': 'gold',
+     'red': 'red',
+     'pink': 'pink'
+    },
+    hover_name=scientific_names,
+    labels=scientific_names
     )
     fig.update_traces(root_color="lightgrey")
     fig.update_layout(margin = dict(t=25, l=10, r=10, b=10))
