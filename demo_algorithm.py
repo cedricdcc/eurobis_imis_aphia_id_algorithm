@@ -337,11 +337,15 @@ for dasid, data in cached_data.items():
     scientific_names = []
     scientific_names_parents = []
     parents = []
+    ranks = []
+    childrens = []
     color = []
     for row in csv_list_final_ids:
         names.append(row["aphiaid"])
         scientific_names.append(row["scientificname"])
         parents.append(row["parent"])
+        ranks.append(row["rank"])
+        childrens.append(row["children"])
         for node, value_node in all_data.items():
             if str(row["parent"]) == node:
                 scientific_names_parents.append(value_node["scientificname"])
@@ -360,7 +364,8 @@ for dasid, data in cached_data.items():
             names.append(all_data[node]["aphiaid"])
             scientific_names.append(all_data[node]["scientificname"])
             parents.append(all_data[node]["parent"])
-            
+            ranks.append(all_data[node]["rank"])
+            childrens.append("not important")
             #check to color of the parent
             try:
                 index_parent = names.index(all_data[node]["parent"])
@@ -408,7 +413,7 @@ for dasid, data in cached_data.items():
      'pink': 'pink'
     },
     hover_name=scientific_names,
-    labels=scientific_names
+    hover_data={"parent":scientific_names_parents, "rank":ranks, "children reduced":childrens}
     )
     fig.update_traces(root_color="lightgrey")
     fig.update_layout(margin = dict(t=25, l=10, r=10, b=10))
