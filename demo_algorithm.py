@@ -147,7 +147,6 @@ dataframe_later_use = children
 ############# DASIDS WITH APHIAIDS ################
 ###################################################
 
-
 '''
 ###################################################
 ############### CACHING CODE BEGIN ################
@@ -375,12 +374,6 @@ for dasid, data in cached_data.items():
                     appended_color = 1
                     color.append("red")
                 else:
-                    if color_parent == "royalblue":
-                        color.append("gold")
-                        appended_color = 1
-                    if color_parent == "gold":
-                        color.append("gold")
-                        appended_color = 1
                     if appended_color == 0:
                         color.append("lightgrey")
             except Exception as e:
@@ -402,13 +395,12 @@ for dasid, data in cached_data.items():
     fig = px.treemap(
     names = names,
     parents = parents,
-    title=f"{dasid} tree view",
+    title=f"dasid {dasid} tree view {len(final_ids)}/{len(dataframe_later_use[int(dasid)])} (#final/#begin aphiaIDs)",
     color = color,
     color_discrete_map={
      '(?)': 'lightgrey',
      'lightgrey': 'lightgrey',
      'royalblue': 'royalblue',
-     'gold': 'gold',
      'red': 'red',
      'pink': 'pink'
     },
