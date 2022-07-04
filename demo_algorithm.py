@@ -410,6 +410,10 @@ for dasid, data in cached_data.items():
     fig.update_traces(root_color="lightgrey")
     fig.update_layout(margin = dict(t=25, l=10, r=10, b=10))
     fig.show()
+    path_to_write = f"{dasid}_tree_view.html"
+    #get the path to the current directory
+    path_dir = os.path.dirname(os.path.abspath(__file__))
+    fig.write_html(os.path.join(path_dir, path_to_write))
     
     
 ###################################################
