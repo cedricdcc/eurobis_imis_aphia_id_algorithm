@@ -1,49 +1,24 @@
 scientificname,aphiaid,rank,parent,children,directchildren
 Chlorophyta,801,Phylum (Division),368663,9,3
+Prymnesiophyceae,115057,Class,369190,36,8
 Cryptophyceae,17639,Class,17638,0,0
 Cyanophyceae,146542,Class,146537,0,0
 Euglenoidea,582177,Class,536202,0,0
-Syracosphaerales,493820,Order,115057,14,3
-Coccolithales,493821,Order,115057,10,3
-Prymnesiales,115061,Order,115057,5,2
+Dinophyceae,19542,Class,146203,101,12
 Acanthosolenia,602985,Genus,369191,0,0
 Choanoflagellida,25,Order,24,0,0
+Coscinodiscophycidae,148971,Subclass,148899,76,8
 Chromulinales,248107,Order,146230,5,2
-Dinophysiales,109390,Order,19542,14,2
-Gymnodiniales,109392,Order,19542,10,3
-Noctilucales,109393,Order,19542,4,3
-Peridiniales,109394,Order,19542,20,5
-Gonyaulacales,109391,Order,19542,34,7
-Coscinodiscanae,591190,Superorder,148971,8,4
-Biddulphianae,591192,Superorder,148971,14,3
-Chaetocerotanae,591197,Superorder,148971,24,2
 Bacillariophycanae,591186,Superorder,148902,23,7
 Fragilariophycanae,591199,Superorder,148978,16,7
-Prorocentraceae,109442,Family,109396,9,2
-Pyrocystaceae,109444,Family,109398,3,2
-Actiniscaceae,109409,Family,231760,2,2
-Thalassiosirales,148903,Order,591189,8,4
 Dictyochaceae,157257,Family,157256,6,3
-Rhizosoleniaceae,149068,Family,149067,17,6
-Lithodesmiaceae,149021,Family,149020,3,2
-Phaeocystis,115088,Genus,115072,0,0
-Halopappus,235859,Genus,115066,0,0
-Blastodinium,562641,Genus,562640,0,0
-Goniodoma,109559,Genus,109438,0,0
-Campylosira,149356,Genus,149010,0,0
 Apedinella,248096,Genus,160598,0,0
 Pseliodinium fusus,1474876,Species,109458,0,0
-Rhabdolithes claviger,626382,Species,603344,0,0
 Raphidosphaera tenerrima,708245,Species,707624,0,0
 Leucocryptos marina,119077,Species,17651,0,0
 Ebria tripartita,118051,Species,118014,0,0
 Hermesinum adriaticum,573880,Species,478559,0,0
-Emiliania huxleyi,115104,Species,115086,0,0
-Helicosphaera carteri,615435,Species,235863,0,0
-Azadinium caudatum,837075,Species,391508,0,0
-Amphidinium acutissimum,109718,Species,109473,0,0
 Rhynchomonas nasuta,146163,Species,146161,0,0
 Paulinella ovalis,136903,Species,136779,0,0
 Commation cryoporinum,567049,Species,567048,0,0
 Meringosphaera mediterranea,248129,Species,115075,0,0
-Corethron criophilum,149110,Species,149109,0,0

@@ -1,0 +1,10 @@
+aphia_id,RankName,ScientificName,ScientificNameAuthor,Kingdom,Phylum,Class,Order,Family,Genus,Subgenus,Species,Subspecies,ScientificNameWithAuthor
+106398,Species,Leucothea multicornis,"(Quoy & Gaimard, 1824)",Animalia,Ctenophora,Tentaculata,Lobata,Leucotheidae,Leucothea,,multicornis,,"Leucothea multicornis Quoy & Gaimard, 1824"
+106401,Species,Mnemiopsis leidyi,"A. Agassiz, 1865",Animalia,Ctenophora,Tentaculata,Lobata,Bolinopsidae,Mnemiopsis,,leidyi,,"Mnemiopsis leidyi A. Agassiz, 1865"
+135263,Genus,Aurelia,"Lamarck, 1816",Animalia,Cnidaria,Scyphozoa,Semaeostomeae,Ulmaridae,Aurelia,,,,"Aurelia Lamarck, 1816"
+135279,Species,Carybdea marsupialis,"(Linnaeus, 1758)",Animalia,Cnidaria,Cubozoa,Carybdeida,Carybdeidae,Carybdea,,marsupialis,,"Carybdea marsupialis Linnaeus, 1758"
+135297,Species,Cotylorhiza tuberculata,"(Macri, 1778)",Animalia,Cnidaria,Scyphozoa,Rhizostomeae,Cepheidae,Cotylorhiza,,tuberculata,,"Cotylorhiza tuberculata Macri, 1778"
+135299,Species,Rhizostoma pulmo,"(Macri, 1778)",Animalia,Cnidaria,Scyphozoa,Rhizostomeae,Rhizostomatidae,Rhizostoma,,pulmo,,"Rhizostoma pulmo Macri, 1778"
+135304,Species,Chrysaora hysoscella,"(Linnaeus, 1767)",Animalia,Cnidaria,Scyphozoa,Semaeostomeae,Pelagiidae,Chrysaora,,hysoscella,,"Chrysaora hysoscella Linnaeus, 1767"
+135305,Species,Pelagia noctiluca,"(Forsskål, 1775)",Animalia,Cnidaria,Scyphozoa,Semaeostomeae,Pelagiidae,Pelagia,,noctiluca,,"Pelagia noctiluca Forsskål, 1775"
+137217,Family,Salpidae,"Lahille, 1888",Animalia,Chordata,Thaliacea,Salpida,Salpidae,,,,,"Salpidae Lahille, 1888"

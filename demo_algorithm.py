@@ -8,6 +8,7 @@ import time
 import os
 import sys
 import csv
+import pyodbc
 import requests
 import plotly
 import plotly.express as px
@@ -46,6 +47,14 @@ subrank_score_dict = {
     "PARV": -0.4*amplifier
 }
 
+
+cnxn_str = ("Driver={SQL Server Native Client 11.0};"
+            "Server=SQL17STAGE;"
+            "Database=aphia;"
+            "UID=Anyone;"
+            )
+cnxn = pyodbc.connect(cnxn_str)
+cursor = cnxn.cursor()
 ###################################################
 ############# HELPER FUNCTIONS BEGIN###############
 ###################################################
@@ -138,7 +147,6 @@ diff_dasids = df['IMIS_DasID'].unique()
 #loop over the different dasids and make a list of all the aphia_ids that are associated with that dasid
 for dasid in diff_dasids:
     children[dasid] = df[df['IMIS_DasID'] == dasid]['aphia_id'].tolist()
-
 #print the children dataframes
 print(children)
 dataframe_later_use = children
@@ -146,6 +154,43 @@ dataframe_later_use = children
 ###################################################
 ############# DASIDS WITH APHIAIDS ################
 ###################################################
+
+###################################################
+############# CACHING WITH DATABASE ###############
+###################################################
+
+#per dasid in children, get all the aphia-ids and use those to perform a query to get the information from the database
+for dasid in diff_dasids:
+    all_aphia_ids = children[dasid]
+    query = ("SELECT * FROM aphia.dbo.tu_matrix WHERE aphia_id IN ("+','.join(str(v) for v in all_aphia_ids)+")")
+    data = pd.read_sql(query, cnxn)
+    time.sleep(1.5)
+    pd.DataFrame.to_csv(data, os.path.join(begin_path, 'aphia_ids_to_imis_'+str(dasid)+'.csv'), index=False)
+    
+    #go over the following columns Kingdom      Phylum         Class     Order       Family     Genus Subgenus  Species Subspecies
+    all_parent_aphias = []
+    for column in ['Kingdom', 'Phylum', 'Class', 'Order', 'Family', 'Genus', 'Subgenus', 'Species', 'Subspecies']:
+        #get the parent aphia ids for the column
+        parent_aphia_ids = data[column].unique()
+        #add the parent aphia ids to the list of all parent aphia ids
+        all_parent_aphias.extend(parent_aphia_ids)
+    #remove duplicates from the list of all parent aphia ids
+    all_parent_aphias = list(set(all_parent_aphias))
+    query = ("SELECT [tu_acctaxon] FROM [aphia].[dbo].[tu] WHERE tu_displayname in ("+"\'"+'\',\''.join(str(v) for v in all_parent_aphias)+"\'"+")")
+    data = pd.read_sql(query, cnxn)
+    #filter out nan from data["tu_acctaxon"]
+    data = data.dropna()
+    time.sleep(1.5)
+    #do the same query as the first one but with the data[tu_acctaxon] column
+    query = ("SELECT * FROM aphia.dbo.tu_matrix WHERE aphia_id IN ("+','.join(str(v) for v in data['tu_acctaxon'].tolist())+")")
+    data = pd.read_sql(query, cnxn)
+    pd.DataFrame.to_csv(data, os.path.join(begin_path, 'aphia_ids_to_imis_'+str(dasid)+'.csv'),mode="a", index=False)
+    time.sleep(1.5)
+###################################################
+############# CACHING WITH DATABASE ###############
+###################################################
+
+
 
 '''
 ###################################################
@@ -230,7 +275,7 @@ for dasid, aphia_ids in children.items():
 ###################################################
 ################# CACHING CODE END ################
 ###################################################
-'''
+
 
 ###################################################
 ############# ALGORITHM CODE BEGIN ################
@@ -293,29 +338,29 @@ for dasid, data in cached_data.items():
             unchanged = True
             sorted_ranked_list_index = 0
             while unchanged:
-                    max_ranked_node = sorted_list_rank[sorted_ranked_list_index]
-                    #get the children of the node
-                    all_childs = []
-                    for aphia_id, aphia_id_value in all_data.items():
-                        if str(max_ranked_node["aphia_id"]) == str(aphia_id_value["parent"]):
-                            all_childs.append(aphia_id_value)
-                    #check if the length of the children is greater + current length final ids than the number of nodes
-                    if len(all_childs) > 0:
-                        if len(all_childs) + len(final_ids) < nodes:
-                            for child in all_childs:
-                                final_ids[child["aphiaid"]] = child
-                                #delete max ranked node from final_ids
-                            print(f"{dasid} | {len(final_ids)}/{nodes} nodes found")
-                            try:
-                                final_ids.pop(str(max_ranked_node["aphia_id"]))
-                            except:
-                                final_ids.pop(max_ranked_node["aphia_id"])
-                            last_final_id_length = len(final_ids)
-                            unchanged = False
-                        else:
-                            sorted_ranked_list_index += 1
+                max_ranked_node = sorted_list_rank[sorted_ranked_list_index]
+                #get the children of the node
+                all_childs = []
+                for aphia_id, aphia_id_value in all_data.items():
+                    if str(max_ranked_node["aphia_id"]) == str(aphia_id_value["parent"]):
+                        all_childs.append(aphia_id_value)
+                #check if the length of the children is greater + current length final ids than the number of nodes
+                if len(all_childs) > 0:
+                    if len(all_childs) + len(final_ids) < nodes:
+                        for child in all_childs:
+                            final_ids[child["aphiaid"]] = child
+                            #delete max ranked node from final_ids
+                        print(f"{dasid} | {len(final_ids)}/{nodes} nodes found")
+                        try:
+                            final_ids.pop(str(max_ranked_node["aphia_id"]))
+                        except:
+                            final_ids.pop(max_ranked_node["aphia_id"])
+                        last_final_id_length = len(final_ids)
+                        unchanged = False
                     else:
                         sorted_ranked_list_index += 1
+                else:
+                    sorted_ranked_list_index += 1
         except IndexError:
             break
     
@@ -330,9 +375,11 @@ for dasid, data in cached_data.items():
         writer.writeheader()
         writer.writerows(csv_list_final_ids)
     print(f"{dasid} done")  
+    
     ### print the tree view map of the final_ids ###
     #go over each row in the csv_list_final_ids get the scientific name and the parent and the aphiaid
     names = []
+    names_second = []
     scientific_names = []
     scientific_names_parents = []
     parents = []
@@ -342,6 +389,7 @@ for dasid, data in cached_data.items():
     for row in csv_list_final_ids:
         names.append(row["aphiaid"])
         scientific_names.append(row["scientificname"])
+        names_second.append(row["scientificname"])
         parents.append(row["parent"])
         ranks.append(row["rank"])
         childrens.append(row["children"])
@@ -361,6 +409,7 @@ for dasid, data in cached_data.items():
         #check if the node is in the list of names
         if int(node) not in names:
             names.append(all_data[node]["aphiaid"])
+            names_second.append(all_data[node]["aphiaid"])
             scientific_names.append(all_data[node]["scientificname"])
             parents.append(all_data[node]["parent"])
             ranks.append(all_data[node]["rank"])
@@ -390,8 +439,7 @@ for dasid, data in cached_data.items():
     #print(len(names))
     #print(len(parents))
     #print(color)
-    #make tree fig
-    
+    #make tree figure
     fig = px.treemap(
     names = names,
     parents = parents,
@@ -405,13 +453,13 @@ for dasid, data in cached_data.items():
      'pink': 'pink'
     },
     hover_name=scientific_names,
-    hover_data={"parent":scientific_names_parents, "rank":ranks, "children reduced":childrens}
+    hover_data={"rank":ranks, "children reduced":childrens, "parent":scientific_names_parents}
     )
     fig.update_traces(root_color="lightgrey")
     fig.update_layout(margin = dict(t=25, l=10, r=10, b=10))
     fig.show()
     
-    
 ###################################################
 ############### ALGORITHM CODE END ################
 ###################################################    
+'''
