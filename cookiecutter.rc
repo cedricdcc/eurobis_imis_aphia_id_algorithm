@@ -1,0 +1,5 @@
+default_context:
+    full_name: "Cedric Decruw"
+    email: "cedric.decruw@vliz.be"
+    github_username: "cedricdcc"
+    version: "0.0.0"
