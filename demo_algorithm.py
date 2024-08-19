@@ -1,5 +1,5 @@
-#imports
-import json 
+# imports
+import json
 import ast
 from operator import le
 import pandas as pd
@@ -12,6 +12,7 @@ import pyodbc
 import requests
 import plotly
 import plotly.express as px
+
 print(plotly.__version__)
 
 # cache section so when i run code below that is doesn't take forever
@@ -19,84 +20,105 @@ refresh_cache = False
 begin_path = os.path.dirname(os.path.abspath(__file__))
 print(begin_path)
 
-#parameters for the algorithm #
+# parameters for the algorithm #
 
-#nodes to get from the json files
+# nodes to get from the json files
 nodes = 50
 
 amplifier = 10
 
-#constants for the algorithm
+# constants for the algorithm
 rank_score_dict = {
-    "DOMAIN": 8*amplifier,
-    "KINGDOM": 7*amplifier,
-    "PHYLUM": 6*amplifier,
-    "CLASS": 5*amplifier,
-    "ORDER": 4*amplifier,
-    "FAMILY": 3*amplifier,
-    "GENUS": 2*amplifier,
-    "SPECIES": 1*amplifier
+    "DOMAIN": 8 * amplifier,
+    "KINGDOM": 7 * amplifier,
+    "PHYLUM": 6 * amplifier,
+    "CLASS": 5 * amplifier,
+    "ORDER": 4 * amplifier,
+    "FAMILY": 3 * amplifier,
+    "GENUS": 2 * amplifier,
+    "SPECIES": 1 * amplifier,
 }
 
 subrank_score_dict = {
-    "MEGA": +0.4*amplifier,
-    "GIGA": +0.3*amplifier,
-    "SUPER": +0.2*amplifier,
-    "SUB": -0.2*amplifier,
-    "INFRA": -0.3*amplifier,
-    "PARV": -0.4*amplifier
+    "MEGA": +0.4 * amplifier,
+    "GIGA": +0.3 * amplifier,
+    "SUPER": +0.2 * amplifier,
+    "SUB": -0.2 * amplifier,
+    "INFRA": -0.3 * amplifier,
+    "PARV": -0.4 * amplifier,
 }
 
 
-cnxn_str = ("Driver={SQL Server Native Client 11.0};"
-            "Server=SQL17STAGE;"
-            "Database=aphia;"
-            "UID=Anyone;"
-            )
+cnxn_str = (
+    "Driver={SQL Server Native Client 11.0};"
+    "Server=SQL17STAGE;"
+    "Database=aphia;"
+    "UID=Anyone;"
+)
 cnxn = pyodbc.connect(cnxn_str)
 cursor = cnxn.cursor()
 ###################################################
 ############# HELPER FUNCTIONS BEGIN###############
 ###################################################
 
+
 def open_cache_file(cache_file):
-    f = open(os.path.join(begin_path, cache_file), 'r')
+    f = open(os.path.join(begin_path, cache_file), "r")
     return json.load(f)
 
+
 def write_cache_data(cache, cache_file):
-    utf_8_encoded_dict_encoded= {str(k).encode("utf-8"): str(v).encode("utf-8") for k,v in cache.items()}
-    utf_8_encoded_dict = {k.decode("utf-8"): v.decode("utf-8") for k,v in utf_8_encoded_dict_encoded.items()}
+    utf_8_encoded_dict_encoded = {
+        str(k).encode("utf-8"): str(v).encode("utf-8") for k, v in cache.items()
+    }
+    utf_8_encoded_dict = {
+        k.decode("utf-8"): v.decode("utf-8")
+        for k, v in utf_8_encoded_dict_encoded.items()
+    }
     new_dict = {}
     for key, value in utf_8_encoded_dict.items():
-        new_dict[key] = ast.literal_eval(value.replace("'", "\""))
-    with open(os.path.join(begin_path, cache_file), 'w') as f:
+        new_dict[key] = ast.literal_eval(value.replace("'", '"'))
+    with open(os.path.join(begin_path, cache_file), "w") as f:
         json.dump(new_dict, f)
-        
-def get_child_if_dict(child, parent_id, parent_list, aphia_id_list, scientific_name_list, rank_list):
+
+
+def get_child_if_dict(
+    child, parent_id, parent_list, aphia_id_list, scientific_name_list, rank_list
+):
     if isinstance(child["child"], dict):
         parent_list.append(parent_id)
         aphia_id_list.append(child["AphiaID"])
         parent_id = child["AphiaID"]
         rank_list.append(child["rank"])
         scientific_name_list.append(child["scientificname"])
-        get_child_if_dict(child["child"], parent_id=parent_id, parent_list=parent_list, aphia_id_list=aphia_id_list, scientific_name_list=scientific_name_list, rank_list=rank_list)
+        get_child_if_dict(
+            child["child"],
+            parent_id=parent_id,
+            parent_list=parent_list,
+            aphia_id_list=aphia_id_list,
+            scientific_name_list=scientific_name_list,
+            rank_list=rank_list,
+        )
     else:
         parent_list.append(parent_id)
         aphia_id_list.append(child["AphiaID"])
         rank_list.append(child["rank"])
         scientific_name_list.append(child["scientificname"])
         return
-        
-#function that will take response of api call and the current cache and will update cache according to info in response
+
+
+# function that will take response of api call and the current cache and will update cache according to info in response
 def update_cache(response, cache, parent_id):
-    #get the child of the response
+    # get the child of the response
     child = response
-    parent_list= []
+    parent_list = []
     aphia_id_list = []
     scientific_name_list = []
     rank_list = []
-    parent_id = ''
-    get_child_if_dict(child, parent_id, parent_list, aphia_id_list, scientific_name_list, rank_list)
+    parent_id = ""
+    get_child_if_dict(
+        child, parent_id, parent_list, aphia_id_list, scientific_name_list, rank_list
+    )
     # for i in parent list and aphia id list, check if they are in cache, if not, add them to cache
     length_ids = len(aphia_id_list)
     i = 0
@@ -104,50 +126,176 @@ def update_cache(response, cache, parent_id):
         aphia_id = aphia_id_list[i]
         parent = parent_list[i]
         scientific_name = scientific_name_list[i]
-        rank= rank_list[i]
+        rank = rank_list[i]
         # check if aphia id is in cache
         if str(aphia_id) not in cache:
-            #add the aphia id to cache
+            # add the aphia id to cache
             cache[str(aphia_id)] = {
                 "scientificname": scientific_name,
                 "aphiaid": aphia_id,
                 "rank": rank,
                 "parent": parent,
                 "children": 0,
-                "directchildren": 0
+                "directchildren": 0,
             }
-            
-            if parent != '' and i != 0:
+
+            if parent != "" and i != 0:
                 cache[str(parent)]["children"] += 1
                 cache[str(parent)]["directchildren"] += 1
         else:
-            #if parent is not '' and i is not 0, change cache of parent
-            if parent != '' and i != 0:
+            # if parent is not '' and i is not 0, change cache of parent
+            if parent != "" and i != 0:
                 cache[str(parent)]["children"] += 1
-        i+=1
-        
+        i += 1
+
+
 ###################################################
 ############# HELPER FUNCTIONS END#################
 ###################################################
+
+#### sql queries
+
+## get aphiaids from dasid 4221 is example here
+
+"""
+SELECT dt.[DasID]
+      ,dt.[TaxtID]
+	  ,tt.AphiaID
+
+FROM [IMIS].[dbo].[Das_Taxt] as dt
+LEFT JOIN [IMIS].[dbo].[TaxTerms] as tt on dt.TaxtID = tt.TaxtID
+Where dt.DasID like '4221'
+"""
+
+## get tax information from list of ids 51 - 339374 in example
+
+"""
+/****** Script for SelectTopNRows command from SSMS  ******/
+WITH RecursiveCTE AS (
+    -- Anchor member: Start with the initial query
+    SELECT [id], [tu_name], [tu_parent], [tu_rank]
+    FROM [aphia].[dbo].[tu] as tu
+    WHERE [id] in (51
+,883
+,1066
+,2036
+,102101
+,129876
+,129884
+,130616
+,131170
+,138998
+,140126
+,141579
+,339374)
+
+    UNION ALL
+
+    -- Recursive member: Keep finding parent rows
+    SELECT t.[id], t.[tu_name], t.[tu_parent], t.[tu_rank]
+    FROM [aphia].[dbo].[tu] t 
+    INNER JOIN RecursiveCTE rcte ON t.[id] = rcte.[tu_parent]
+    WHERE rcte.[tu_parent] NOT LIKE '1'
+)
+-- Select the results from the CTE
+SELECT DISTINCT *
+FROM RecursiveCTE;
+
+"""
+
+## query to find names of taxids for list 10-140 in example
+
+"""
+/****** Script for SelectTopNRows command from SSMS  ******/
+SELECT distinct
+      [rank_id]
+      ,[rank_name]
+  FROM [aphia].[dbo].[ranks]
+  WHERE rank_id in (10
+,30
+,60
+,60
+,140)
+"""
+
+## query to find ordered tax tree by id id here is 118852
+
+"""
+WITH rel AS (
+  SELECT 
+    tu.id, 
+    tu_name, 
+    tu_displayname, 
+    rank_name, 
+    tu_parent, 
+    tu.tu_rank, 
+    tu_fossil, 
+    tu_hidden, 
+    tu_qualitystatus, 
+    0 as dlevel 
+  FROM 
+    tu WITH (NOLOCK) 
+    INNER JOIN ranks WITH (NOLOCK) ON (
+      tu_rank = rank_id 
+      AND kingdom_id = 2
+    ) 
+  WHERE 
+    id IN (118852)
+  UNION ALL 
+  SELECT 
+    tu.id, 
+    tu.tu_name, 
+    tu.tu_displayname, 
+    ranks.rank_name, 
+    tu.tu_parent, 
+    tu.tu_rank, 
+    tu.tu_fossil, 
+    tu.tu_hidden, 
+    tu.tu_qualitystatus, 
+    dlevel + 1 
+  FROM 
+    tu WITH (NOLOCK) 
+    INNER JOIN rel ON rel.tu_parent = tu.id 
+    INNER JOIN ranks WITH (NOLOCK) ON (
+      tu.tu_rank = rank_id 
+      AND kingdom_id = 2
+    ) 
+  WHERE 
+    rel.tu_parent IS NOT NULL
+) 
+SELECT
+  id, 
+  tu_name, 
+  tu_displayname as text, 
+  rank_name as rank, 
+  tu_rank, 
+  tu_fossil, 
+  tu_hidden, 
+  tu_qualitystatus 
+FROM 
+  rel 
+ORDER BY 
+  dlevel DESC
+"""
 
 ###################################################
 ############# DASIDS WITH APHIAIDS ################
 ###################################################
 
-#read in the data from the csv file with pandas
-df = pd.read_csv(os.path.join(begin_path, 'aphia_ids_to_imis.csv'))
-#print the dimentions of the dataframe
+# read in the data from the csv file with pandas
+df = pd.read_csv(os.path.join(begin_path, "aphia_ids_to_imis.csv"))
+# print the dimentions of the dataframe
 print(df.shape)
 
-# make child dataframes based on the parent dataframe 
+# make child dataframes based on the parent dataframe
 children = {}
-#get the different values that are present in the first column of the dataframe
-diff_dasids = df['IMIS_DasID'].unique()
+# get the different values that are present in the first column of the dataframe
+diff_dasids = df["IMIS_DasID"].unique()
 
-#loop over the different dasids and make a list of all the aphia_ids that are associated with that dasid
+# loop over the different dasids and make a list of all the aphia_ids that are associated with that dasid
 for dasid in diff_dasids:
-    children[dasid] = df[df['IMIS_DasID'] == dasid]['aphia_id'].tolist()
-#print the children dataframes
+    children[dasid] = df[df["IMIS_DasID"] == dasid]["aphia_id"].tolist()
+# print the children dataframes
 print(children)
 dataframe_later_use = children
 
@@ -159,40 +307,72 @@ dataframe_later_use = children
 ############# CACHING WITH DATABASE ###############
 ###################################################
 
-#per dasid in children, get all the aphia-ids and use those to perform a query to get the information from the database
+# per dasid in children, get all the aphia-ids and use those to perform a query to get the information from the database
 for dasid in diff_dasids:
     all_aphia_ids = children[dasid]
-    query = ("SELECT * FROM aphia.dbo.tu_matrix WHERE aphia_id IN ("+','.join(str(v) for v in all_aphia_ids)+")")
+    query = (
+        "SELECT * FROM aphia.dbo.tu_matrix WHERE aphia_id IN ("
+        + ",".join(str(v) for v in all_aphia_ids)
+        + ")"
+    )
     data = pd.read_sql(query, cnxn)
     time.sleep(1.5)
-    pd.DataFrame.to_csv(data, os.path.join(begin_path, 'aphia_ids_to_imis_'+str(dasid)+'.csv'), index=False)
-    
-    #go over the following columns Kingdom      Phylum         Class     Order       Family     Genus Subgenus  Species Subspecies
+    pd.DataFrame.to_csv(
+        data,
+        os.path.join(begin_path, "aphia_ids_to_imis_" + str(dasid) + ".csv"),
+        index=False,
+    )
+
+    # go over the following columns Kingdom      Phylum         Class     Order       Family     Genus Subgenus  Species Subspecies
     all_parent_aphias = []
-    for column in ['Kingdom', 'Phylum', 'Class', 'Order', 'Family', 'Genus', 'Subgenus', 'Species', 'Subspecies']:
-        #get the parent aphia ids for the column
+    for column in [
+        "Kingdom",
+        "Phylum",
+        "Class",
+        "Order",
+        "Family",
+        "Genus",
+        "Subgenus",
+        "Species",
+        "Subspecies",
+    ]:
+        # get the parent aphia ids for the column
         parent_aphia_ids = data[column].unique()
-        #add the parent aphia ids to the list of all parent aphia ids
+        # add the parent aphia ids to the list of all parent aphia ids
         all_parent_aphias.extend(parent_aphia_ids)
-    #remove duplicates from the list of all parent aphia ids
+    # remove duplicates from the list of all parent aphia ids
     all_parent_aphias = list(set(all_parent_aphias))
-    query = ("SELECT [tu_acctaxon] FROM [aphia].[dbo].[tu] WHERE tu_displayname in ("+"\'"+'\',\''.join(str(v) for v in all_parent_aphias)+"\'"+")")
+    query = (
+        "SELECT [tu_acctaxon] FROM [aphia].[dbo].[tu] WHERE tu_displayname in ("
+        + "'"
+        + "','".join(str(v) for v in all_parent_aphias)
+        + "'"
+        + ")"
+    )
     data = pd.read_sql(query, cnxn)
-    #filter out nan from data["tu_acctaxon"]
+    # filter out nan from data["tu_acctaxon"]
     data = data.dropna()
     time.sleep(1.5)
-    #do the same query as the first one but with the data[tu_acctaxon] column
-    query = ("SELECT * FROM aphia.dbo.tu_matrix WHERE aphia_id IN ("+','.join(str(v) for v in data['tu_acctaxon'].tolist())+")")
+    # do the same query as the first one but with the data[tu_acctaxon] column
+    query = (
+        "SELECT * FROM aphia.dbo.tu_matrix WHERE aphia_id IN ("
+        + ",".join(str(v) for v in data["tu_acctaxon"].tolist())
+        + ")"
+    )
     data = pd.read_sql(query, cnxn)
-    pd.DataFrame.to_csv(data, os.path.join(begin_path, 'aphia_ids_to_imis_'+str(dasid)+'.csv'),mode="a", index=False)
+    pd.DataFrame.to_csv(
+        data,
+        os.path.join(begin_path, "aphia_ids_to_imis_" + str(dasid) + ".csv"),
+        mode="a",
+        index=False,
+    )
     time.sleep(1.5)
 ###################################################
 ############# CACHING WITH DATABASE ###############
 ###################################################
 
 
-
-'''
+"""
 ###################################################
 ############### CACHING CODE BEGIN ################
 ###################################################
@@ -466,4 +646,4 @@ for dasid, data in cached_data.items():
 ###################################################
 ############### ALGORITHM CODE END ################
 ###################################################    
-'''
+"""
