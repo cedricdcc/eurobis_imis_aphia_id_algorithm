@@ -1,0 +1,19 @@
+aphiaid,scientificname,rank,parent,children,directchildren
+143778,Boodleaceae,Family,813,2,2
+368715,Halimedaceae,Family,1649443,2,2
+143816,Caulerpa,Genus,143668,0,0
+143819,Avrainvillea,Genus,368714,0,0
+143996,Cladophora,Genus,143687,0,0
+144059,Acetabularia,Genus,143703,0,0
+144296,Ulva,Genus,143794,0,0
+144045,Halymenia,Genus,143697,0,0
+143870,Dasya,Genus,599751,0,0
+145022,Chaetomorpha crassa,Species,143995,0,0
+145630,Hypnea cornuta,Species,144157,0,0
+214012,Solieria robusta,Species,144182,0,0
+144452,Bryopsis hypnoides,Species,143812,0,0
+211768,Acanthophora spicifera,Species,143900,0,0
+144575,Crouania attenuata,Species,143837,0,0
+144188,Gracilaria,Genus,1309271,0,0
+145100,Amphiroa rigida,Species,144003,0,0
+145130,Jania rubens,Species,144012,0,0
