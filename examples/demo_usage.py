@@ -23,6 +23,7 @@ def main():
     # Initialize the algorithm with the same parameters as the original script
     algorithm = AphiaIdAlgorithm(
         max_nodes=50,  # Same as 'nodes' variable in original
+        min_nodes=3,   # NEW: Ensure at least 3 nodes per DASID
         amplifier=10,  # Same as original
         cache_file="data_object.json",  # Same cache file name
         base_path=script_dir  # Use script directory as base path
@@ -44,7 +45,7 @@ def main():
         results = algorithm.process_csv_file(
             csv_file=csv_file,
             refresh_cache=False,  # Set to True to refresh the cache
-            save_visualizations=True,  # Save HTML tree visualizations
+            save_visualizations=True,  # Save HTML visualizations (tree map + sunburst)
             show_visualizations=False  # Set to True to show visualizations in browser
         )
         
@@ -62,6 +63,8 @@ def main():
                 print(f"  - CSV output: {result['csv_file']}")
                 if result["html_file"]:
                     print(f"  - Tree visualization: {result['html_file']}")
+                if result["sunburst_file"]:
+                    print(f"  - Sunburst visualization: {result['sunburst_file']}")
         
         print("\nProcessing completed successfully!")
         

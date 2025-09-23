@@ -4,8 +4,9 @@ Visualization utilities for tree maps and data output.
 
 import csv
 import os
-from typing import Dict, List, Any, Optional
+from typing import Dict, List, Any, Optional, Tuple
 import plotly.express as px
+import plotly.graph_objects as go
 
 
 class Visualizer:
@@ -258,4 +259,215 @@ class Visualizer:
         
         fig.update_traces(root_color="lightgrey")
         fig.update_layout(margin=dict(t=25, l=10, r=10, b=10))
+        fig.show()
+    
+    def create_sunburst_chart(self, final_ids: Dict[str, Dict[str, Any]], 
+                            all_data: Dict[str, Dict[str, Any]], 
+                            dasid: int, original_aphia_ids: List[int],
+                            output_file: Optional[str] = None) -> str:
+        """
+        Create a sunburst chart visualization showing hierarchical relationships.
+        
+        Args:
+            final_ids: Dictionary of final selected IDs
+            all_data: Dictionary of all cached taxonomic data
+            dasid: The DASID being processed
+            original_aphia_ids: Original list of Aphia IDs for this DASID
+            output_file: Output HTML file name (if None, uses default naming)
+            
+        Returns:
+            Path to the created HTML file
+        """
+        if output_file is None:
+            output_file = f"{dasid}_sunburst.html"
+            
+        file_path = os.path.join(self.base_path, output_file) if self.base_path else output_file
+        
+        # Build lists for sunburst chart using only ids, labels, and parents
+        ids = []
+        labels = []
+        parents = []
+        
+        # Helper function to build full taxonomic path for each node
+        def build_taxonomy_path(node_key: str, all_data: Dict[str, Dict[str, Any]]) -> List[Tuple[str, str, str]]:
+            """Build full taxonomic path from root to node. Returns list of (id, label, parent_id) tuples."""
+            path = []
+            current = node_key
+            visited = set()  # Prevent infinite loops
+            
+            while current and current != "" and current not in visited:
+                visited.add(current)
+                if current in all_data:
+                    node_data = all_data[current]
+                    node_id = f"{node_data['aphiaid']}"
+                    node_label = f"{node_data['scientificname']}<br>({node_data['rank']})"
+                    parent_id = str(node_data.get("parent", "")) if node_data.get("parent", "") != "" else ""
+                    path.append((node_id, node_label, parent_id))
+                    current = str(node_data.get("parent", ""))
+                else:
+                    break
+                    
+            return list(reversed(path))  # Root to leaf order
+        
+        # Collect all unique nodes from the taxonomic paths
+        unique_nodes = {}  # aphia_id -> (label, parent_id, is_final, is_original)
+        
+        # Process final IDs and their complete taxonomic paths
+        for node_key, node_data in final_ids.items():
+            path = build_taxonomy_path(node_key, all_data)
+            for node_id, node_label, parent_id in path:
+                is_final = (node_id == node_key)
+                is_original = int(node_id) in original_aphia_ids
+                
+                if node_id not in unique_nodes:
+                    unique_nodes[node_id] = (node_label, parent_id, is_final, is_original)
+        
+        # Add any additional parent nodes from all_data to ensure complete hierarchy
+        for node_key, node_data in all_data.items():
+            path = build_taxonomy_path(node_key, all_data)
+            for node_id, node_label, parent_id in path:
+                is_final = node_id in final_ids
+                is_original = int(node_id) in original_aphia_ids
+                
+                if node_id not in unique_nodes:
+                    unique_nodes[node_id] = (node_label, parent_id, is_final, is_original)
+        
+        # Convert to lists for Plotly sunburst
+        colors = []
+        for node_id, (node_label, parent_id, is_final, is_original) in unique_nodes.items():
+            ids.append(node_id)
+            labels.append(node_label)
+            parents.append(parent_id)
+            
+            # Determine color based on node type
+            if is_final and is_original:
+                colors.append("pink")  # Final and original
+            elif is_final:
+                colors.append("royalblue")  # Final but not original
+            elif is_original:
+                colors.append("red")  # Original but not final
+            else:
+                colors.append("lightgrey")  # Neither
+        
+        # Create sunburst chart without values
+        fig = go.Figure(go.Sunburst(
+            ids=ids,
+            labels=labels,
+            parents=parents,
+            hovertemplate='<b>%{label}</b><br>ID: %{id}<extra></extra>',
+            maxdepth=8,  # Allow deeper hierarchy
+        ))
+        
+        fig.update_traces(
+            marker_colors=colors,
+            marker_line=dict(color="white", width=1)
+        )
+        
+        fig.update_layout(
+            title=f"DASID {dasid} Taxonomic Sunburst Chart<br>Final: {len(final_ids)} | Original: {len(original_aphia_ids)}",
+            font_size=12,
+            margin=dict(t=60, l=10, r=10, b=10)
+        )
+        
+        fig.write_html(file_path)
+        return file_path
+    
+    def show_sunburst_chart(self, final_ids: Dict[str, Dict[str, Any]], 
+                          all_data: Dict[str, Dict[str, Any]], 
+                          dasid: int, original_aphia_ids: List[int]):
+        """
+        Show the sunburst chart visualization in browser.
+        
+        Args:
+            final_ids: Dictionary of final selected IDs
+            all_data: Dictionary of all cached taxonomic data
+            dasid: The DASID being processed
+            original_aphia_ids: Original list of Aphia IDs for this DASID
+        """
+        # Build lists for sunburst chart using only ids, labels, and parents
+        ids = []
+        labels = []
+        parents = []
+        
+        # Helper function to build full taxonomic path for each node
+        def build_taxonomy_path(node_key: str, all_data: Dict[str, Dict[str, Any]]) -> List[Tuple[str, str, str]]:
+            """Build full taxonomic path from root to node. Returns list of (id, label, parent_id) tuples."""
+            path = []
+            current = node_key
+            visited = set()  # Prevent infinite loops
+            
+            while current and current != "" and current not in visited:
+                visited.add(current)
+                if current in all_data:
+                    node_data = all_data[current]
+                    node_id = f"{node_data['aphiaid']}"
+                    node_label = f"{node_data['scientificname']}<br>({node_data['rank']})"
+                    parent_id = str(node_data.get("parent", "")) if node_data.get("parent", "") != "" else ""
+                    path.append((node_id, node_label, parent_id))
+                    current = str(node_data.get("parent", ""))
+                else:
+                    break
+                    
+            return list(reversed(path))  # Root to leaf order
+        
+        # Collect all unique nodes from the taxonomic paths
+        unique_nodes = {}  # aphia_id -> (label, parent_id, is_final, is_original)
+        
+        # Process final IDs and their complete taxonomic paths
+        for node_key, node_data in final_ids.items():
+            path = build_taxonomy_path(node_key, all_data)
+            for node_id, node_label, parent_id in path:
+                is_final = (node_id == node_key)
+                is_original = int(node_id) in original_aphia_ids
+                
+                if node_id not in unique_nodes:
+                    unique_nodes[node_id] = (node_label, parent_id, is_final, is_original)
+        
+        # Add any additional parent nodes from all_data to ensure complete hierarchy
+        for node_key, node_data in all_data.items():
+            path = build_taxonomy_path(node_key, all_data)
+            for node_id, node_label, parent_id in path:
+                is_final = node_id in final_ids
+                is_original = int(node_id) in original_aphia_ids
+                
+                if node_id not in unique_nodes:
+                    unique_nodes[node_id] = (node_label, parent_id, is_final, is_original)
+        
+        # Convert to lists for Plotly sunburst
+        colors = []
+        for node_id, (node_label, parent_id, is_final, is_original) in unique_nodes.items():
+            ids.append(node_id)
+            labels.append(node_label)
+            parents.append(parent_id)
+            
+            # Determine color based on node type
+            if is_final and is_original:
+                colors.append("pink")  # Final and original
+            elif is_final:
+                colors.append("royalblue")  # Final but not original
+            elif is_original:
+                colors.append("red")  # Original but not final
+            else:
+                colors.append("lightgrey")  # Neither
+        
+        # Create and show sunburst chart without values
+        fig = go.Figure(go.Sunburst(
+            ids=ids,
+            labels=labels,
+            parents=parents,
+            hovertemplate='<b>%{label}</b><br>ID: %{id}<extra></extra>',
+            maxdepth=8,  # Allow deeper hierarchy
+        ))
+        
+        fig.update_traces(
+            marker_colors=colors,
+            marker_line=dict(color="white", width=1)
+        )
+        
+        fig.update_layout(
+            title=f"DASID {dasid} Taxonomic Sunburst Chart<br>Final: {len(final_ids)} | Original: {len(original_aphia_ids)}",
+            font_size=12,
+            margin=dict(t=60, l=10, r=10, b=10)
+        )
+        
         fig.show()

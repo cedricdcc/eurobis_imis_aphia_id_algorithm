@@ -19,7 +19,8 @@ class AphiaIdAlgorithm:
                  max_nodes: int = 50,
                  amplifier: int = 10,
                  cache_file: str = "data_object.json",
-                 base_path: str = ""):
+                 base_path: str = "",
+                 min_nodes: int = 1):
         """
         Initialize the algorithm.
         
@@ -28,10 +29,12 @@ class AphiaIdAlgorithm:
             amplifier: Multiplier for rank scoring
             cache_file: Name of the cache file
             base_path: Base directory path for file operations
+            min_nodes: Minimum number of nodes that the result must have for each DASID
         """
         self.max_nodes = max_nodes
         self.amplifier = amplifier
         self.base_path = base_path
+        self.min_nodes = min_nodes
         
         # Initialize components
         self.data_loader = DataLoader(base_path)
@@ -122,6 +125,45 @@ class AphiaIdAlgorithm:
                 children.append(node_data)
         return children
     
+    def _ensure_min_nodes(self, final_ids: Dict[str, Dict[str, Any]], 
+                         all_data: Dict[str, Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+        """
+        Ensure minimum node count is met by adding available nodes.
+        
+        Args:
+            final_ids: Current final IDs
+            all_data: All available taxonomic data
+            
+        Returns:
+            Updated final_ids with additional nodes to meet minimum count
+        """
+        current_count = len(final_ids)
+        if current_count >= self.min_nodes:
+            return final_ids
+            
+        # Get all available nodes that aren't already in final_ids
+        available_nodes = []
+        for node_key, node_data in all_data.items():
+            if node_key not in final_ids:
+                available_nodes.append((node_key, node_data))
+        
+        # Sort available nodes by relevancy score (descending)
+        available_nodes.sort(key=lambda x: self.calculate_relevancy(x[1]), reverse=True)
+        
+        # Add nodes until we reach min_nodes or run out of available nodes
+        nodes_to_add = self.min_nodes - current_count
+        final_ids_copy = final_ids.copy()
+        
+        for i, (node_key, node_data) in enumerate(available_nodes):
+            if i >= nodes_to_add:
+                break
+            final_ids_copy[node_key] = node_data
+            
+        if len(final_ids_copy) < self.min_nodes:
+            print(f"Warning: Could only add {len(final_ids_copy)} total nodes (requested min_nodes: {self.min_nodes})")
+            
+        return final_ids_copy
+    
     def apply_algorithm(self, all_data: Dict[str, Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
         """
         Apply the main algorithm to select optimal Aphia IDs.
@@ -185,6 +227,11 @@ class AphiaIdAlgorithm:
                 
             except (IndexError, KeyError):
                 break
+        
+        # Step 3: Ensure minimum node count is met
+        if len(final_ids) < self.min_nodes:
+            print(f"Warning: Selected {len(final_ids)} nodes, but min_nodes is {self.min_nodes}. Attempting to add more nodes.")
+            final_ids = self._ensure_min_nodes(final_ids, all_data)
                 
         return final_ids
     
@@ -216,7 +263,7 @@ class AphiaIdAlgorithm:
         
         if not all_data:
             print(f"No data found for DASID {dasid}")
-            return {"final_ids": {}, "csv_file": None, "html_file": None}
+            return {"final_ids": {}, "csv_file": None, "html_file": None, "sunburst_file": None}
         
         # Step 2: Apply the algorithm
         final_ids = self.apply_algorithm(all_data)
@@ -227,21 +274,31 @@ class AphiaIdAlgorithm:
         csv_file = self.visualizer.write_results_to_csv(final_ids, dasid)
         print(f"Results saved to: {csv_file}")
         
-        # Step 4: Generate visualization
+        # Step 4: Generate visualizations
         html_file = None
+        sunburst_file = None
+        
         if save_visualization:
             html_file = self.visualizer.create_tree_visualization(
                 final_ids, all_data, dasid, aphia_ids
             )
             print(f"Tree visualization saved to: {html_file}")
             
+            # Generate sunburst chart
+            sunburst_file = self.visualizer.create_sunburst_chart(
+                final_ids, all_data, dasid, aphia_ids
+            )
+            print(f"Sunburst visualization saved to: {sunburst_file}")
+            
         if show_visualization:
             self.visualizer.show_tree_visualization(final_ids, all_data, dasid, aphia_ids)
+            self.visualizer.show_sunburst_chart(final_ids, all_data, dasid, aphia_ids)
         
         return {
             "final_ids": final_ids,
             "csv_file": csv_file,
             "html_file": html_file,
+            "sunburst_file": sunburst_file,
             "all_data": all_data
         }
     

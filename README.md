@@ -52,6 +52,7 @@ from eurobis_imis_aphia_id_algorithm import AphiaIdAlgorithm
 # Initialize the algorithm
 algorithm = AphiaIdAlgorithm(
     max_nodes=50,          # Maximum nodes per DASID
+    min_nodes=1,           # Minimum nodes per DASID (NEW!)
     amplifier=10,          # Rank scoring amplifier
     cache_file="data_object.json"  # Cache file name
 )
@@ -60,7 +61,7 @@ algorithm = AphiaIdAlgorithm(
 results = algorithm.process_csv_file(
     "aphia_ids_to_imis.csv",
     refresh_cache=False,        # Set True to refresh API cache
-    save_visualizations=True,   # Generate HTML tree visualizations
+    save_visualizations=True,   # Generate HTML visualizations
     show_visualizations=False   # Show visualizations in browser
 )
 
@@ -68,7 +69,8 @@ results = algorithm.process_csv_file(
 for dasid, result in results.items():
     print(f"DASID {dasid}: {len(result['final_ids'])} final IDs selected")
     print(f"CSV output: {result['csv_file']}")
-    print(f"Visualization: {result['html_file']}")
+    print(f"Tree visualization: {result['html_file']}")
+    print(f"Sunburst visualization: {result['sunburst_file']}")  # NEW!
 ```
 
 ### Command Line Interface
@@ -78,7 +80,7 @@ for dasid, result in results.items():
 aphia-algorithm path/to/your/aphia_ids_to_imis.csv
 
 # With options
-aphia-algorithm data.csv --max-nodes 100 --refresh-cache --show-visualizations
+aphia-algorithm data.csv --max-nodes 100 --min-nodes 5 --refresh-cache --show-visualizations
 ```
 
 ### Example Script
@@ -97,6 +99,7 @@ Main algorithm class for determining optimal Aphia IDs.
 
 **Parameters:**
 - `max_nodes` (int): Maximum number of nodes to select per DASID (default: 50)
+- `min_nodes` (int): Minimum number of nodes to select per DASID (default: 1) **NEW!**
 - `amplifier` (int): Multiplier for rank scoring (default: 10)
 - `cache_file` (str): Name of the cache file (default: "data_object.json")
 - `base_path` (str): Base directory path for file operations (default: "")
@@ -157,7 +160,24 @@ IMIS_DasID,aphia_id
 
 For each DASID, the algorithm produces:
 - `{dasid}_chosen_aphia_ids.csv`: Selected Aphia IDs with taxonomic information
-- `{dasid}_tree_view.html`: Interactive tree visualization (if enabled)
+- `{dasid}_tree_view.html`: Interactive tree map visualization (if enabled)
+- `{dasid}_sunburst.html`: Interactive sunburst chart visualization (if enabled) **NEW!**
+
+## Visualizations
+
+The algorithm generates two types of interactive visualizations:
+
+### Tree Map Visualization
+- Shows hierarchical structure as nested rectangles
+- Color-coded: pink (final+original), royalblue (final only), red (original only), grey (other)
+- Includes hover information with taxonomic details
+
+### Sunburst Chart Visualization **NEW!**
+- Displays taxonomic hierarchy as concentric circles radiating from center
+- Each ring represents a taxonomic rank (Kingdom → Phylum → Class → etc.)
+- Interactive navigation: click segments to zoom into subtrees
+- Same color coding as tree map for consistency
+- Handles complex hierarchies and circular references safely
 
 ## Algorithm Details
 
@@ -169,7 +189,8 @@ The algorithm works by:
 4. **Tree Root Finding**: Identifies root nodes based on children counts
 5. **Relevance Calculation**: Computes relevance scores based on taxonomic hierarchy
 6. **Iterative Selection**: Adds children and removes parents until max nodes or depth reached
-7. **Output Generation**: Creates CSV files and HTML visualizations
+7. **Minimum Node Enforcement**: Ensures at least `min_nodes` are selected by adding additional nodes by relevancy **NEW!**
+8. **Output Generation**: Creates CSV files and HTML visualizations (tree map and sunburst chart)
 
 ## Development
 
