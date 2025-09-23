@@ -9,7 +9,7 @@ a tree structure to find optimal final IDs.
 from .algorithm import AphiaIdAlgorithm
 from .data_loader import DataLoader
 from .api_client import AphiaApiClient
-from .utils import RANK_SCORE_DICT, SUBRANK_SCORE_DICT
+from .utils import RANK_SCORE_DICT, SUBRANK_SCORE_DICT, create_reduction_table
 
 __version__ = "1.0.0"
 __author__ = "Cedric DCC"
@@ -20,5 +20,6 @@ __all__ = [
     "DataLoader", 
     "AphiaApiClient",
     "RANK_SCORE_DICT", 
-    "SUBRANK_SCORE_DICT"
+    "SUBRANK_SCORE_DICT",
+    "create_reduction_table"
 ]

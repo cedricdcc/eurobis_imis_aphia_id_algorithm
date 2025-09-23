@@ -148,3 +148,90 @@ def write_cache_data(cache: Dict[str, Any], cache_file: str, base_path: str = ""
     file_path = os.path.join(base_path, cache_file) if base_path else cache_file
     with open(file_path, "w") as f:
         json.dump(new_dict, f)
+
+
+def create_reduction_table(initial_data: Dict[str, Dict[str, Any]], 
+                         final_data: Dict[str, Dict[str, Any]]) -> str:
+    """
+    Create a reduction table showing taxa count by hierarchical level.
+    
+    Args:
+        initial_data: Dictionary of initial taxonomic data
+        final_data: Dictionary of final selected taxonomic data
+        
+    Returns:
+        String representation of the reduction table
+    """
+    # Count taxa by rank for initial and final datasets
+    initial_counts = {}
+    final_counts = {}
+    
+    # Count initial data by rank
+    for node_data in initial_data.values():
+        rank = node_data.get('rank', 'Unknown').title()
+        initial_counts[rank] = initial_counts.get(rank, 0) + 1
+    
+    # Count final data by rank  
+    for node_data in final_data.values():
+        rank = node_data.get('rank', 'Unknown').title()
+        final_counts[rank] = final_counts.get(rank, 0) + 1
+    
+    # Get all ranks present in either dataset
+    all_ranks = set(initial_counts.keys()) | set(final_counts.keys())
+    
+    # Sort ranks by taxonomic hierarchy (using reverse order of RANK_SCORE_DICT)
+    rank_order = ["Domain", "Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species"]
+    sorted_ranks = []
+    
+    # Add known ranks in hierarchical order
+    for rank in rank_order:
+        if rank in all_ranks:
+            sorted_ranks.append(rank)
+    
+    # Add any unknown ranks at the end
+    for rank in sorted(all_ranks):
+        if rank not in sorted_ranks:
+            sorted_ranks.append(rank)
+    
+    if not sorted_ranks:
+        return "No taxonomic data available for reduction table."
+    
+    # Build table
+    table_lines = []
+    table_lines.append("=" * 60)
+    table_lines.append("TAXA REDUCTION SUMMARY BY HIERARCHICAL LEVEL")
+    table_lines.append("=" * 60)
+    table_lines.append(f"{'Rank':<15} {'Initial':<8} {'Final':<8} {'Reduced':<8} {'% Reduced':<10}")
+    table_lines.append("-" * 60)
+    
+    total_initial = 0
+    total_final = 0
+    
+    for rank in sorted_ranks:
+        initial_count = initial_counts.get(rank, 0)
+        final_count = final_counts.get(rank, 0)
+        reduced_count = initial_count - final_count
+        
+        total_initial += initial_count
+        total_final += final_count
+        
+        if initial_count > 0:
+            percent_reduced = (reduced_count / initial_count) * 100
+        else:
+            percent_reduced = 0.0
+            
+        table_lines.append(
+            f"{rank:<15} {initial_count:<8} {final_count:<8} {reduced_count:<8} {percent_reduced:>6.1f}%"
+        )
+    
+    # Add totals
+    table_lines.append("-" * 60)
+    total_reduced = total_initial - total_final
+    total_percent_reduced = (total_reduced / total_initial) * 100 if total_initial > 0 else 0.0
+    
+    table_lines.append(
+        f"{'TOTAL':<15} {total_initial:<8} {total_final:<8} {total_reduced:<8} {total_percent_reduced:>6.1f}%"
+    )
+    table_lines.append("=" * 60)
+    
+    return "\n".join(table_lines)

@@ -46,7 +46,8 @@ def main():
             csv_file=csv_file,
             refresh_cache=False,  # Set to True to refresh the cache
             save_visualizations=True,  # Save HTML visualizations (tree map + sunburst)
-            show_visualizations=False  # Set to True to show visualizations in browser
+            show_visualizations=False,  # Set to True to show visualizations in browser
+            show_reduction_table=True  # Display taxa reduction tables by hierarchical level
         )
         
         # Print summary of results
