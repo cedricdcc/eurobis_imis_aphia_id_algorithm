@@ -164,3 +164,79 @@ class TestAphiaIdAlgorithm:
             
         result = algorithm.apply_algorithm(large_data)
         assert len(result) <= 2
+        
+    def test_min_nodes_functionality_below_threshold(self):
+        """Test that min_nodes adds nodes when below threshold."""
+        # Create algorithm with min_nodes=3 
+        algorithm = AphiaIdAlgorithm(max_nodes=50, min_nodes=3)
+        
+        # Create small dataset that would normally result in 1 node
+        small_data = {
+            "1": {
+                "scientificname": "Root",
+                "aphiaid": 1,
+                "rank": "Kingdom",
+                "parent": "",
+                "children": 0,
+                "directchildren": 0
+            },
+            "2": {
+                "scientificname": "Node2",
+                "aphiaid": 2,
+                "rank": "Phylum",
+                "parent": "",
+                "children": 0,
+                "directchildren": 0
+            },
+            "3": {
+                "scientificname": "Node3", 
+                "aphiaid": 3,
+                "rank": "Class",
+                "parent": "",
+                "children": 0,
+                "directchildren": 0
+            }
+        }
+        
+        result = algorithm.apply_algorithm(small_data)
+        # Should have at least min_nodes entries
+        assert len(result) >= algorithm.min_nodes
+        assert len(result) == 3  # Should select all 3 available nodes
+        
+    def test_min_nodes_functionality_meets_threshold(self):
+        """Test that min_nodes doesn't affect results when threshold is already met."""
+        algorithm = AphiaIdAlgorithm(max_nodes=50, min_nodes=2)
+        
+        # Use existing sample data which typically results in more than 2 nodes
+        sample_data = {
+            "1": {"scientificname": "Root", "aphiaid": 1, "rank": "Kingdom", "parent": "", "children": 3, "directchildren": 2},
+            "2": {"scientificname": "Child1", "aphiaid": 2, "rank": "Phylum", "parent": "1", "children": 1, "directchildren": 1},
+            "3": {"scientificname": "Child2", "aphiaid": 3, "rank": "Phylum", "parent": "1", "children": 0, "directchildren": 0},
+            "4": {"scientificname": "Grandchild", "aphiaid": 4, "rank": "Class", "parent": "2", "children": 0, "directchildren": 0}
+        }
+        
+        result = algorithm.apply_algorithm(sample_data)
+        # Should have at least min_nodes entries
+        assert len(result) >= algorithm.min_nodes
+        
+    def test_min_nodes_zero(self):
+        """Test min_nodes=0 doesn't force any nodes to be added."""
+        algorithm = AphiaIdAlgorithm(max_nodes=50, min_nodes=0)
+        
+        # Empty data should return empty result
+        result = algorithm.apply_algorithm({})
+        assert len(result) == 0
+        
+    def test_min_nodes_exceeds_available(self):
+        """Test warning when min_nodes exceeds available nodes."""
+        algorithm = AphiaIdAlgorithm(max_nodes=50, min_nodes=10)
+        
+        # Only provide 2 nodes but request 10 minimum
+        limited_data = {
+            "1": {"scientificname": "Node1", "aphiaid": 1, "rank": "Kingdom", "parent": "", "children": 0, "directchildren": 0},
+            "2": {"scientificname": "Node2", "aphiaid": 2, "rank": "Phylum", "parent": "", "children": 0, "directchildren": 0}
+        }
+        
+        result = algorithm.apply_algorithm(limited_data)
+        # Should return all available nodes (2) even though min_nodes is 10
+        assert len(result) == 2

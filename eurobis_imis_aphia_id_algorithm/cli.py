@@ -28,6 +28,13 @@ def main():
     )
     
     parser.add_argument(
+        "--min-nodes",
+        type=int,
+        default=1,
+        help="Minimum number of nodes to select per DASID (default: 1)"
+    )
+    
+    parser.add_argument(
         "--amplifier", 
         type=int,
         default=10,
@@ -74,7 +81,8 @@ def main():
         max_nodes=args.max_nodes,
         amplifier=args.amplifier,
         cache_file=args.cache_file,
-        base_path=base_path
+        base_path=base_path,
+        min_nodes=args.min_nodes
     )
     
     try:
