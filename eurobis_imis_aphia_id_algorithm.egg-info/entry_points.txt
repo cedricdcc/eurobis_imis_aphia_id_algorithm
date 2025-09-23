@@ -1,0 +1,2 @@
+[console_scripts]
+aphia-algorithm = eurobis_imis_aphia_id_algorithm.cli:main

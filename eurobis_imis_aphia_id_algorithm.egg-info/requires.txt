@@ -1,0 +1,14 @@
+numpy>=1.18.0
+pandas>=1.0.0
+plotly>=4.0.0
+requests>=2.20.0
+
+[database]
+pyodbc>=4.0.0
+
+[dev]
+black>=21.0.0
+flake8>=3.8.0
+isort>=5.0.0
+pytest-cov>=2.0.0
+pytest>=6.0.0

@@ -1,3 +1,26 @@
+Metadata-Version: 2.1
+Name: eurobis-imis-aphia-id-algorithm
+Version: 1.0.0
+Summary: Algorithm to determine which Aphia IDs to use
+Home-page: https://github.com/cedricdcc/eurobis_imis_aphia_id_algorithm
+Author: Cedric DCC
+Author-email: cedric@example.com
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Provides-Extra: database
+Provides-Extra: dev
+License-File: LICENSE
+
 # EurOBIS IMIS Aphia ID Algorithm
 
 Algorithm to determine which Aphia IDs to use based on sorting IDs per DASID, querying via REST calls, caching results in JSON, and processing a tree structure to find optimal final IDs.
