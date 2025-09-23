@@ -238,7 +238,8 @@ class AphiaIdAlgorithm:
     def process_dasid(self, dasid: int, aphia_ids: List[int], 
                      refresh_cache: bool = False,
                      save_visualization: bool = True,
-                     show_visualization: bool = False) -> Dict[str, Any]:
+                     show_visualization: bool = False,
+                     show_reduction_table: bool = True) -> Dict[str, Any]:
         """
         Process a single DASID through the complete algorithm pipeline.
         
@@ -248,6 +249,7 @@ class AphiaIdAlgorithm:
             refresh_cache: Whether to refresh the API cache
             save_visualization: Whether to save visualization to HTML file
             show_visualization: Whether to show visualization in browser
+            show_reduction_table: Whether to display the reduction table
             
         Returns:
             Dictionary containing processing results
@@ -269,6 +271,12 @@ class AphiaIdAlgorithm:
         final_ids = self.apply_algorithm(all_data)
         
         print(f"DASID {dasid}: Selected {len(final_ids)} final IDs from {len(aphia_ids)} original IDs")
+        
+        # Step 2.5: Display reduction table if requested
+        if show_reduction_table:
+            from .utils import create_reduction_table
+            reduction_table = create_reduction_table(all_data, final_ids)
+            print("\n" + reduction_table + "\n")
         
         # Step 3: Save results to CSV
         csv_file = self.visualizer.write_results_to_csv(final_ids, dasid)
@@ -305,7 +313,8 @@ class AphiaIdAlgorithm:
     def process_csv_file(self, csv_file: str = "aphia_ids_to_imis.csv",
                         refresh_cache: bool = False,
                         save_visualizations: bool = True,
-                        show_visualizations: bool = False) -> Dict[int, Dict[str, Any]]:
+                        show_visualizations: bool = False,
+                        show_reduction_table: bool = True) -> Dict[int, Dict[str, Any]]:
         """
         Process all DASIDs from a CSV file through the complete algorithm pipeline.
         
@@ -314,6 +323,7 @@ class AphiaIdAlgorithm:
             refresh_cache: Whether to refresh the API cache
             save_visualizations: Whether to save visualizations to HTML files
             show_visualizations: Whether to show visualizations in browser
+            show_reduction_table: Whether to display reduction tables for each DASID
             
         Returns:
             Dictionary mapping DASID to processing results
@@ -330,7 +340,8 @@ class AphiaIdAlgorithm:
                     aphia_ids, 
                     refresh_cache,
                     save_visualizations,
-                    show_visualizations
+                    show_visualizations,
+                    show_reduction_table
                 )
                 results[dasid] = result
                 

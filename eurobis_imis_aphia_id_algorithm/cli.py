@@ -65,6 +65,12 @@ def main():
         help="Show tree visualizations in browser"
     )
     
+    parser.add_argument(
+        "--no-reduction-table",
+        action="store_true",
+        help="Skip displaying the taxa reduction table"
+    )
+    
     args = parser.parse_args()
     
     # Check if CSV file exists
@@ -91,7 +97,8 @@ def main():
             csv_file=csv_filename,
             refresh_cache=args.refresh_cache,
             save_visualizations=not args.no_visualizations,
-            show_visualizations=args.show_visualizations
+            show_visualizations=args.show_visualizations,
+            show_reduction_table=not args.no_reduction_table
         )
         
         # Print results
