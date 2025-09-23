@@ -1,5 +1,6 @@
-plotly
-pandas
-numpy
-requests
-pyodbc
+plotly>=4.0.0
+pandas>=1.0.0
+numpy>=1.18.0
+requests>=2.20.0
+pyodbc>=4.0.0
+pytest>=6.0.0
