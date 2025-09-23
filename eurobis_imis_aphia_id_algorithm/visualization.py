@@ -4,7 +4,7 @@ Visualization utilities for tree maps and data output.
 
 import csv
 import os
-from typing import Dict, List, Any, Optional
+from typing import Dict, List, Any, Optional, Tuple
 import plotly.express as px
 import plotly.graph_objects as go
 
@@ -283,15 +283,14 @@ class Visualizer:
             
         file_path = os.path.join(self.base_path, output_file) if self.base_path else output_file
         
-        # Build hierarchical paths for sunburst chart
+        # Build lists for sunburst chart using only ids, labels, and parents
         ids = []
         labels = []
         parents = []
-        values = []
         
         # Helper function to build full taxonomic path for each node
-        def build_taxonomy_path(node_key: str, all_data: Dict[str, Dict[str, Any]]) -> List[str]:
-            """Build full taxonomic path from root to node."""
+        def build_taxonomy_path(node_key: str, all_data: Dict[str, Dict[str, Any]]) -> List[Tuple[str, str, str]]:
+            """Build full taxonomic path from root to node. Returns list of (id, label, parent_id) tuples."""
             path = []
             current = node_key
             visited = set()  # Prevent infinite loops
@@ -300,123 +299,63 @@ class Visualizer:
                 visited.add(current)
                 if current in all_data:
                     node_data = all_data[current]
-                    path.append(f"{node_data['scientificname']} ({node_data['rank']})")
+                    node_id = f"{node_data['aphiaid']}"
+                    node_label = f"{node_data['scientificname']}<br>({node_data['rank']})"
+                    parent_id = str(node_data.get("parent", "")) if node_data.get("parent", "") != "" else ""
+                    path.append((node_id, node_label, parent_id))
                     current = str(node_data.get("parent", ""))
                 else:
                     break
                     
             return list(reversed(path))  # Root to leaf order
         
-        # Build unique hierarchy from all nodes (both final and all_data)
-        all_paths = {}  # aphia_id -> full_path
+        # Collect all unique nodes from the taxonomic paths
+        unique_nodes = {}  # aphia_id -> (label, parent_id, is_final, is_original)
         
-        # Process final IDs first
+        # Process final IDs and their complete taxonomic paths
         for node_key, node_data in final_ids.items():
             path = build_taxonomy_path(node_key, all_data)
-            if path:
-                all_paths[node_key] = path
+            for node_id, node_label, parent_id in path:
+                is_final = (node_id == node_key)
+                is_original = int(node_id) in original_aphia_ids
+                
+                if node_id not in unique_nodes:
+                    unique_nodes[node_id] = (node_label, parent_id, is_final, is_original)
         
-        # Add parent paths for completeness
+        # Add any additional parent nodes from all_data to ensure complete hierarchy
         for node_key, node_data in all_data.items():
-            if node_key not in all_paths:
-                path = build_taxonomy_path(node_key, all_data)
-                if path:
-                    all_paths[node_key] = path
-        
-        # Build sunburst data structure
-        hierarchy_nodes = {}  # path_string -> node_info
-        leaf_nodes = set()  # Track which nodes are leaf nodes
-        
-        for node_key, path in all_paths.items():
-            node_data = all_data.get(node_key, final_ids.get(node_key, {}))
-            if not node_data:
-                continue
+            path = build_taxonomy_path(node_key, all_data)
+            for node_id, node_label, parent_id in path:
+                is_final = node_id in final_ids
+                is_original = int(node_id) in original_aphia_ids
                 
-            # Create entries for each level in the path
-            current_path = ""
-            for i, level_label in enumerate(path):
-                if i == 0:
-                    current_path = level_label
-                    parent_path = ""
-                else:
-                    parent_path = current_path
-                    current_path = f"{current_path} - {level_label}"
-                
-                if current_path not in hierarchy_nodes:
-                    # Determine if this is a final selected node
-                    is_final = node_key in final_ids and i == len(path) - 1
-                    is_original = node_data.get("aphiaid", 0) in original_aphia_ids
-                    
-                    hierarchy_nodes[current_path] = {
-                        "id": current_path,
-                        "label": level_label,
-                        "parent": parent_path,
-                        "value": 0,  # Will be calculated later
-                        "is_final": is_final,
-                        "is_original": is_original,
-                        "node_data": node_data,
-                        "children": set()
-                    }
-                
-                # Track parent-child relationships
-                if parent_path and parent_path in hierarchy_nodes:
-                    hierarchy_nodes[parent_path]["children"].add(current_path)
-                    
-                # Mark this as a leaf if it's the end of the path
-                if i == len(path) - 1:
-                    leaf_nodes.add(current_path)
+                if node_id not in unique_nodes:
+                    unique_nodes[node_id] = (node_label, parent_id, is_final, is_original)
         
-        # Calculate values bottom-up: leaves get value 1, parents get sum of children
-        def calculate_node_value(node_id: str) -> int:
-            if node_id not in hierarchy_nodes:
-                return 0
-            
-            node_info = hierarchy_nodes[node_id]
-            if node_id in leaf_nodes:
-                node_info["value"] = 1
-                return 1
-            else:
-                # Sum of children's values
-                total_value = 0
-                for child_id in node_info["children"]:
-                    total_value += calculate_node_value(child_id)
-                node_info["value"] = max(total_value, 1)  # Ensure at least 1
-                return node_info["value"]
-        
-        # Calculate values for all root nodes
-        root_nodes = [node_id for node_id, node_info in hierarchy_nodes.items() 
-                     if not node_info["parent"]]
-        for root_id in root_nodes:
-            calculate_node_value(root_id)
-        
-        # Convert to lists for Plotly
-        for node_info in hierarchy_nodes.values():
-            ids.append(node_info["id"])
-            labels.append(node_info["label"])
-            parents.append(node_info["parent"])
-            values.append(node_info["value"])
-        
-        # Create colors based on node type
+        # Convert to lists for Plotly sunburst
         colors = []
-        for node_info in hierarchy_nodes.values():
-            if node_info["is_final"] and node_info["is_original"]:
+        for node_id, (node_label, parent_id, is_final, is_original) in unique_nodes.items():
+            ids.append(node_id)
+            labels.append(node_label)
+            parents.append(parent_id)
+            
+            # Determine color based on node type
+            if is_final and is_original:
                 colors.append("pink")  # Final and original
-            elif node_info["is_final"]:
+            elif is_final:
                 colors.append("royalblue")  # Final but not original
-            elif node_info["is_original"]:
+            elif is_original:
                 colors.append("red")  # Original but not final
             else:
                 colors.append("lightgrey")  # Neither
         
-        # Create sunburst chart
+        # Create sunburst chart without values
         fig = go.Figure(go.Sunburst(
             ids=ids,
             labels=labels,
             parents=parents,
-            values=values,
-            branchvalues="total",
-            hovertemplate='<b>%{label}</b><br>Path: %{id}<br>Value: %{value}<extra></extra>',
-            maxdepth=4,
+            hovertemplate='<b>%{label}</b><br>ID: %{id}<extra></extra>',
+            maxdepth=8,  # Allow deeper hierarchy
         ))
         
         fig.update_traces(
@@ -445,18 +384,14 @@ class Visualizer:
             dasid: The DASID being processed
             original_aphia_ids: Original list of Aphia IDs for this DASID
         """
-        # Build the sunburst chart data similar to create_sunburst_chart
-        # but show it directly instead of saving to file
-        
-        # Build hierarchical paths for sunburst chart
+        # Build lists for sunburst chart using only ids, labels, and parents
         ids = []
         labels = []
         parents = []
-        values = []
         
         # Helper function to build full taxonomic path for each node
-        def build_taxonomy_path(node_key: str, all_data: Dict[str, Dict[str, Any]]) -> List[str]:
-            """Build full taxonomic path from root to node."""
+        def build_taxonomy_path(node_key: str, all_data: Dict[str, Dict[str, Any]]) -> List[Tuple[str, str, str]]:
+            """Build full taxonomic path from root to node. Returns list of (id, label, parent_id) tuples."""
             path = []
             current = node_key
             visited = set()  # Prevent infinite loops
@@ -465,123 +400,63 @@ class Visualizer:
                 visited.add(current)
                 if current in all_data:
                     node_data = all_data[current]
-                    path.append(f"{node_data['scientificname']} ({node_data['rank']})")
+                    node_id = f"{node_data['aphiaid']}"
+                    node_label = f"{node_data['scientificname']}<br>({node_data['rank']})"
+                    parent_id = str(node_data.get("parent", "")) if node_data.get("parent", "") != "" else ""
+                    path.append((node_id, node_label, parent_id))
                     current = str(node_data.get("parent", ""))
                 else:
                     break
                     
             return list(reversed(path))  # Root to leaf order
         
-        # Build unique hierarchy from all nodes (both final and all_data)
-        all_paths = {}  # aphia_id -> full_path
+        # Collect all unique nodes from the taxonomic paths
+        unique_nodes = {}  # aphia_id -> (label, parent_id, is_final, is_original)
         
-        # Process final IDs first
+        # Process final IDs and their complete taxonomic paths
         for node_key, node_data in final_ids.items():
             path = build_taxonomy_path(node_key, all_data)
-            if path:
-                all_paths[node_key] = path
+            for node_id, node_label, parent_id in path:
+                is_final = (node_id == node_key)
+                is_original = int(node_id) in original_aphia_ids
+                
+                if node_id not in unique_nodes:
+                    unique_nodes[node_id] = (node_label, parent_id, is_final, is_original)
         
-        # Add parent paths for completeness
+        # Add any additional parent nodes from all_data to ensure complete hierarchy
         for node_key, node_data in all_data.items():
-            if node_key not in all_paths:
-                path = build_taxonomy_path(node_key, all_data)
-                if path:
-                    all_paths[node_key] = path
-        
-        # Build sunburst data structure
-        hierarchy_nodes = {}  # path_string -> node_info
-        leaf_nodes = set()  # Track which nodes are leaf nodes
-        
-        for node_key, path in all_paths.items():
-            node_data = all_data.get(node_key, final_ids.get(node_key, {}))
-            if not node_data:
-                continue
+            path = build_taxonomy_path(node_key, all_data)
+            for node_id, node_label, parent_id in path:
+                is_final = node_id in final_ids
+                is_original = int(node_id) in original_aphia_ids
                 
-            # Create entries for each level in the path
-            current_path = ""
-            for i, level_label in enumerate(path):
-                if i == 0:
-                    current_path = level_label
-                    parent_path = ""
-                else:
-                    parent_path = current_path
-                    current_path = f"{current_path} - {level_label}"
-                
-                if current_path not in hierarchy_nodes:
-                    # Determine if this is a final selected node
-                    is_final = node_key in final_ids and i == len(path) - 1
-                    is_original = node_data.get("aphiaid", 0) in original_aphia_ids
-                    
-                    hierarchy_nodes[current_path] = {
-                        "id": current_path,
-                        "label": level_label,
-                        "parent": parent_path,
-                        "value": 0,  # Will be calculated later
-                        "is_final": is_final,
-                        "is_original": is_original,
-                        "node_data": node_data,
-                        "children": set()
-                    }
-                
-                # Track parent-child relationships
-                if parent_path and parent_path in hierarchy_nodes:
-                    hierarchy_nodes[parent_path]["children"].add(current_path)
-                    
-                # Mark this as a leaf if it's the end of the path
-                if i == len(path) - 1:
-                    leaf_nodes.add(current_path)
+                if node_id not in unique_nodes:
+                    unique_nodes[node_id] = (node_label, parent_id, is_final, is_original)
         
-        # Calculate values bottom-up: leaves get value 1, parents get sum of children
-        def calculate_node_value(node_id: str) -> int:
-            if node_id not in hierarchy_nodes:
-                return 0
-            
-            node_info = hierarchy_nodes[node_id]
-            if node_id in leaf_nodes:
-                node_info["value"] = 1
-                return 1
-            else:
-                # Sum of children's values
-                total_value = 0
-                for child_id in node_info["children"]:
-                    total_value += calculate_node_value(child_id)
-                node_info["value"] = max(total_value, 1)  # Ensure at least 1
-                return node_info["value"]
-        
-        # Calculate values for all root nodes
-        root_nodes = [node_id for node_id, node_info in hierarchy_nodes.items() 
-                     if not node_info["parent"]]
-        for root_id in root_nodes:
-            calculate_node_value(root_id)
-        
-        # Convert to lists for Plotly
-        for node_info in hierarchy_nodes.values():
-            ids.append(node_info["id"])
-            labels.append(node_info["label"])
-            parents.append(node_info["parent"])
-            values.append(node_info["value"])
-        
-        # Create colors based on node type
+        # Convert to lists for Plotly sunburst
         colors = []
-        for node_info in hierarchy_nodes.values():
-            if node_info["is_final"] and node_info["is_original"]:
+        for node_id, (node_label, parent_id, is_final, is_original) in unique_nodes.items():
+            ids.append(node_id)
+            labels.append(node_label)
+            parents.append(parent_id)
+            
+            # Determine color based on node type
+            if is_final and is_original:
                 colors.append("pink")  # Final and original
-            elif node_info["is_final"]:
+            elif is_final:
                 colors.append("royalblue")  # Final but not original
-            elif node_info["is_original"]:
+            elif is_original:
                 colors.append("red")  # Original but not final
             else:
                 colors.append("lightgrey")  # Neither
         
-        # Create and show sunburst chart
+        # Create and show sunburst chart without values
         fig = go.Figure(go.Sunburst(
             ids=ids,
             labels=labels,
             parents=parents,
-            values=values,
-            branchvalues="total",
-            hovertemplate='<b>%{label}</b><br>Path: %{id}<br>Value: %{value}<extra></extra>',
-            maxdepth=4,
+            hovertemplate='<b>%{label}</b><br>ID: %{id}<extra></extra>',
+            maxdepth=8,  # Allow deeper hierarchy
         ))
         
         fig.update_traces(
