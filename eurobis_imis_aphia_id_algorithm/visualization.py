@@ -325,6 +325,7 @@ class Visualizer:
         
         # Build sunburst data structure
         hierarchy_nodes = {}  # path_string -> node_info
+        leaf_nodes = set()  # Track which nodes are leaf nodes
         
         for node_key, path in all_paths.items():
             node_data = all_data.get(node_key, final_ids.get(node_key, {}))
@@ -350,11 +351,43 @@ class Visualizer:
                         "id": current_path,
                         "label": level_label,
                         "parent": parent_path,
-                        "value": 1,
+                        "value": 0,  # Will be calculated later
                         "is_final": is_final,
                         "is_original": is_original,
-                        "node_data": node_data
+                        "node_data": node_data,
+                        "children": set()
                     }
+                
+                # Track parent-child relationships
+                if parent_path and parent_path in hierarchy_nodes:
+                    hierarchy_nodes[parent_path]["children"].add(current_path)
+                    
+                # Mark this as a leaf if it's the end of the path
+                if i == len(path) - 1:
+                    leaf_nodes.add(current_path)
+        
+        # Calculate values bottom-up: leaves get value 1, parents get sum of children
+        def calculate_node_value(node_id: str) -> int:
+            if node_id not in hierarchy_nodes:
+                return 0
+            
+            node_info = hierarchy_nodes[node_id]
+            if node_id in leaf_nodes:
+                node_info["value"] = 1
+                return 1
+            else:
+                # Sum of children's values
+                total_value = 0
+                for child_id in node_info["children"]:
+                    total_value += calculate_node_value(child_id)
+                node_info["value"] = max(total_value, 1)  # Ensure at least 1
+                return node_info["value"]
+        
+        # Calculate values for all root nodes
+        root_nodes = [node_id for node_id, node_info in hierarchy_nodes.items() 
+                     if not node_info["parent"]]
+        for root_id in root_nodes:
+            calculate_node_value(root_id)
         
         # Convert to lists for Plotly
         for node_info in hierarchy_nodes.values():
@@ -382,7 +415,7 @@ class Visualizer:
             parents=parents,
             values=values,
             branchvalues="total",
-            hovertemplate='<b>%{label}</b><br>Path: %{id}<extra></extra>',
+            hovertemplate='<b>%{label}</b><br>Path: %{id}<br>Value: %{value}<extra></extra>',
             maxdepth=4,
         ))
         
@@ -457,6 +490,7 @@ class Visualizer:
         
         # Build sunburst data structure
         hierarchy_nodes = {}  # path_string -> node_info
+        leaf_nodes = set()  # Track which nodes are leaf nodes
         
         for node_key, path in all_paths.items():
             node_data = all_data.get(node_key, final_ids.get(node_key, {}))
@@ -482,11 +516,43 @@ class Visualizer:
                         "id": current_path,
                         "label": level_label,
                         "parent": parent_path,
-                        "value": 1,
+                        "value": 0,  # Will be calculated later
                         "is_final": is_final,
                         "is_original": is_original,
-                        "node_data": node_data
+                        "node_data": node_data,
+                        "children": set()
                     }
+                
+                # Track parent-child relationships
+                if parent_path and parent_path in hierarchy_nodes:
+                    hierarchy_nodes[parent_path]["children"].add(current_path)
+                    
+                # Mark this as a leaf if it's the end of the path
+                if i == len(path) - 1:
+                    leaf_nodes.add(current_path)
+        
+        # Calculate values bottom-up: leaves get value 1, parents get sum of children
+        def calculate_node_value(node_id: str) -> int:
+            if node_id not in hierarchy_nodes:
+                return 0
+            
+            node_info = hierarchy_nodes[node_id]
+            if node_id in leaf_nodes:
+                node_info["value"] = 1
+                return 1
+            else:
+                # Sum of children's values
+                total_value = 0
+                for child_id in node_info["children"]:
+                    total_value += calculate_node_value(child_id)
+                node_info["value"] = max(total_value, 1)  # Ensure at least 1
+                return node_info["value"]
+        
+        # Calculate values for all root nodes
+        root_nodes = [node_id for node_id, node_info in hierarchy_nodes.items() 
+                     if not node_info["parent"]]
+        for root_id in root_nodes:
+            calculate_node_value(root_id)
         
         # Convert to lists for Plotly
         for node_info in hierarchy_nodes.values():
@@ -514,7 +580,7 @@ class Visualizer:
             parents=parents,
             values=values,
             branchvalues="total",
-            hovertemplate='<b>%{label}</b><br>Path: %{id}<extra></extra>',
+            hovertemplate='<b>%{label}</b><br>Path: %{id}<br>Value: %{value}<extra></extra>',
             maxdepth=4,
         ))
         
