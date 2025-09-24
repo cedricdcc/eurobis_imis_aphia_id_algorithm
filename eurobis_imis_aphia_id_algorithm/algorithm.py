@@ -82,12 +82,14 @@ class AphiaIdAlgorithm:
     def calculate_node_rankings(self, final_ids: Dict[str, Dict[str, Any]]) -> List[Dict[str, Any]]:
         """
         Calculate rankings for all nodes in final_ids based on relevancy and rank values.
+        Prioritizes lower taxonomic ranks (Species > Genus > Family > etc.) to favor
+        more specific taxa while maintaining taxonomic coverage.
         
         Args:
             final_ids: Dictionary of current final IDs
             
         Returns:
-            List of nodes with their rankings, sorted by rank_value
+            List of nodes with their rankings, sorted to prioritize lower taxa with children
         """
         relevancy_list = []
         
@@ -99,14 +101,35 @@ class AphiaIdAlgorithm:
             rank = node_data.get("rank", "")
             rank_value = calculate_rank_value(rank, self.amplifier)
             
+            # Create a composite score that favors lower ranks that have children to expand
+            children_count = node_data.get("children", 0)
+            direct_children = node_data.get("directchildren", 0)
+            
+            # Higher priority for nodes that:
+            # 1. Have children to expand (direct_children > 0)
+            # 2. Are lower in taxonomic hierarchy (lower rank_value)
+            # 3. Have good relevancy (children/direct_children ratio)
+            
+            if direct_children > 0:
+                # Invert rank_value so lower taxa get higher scores
+                # Max rank_value is ~80 (Kingdom + prefixes), so invert by subtracting from 100
+                inverted_rank_score = 100 - rank_value
+                # Combine with relevancy and children potential
+                composite_score = inverted_rank_score + (relevancy * 10) + (direct_children * 2)
+            else:
+                # Nodes without children get lower priority
+                composite_score = 0
+            
             relevancy_list.append({
                 "aphia_id": node_data["aphiaid"],
                 "relevancy": relevancy,
-                "rank_value": rank_value
+                "rank_value": rank_value,
+                "composite_score": composite_score,
+                "direct_children": direct_children
             })
             
-        # Sort by rank_value in descending order
-        return sorted(relevancy_list, key=lambda x: x["rank_value"], reverse=True)
+        # Sort by composite_score in descending order to prioritize lower taxa with expansion potential
+        return sorted(relevancy_list, key=lambda x: x["composite_score"], reverse=True)
     
     def get_children_for_node(self, aphia_id: str, all_data: Dict[str, Dict[str, Any]]) -> List[Dict[str, Any]]:
         """
