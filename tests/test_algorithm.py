@@ -91,8 +91,9 @@ class TestAphiaIdAlgorithm:
         assert all("relevancy" in ranking for ranking in rankings)
         assert all("rank_value" in ranking for ranking in rankings)
         
-        # Rankings should be sorted by rank_value (Kingdom > Phylum)
-        assert rankings[0]["rank_value"] >= rankings[1]["rank_value"]
+        # Rankings should now prioritize lower taxa (Phylum > Kingdom)
+        # The ranking with higher composite_score should come first
+        assert rankings[0]["composite_score"] >= rankings[1]["composite_score"]
         
     def test_get_children_for_node(self, algorithm, sample_taxonomic_data):
         """Test getting children for a node."""
@@ -240,3 +241,36 @@ class TestAphiaIdAlgorithm:
         result = algorithm.apply_algorithm(limited_data)
         # Should return all available nodes (2) even though min_nodes is 10
         assert len(result) == 2
+        
+    def test_lower_taxa_preference(self):
+        """Test that the algorithm now prefers lower taxonomic ranks."""
+        algorithm = AphiaIdAlgorithm(max_nodes=10)
+        
+        # Create hierarchical data where lower taxa should be preferred
+        test_data = {
+            "1": {"scientificname": "Animalia", "aphiaid": 1, "rank": "Kingdom", "parent": "", "children": 4, "directchildren": 2},
+            "2": {"scientificname": "Chordata", "aphiaid": 2, "rank": "Phylum", "parent": "1", "children": 2, "directchildren": 2},
+            "3": {"scientificname": "Arthropoda", "aphiaid": 3, "rank": "Phylum", "parent": "1", "children": 2, "directchildren": 2},
+            "4": {"scientificname": "Mammalia", "aphiaid": 4, "rank": "Class", "parent": "2", "children": 1, "directchildren": 1},
+            "5": {"scientificname": "Aves", "aphiaid": 5, "rank": "Class", "parent": "2", "children": 1, "directchildren": 1},
+            "6": {"scientificname": "Insecta", "aphiaid": 6, "rank": "Class", "parent": "3", "children": 1, "directchildren": 1},
+            "7": {"scientificname": "Crustacea", "aphiaid": 7, "rank": "Class", "parent": "3", "children": 1, "directchildren": 1},
+            # Orders (no children, so they won't be expanded further)
+            "8": {"scientificname": "Primates", "aphiaid": 8, "rank": "Order", "parent": "4", "children": 0, "directchildren": 0},
+            "9": {"scientificname": "Passeriformes", "aphiaid": 9, "rank": "Order", "parent": "5", "children": 0, "directchildren": 0},
+            "10": {"scientificname": "Lepidoptera", "aphiaid": 10, "rank": "Order", "parent": "6", "children": 0, "directchildren": 0},
+            "11": {"scientificname": "Decapoda", "aphiaid": 11, "rank": "Order", "parent": "7", "children": 0, "directchildren": 0},
+        }
+        
+        result = algorithm.apply_algorithm(test_data)
+        
+        # Count taxa by hierarchical level
+        selected_ranks = [data['rank'] for data in result.values()]
+        higher_taxa_count = sum(1 for rank in selected_ranks if rank in ['Kingdom', 'Phylum'])
+        lower_taxa_count = sum(1 for rank in selected_ranks if rank in ['Class', 'Order', 'Family', 'Genus', 'Species'])
+        
+        # Should prefer lower taxa when possible
+        assert lower_taxa_count > 0, "Algorithm should select some lower-level taxa"
+        
+        # Should not just stop at Kingdom/Phylum level
+        assert not all(rank in ['Kingdom', 'Phylum'] for rank in selected_ranks), "Algorithm should go beyond Kingdom/Phylum level"
