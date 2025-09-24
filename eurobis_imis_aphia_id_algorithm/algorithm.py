@@ -203,10 +203,8 @@ class AphiaIdAlgorithm:
         if not final_ids:
             return {}
             
-        last_final_id_length = 0
-        
         # Step 2: Iteratively add children and remove parents
-        while len(final_ids) < self.max_nodes and len(final_ids) > last_final_id_length:
+        while len(final_ids) < self.max_nodes:
             try:
                 # Calculate rankings for current nodes
                 ranked_nodes = self.calculate_node_rankings(final_ids)
@@ -245,8 +243,6 @@ class AphiaIdAlgorithm:
                             
                 if not changed:
                     break
-                    
-                last_final_id_length = len(final_ids)
                 
             except (IndexError, KeyError):
                 break
